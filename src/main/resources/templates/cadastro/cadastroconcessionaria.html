@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Site made with Mobirise Website Builder v4.11.4, https://mobirise.com -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Mobirise v4.11.4, mobirise.com">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<link rel="shortcut icon" href="assets/images/logo1-122x124.png" type="image/x-icon">
+<meta name="description" content="Site Creator Description">
+<title>Cadastro Empresas</title>
+<link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+<link rel="stylesheet" href="assets/tether/tether.min.css">
+<link rel="stylesheet" href="assets/dropdown/css/style.css">
+<link rel="stylesheet" href="assets/socicon/css/styles.css">
+<link rel="stylesheet" href="assets/theme/css/style.css">
+<link rel="preload" href="assets/mobirise/css/mbr-additional.css">
+<link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+</head>
+<body>
+	<section class="menu cid-rGkts3fOzj" once="menu" id="menu1-0">
+		<nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
+			<div class="menu-logo">
+				<div class="navbar-brand">
+					<span class="navbar-logo"> <a href="/index"><img src="assets/images/logo1-122x124.png" alt="Virtual Dealer" title="Logo VirtualDealer" style="height: 4.5rem;"></a></span>
+					<span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="/index">Virtual Dealer</a></span>
+				</div>
+			</div>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/index"></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/paginaInicial"><span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>Pagina Inicial</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/login"><span class="mbri-key mbr-iconfont mbr-iconfont-btn"></span>Login</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/cadastro"><span class="mbri-users mbr-iconfont mbr-iconfont-btn"></span>Cadastro</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/pesquisa"><spanclass="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</section>
+	<section class="mbr-section form1 cid-rHieyN7Rpd" id="form1-9">
+		<div class="container pt-5 pb-5">
+			<div class="row">
+				<div class="col-md-12 text-center">
+					<h3 class="text-uppercase">
+						preencha os campos <br> <span class="blue">e faça seu cadastro</span>
+					</h3>
+					<img src="images/bottom-text-sobre.png" alt="cor de fundo">
+					<p>É muito importante que você preencha todos os campos para realizar o seu cadastro</p>
+					<div class="row">
+						<div class="col-md-12">
+							<form action="salvarConcessionaria" th:object="${concessionaria}" id="form_concessionaria" method="POST" name="form_concessionaria">
+								<div class="form-row">
+									<div class="form-group col-md-6">
+										<h5 class="text-left">Dados cadastrais</h5>
+										<label class="form-check-label" for="complemento">Razão social</label>
+										<input type="text" class="form-control" id="" placeholder="Razão social" th:field="*{razaoSocial}">
+									</div>
+									<div class="form-group col-md-6">
+										<h5 class="text-left">Dados de acesso</h5>
+										<label class="form-check-label" for="emailConcessionaria">E-mail</label>
+										<input type="email" class="form-control" id="emailConcessionaria" placeholder="Email" th:field="*{emailConcessionaria}">
+									</div>
+									<div class="form-group col-md-3">
+										<label class="form-check-label" for="nomeFantasia">Nome Fantasia</label>
+										<input type="text" class="form-control" id="nomeFantasia" placeholder="Nome fantasia" th:field="*{nomeFantasia}">
+									</div>
+									<div class="form-group col-md-3">
+										<label class="form-check-label" for="inscricaoEstadual">Inscrição Estadual</label>
+										<input type="text" class="form-control" id="inscricaoEstadual" placeholder="Inscrição Estadual" th:field="*{inscricaoEstadual}">
+									</div>
+									<div class="form-group col-md-6">
+										<label class="form-check-label" for="senha">Senha</label>
+										<input type="password" class="form-control" id="senha" placeholder="Senha" th:field="*{password}">
+									</div>
+									<div class="form-group col-md-1">
+										<label class="form-check-label" for="cnpj">CNPJ</label>
+										<input type="text" class="form-control" id="cnpj" placeholder="CNPJ" th:field="*{cnpj}">
+									</div>
+									<div class="form-group col-md-3">
+										<label class="form-check-label" for="telefone">Telefone</label>
+										<input type="text" class="form-control" id="telefone" placeholder="Seu telefone" th:field="*{telefone1}">
+									</div>
+									<div class="form-group col-md-6">
+										<label class="form-check-label" for="senha2">Confirma senha</label>
+										<input type="password" class="form-control" id="senha2" placeholder="Confirmação da senha">
+									</div>
+									<div class="form-group col-md-6">
+										<label class="form-check-label" for="empresa">Empresa</label>
+										<input type="text" name="empresa" class="form-control" id="empresa" placeholder="empresa" th:field="*{concessionaria}">
+									</div>
+									<div class="form-group col-md-6">
+										<input type="text" class="form-control" id="" placeholder="Complemento" th:field="*{endereco.complemento}">
+									</div>
+									<div class="form-group col-md-6">
+										<label class="form-check-label" for="logradouro">Logradouro</label>
+										<input type="text" name="logradouro" class="form-control" id="logradouro" placeholder="Logradouro" th:field="*{endereco.logadouro}">
+									</div>
+									<div class="form-group col-md-3">
+										<label class="form-check-label" for="numero">Número</label>
+										<input type="text" class="form-control" id="numero" placeholder="" th:field="*{endereco.numero}">
+									</div>
+									<div class="form-group col-md-3">
+										<label class="form-check-label" for="estado">Estado</label>
+										<select name="estado" id="estado" class="form-control" th:field="*{endereco.estado}">
+											<option value="ac">Estado</option>
+											<option value="ac">Acre</option>
+											<option value="al">Alagoas</option>
+											<option value="am">Amazonas</option>
+											<option value="ap">Amapá</option>
+											<option value="ba">Bahia</option>
+											<option value="ce">Ceará</option>
+											<option value="df">Distrito Federal</option>
+											<option value="es">Espírito Santo</option>
+											<option value="go">Goiás</option>
+											<option value="ma">Maranhão</option>
+											<option value="mt">Mato Grosso</option>
+											<option value="ms">Mato Grosso do Sul</option>
+											<option value="mg">Minas Gerais</option>
+											<option value="pa">Pará</option>
+											<option value="pb">Paraíba</option>
+											<option value="pr">Paraná</option>
+											<option value="pe">Pernambuco</option>
+											<option value="pi">Piauí</option>
+											<option value="rj">Rio de Janeiro</option>
+											<option value="rn">Rio Grande do Norte</option>
+											<option value="ro">Rondônia</option>
+											<option value="rs">Rio Grande do Sul</option>
+											<option value="rr">Roraima</option>
+											<option value="sc">Santa Catarina</option>
+											<option value="se">Sergipe</option>
+											<option value="sp">São Paulo</option>
+											<option value="to">Tocantins</option>
+										</select>
+									</div>
+									<div class="form-group col-md-4">
+										<label class="form-check-label" for="cidade">Cidade</label>
+										<input type="text" name="cidade" class="form-control" id="cidade" placeholder="Cidade" th:field="*{endereco.cidade}">
+									</div>
+									<div class="form-group col-md-3">
+										<label class="form-check-label" for="bairro">Bairro</label>
+										<input type="text" name=bairro class="form-control" id="bairro" placeholder="" th:field="*{endereco.bairro}">
+									</div>
+									<div class="form-group col-md-5">
+										<label class="form-check-label" for="cep">CEP</label>
+										<input type="text" class="form-control" id="cep" placeholder="XXXXX-XXX" th:field="*{endereco.cep}">
+									</div>
+									<div class="com-md-6">
+										<h5>Clique aqui para ler o termo de Uso</h5>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="form-check">
+										<input class="form-check-input" type="checkbox" id="gridCheck">
+										<label class="form-check-label" for="gridCheck"> Li e concordo com os termos </label>
+									</div>
+								</div>
+								<button type="submit" class="btn btn-primary">Concluir o cadastro</button>
+							</form>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="footer4 cid-rHKj5aTgnl" id="footer4-17">
+		<div class="container">
+			<div class="media-container-row content mbr-white">
+				<div class="col-md-3 col-sm-4">
+					<div class="mb-3 img-logo">
+						<a href="/index"> <img src="assets/images/logo1-122x124.png" alt="Mobirise" title=""></a>
+					</div>
+					<p class="mb-3 mbr-fonts-style foot-title display-7">VirtualDealer</p>
+					<p class="mbr-text mbr-fonts-style mbr-links-column display-7">
+						<a href="/sobreNos">Sobre nós</a><br>
+						<a href="" class="text-white">Services</a><br>Seja parceiro<a href="/cadastroEmpresa" class="text-white"><br></a><br>
+					</p>
+				</div>
+				<div class="col-md-4 col-sm-8">
+					<p class="mb-4 foot-title mbr-fonts-style display-7">
+						<br>
+						<br>Noticias recentes
+					</p>
+					<p class="mbr-text mbr-fonts-style foot-text display-7">
+						Atualização nos serviços de atendimento.<br>Venha confereir &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>
+					</p>
+				</div>
+				<div class="col-md-4 offset-md-1 col-sm-12">
+					<p class="mb-4 foot-title mbr-fonts-style display-7">SUBSCRIBE</p>
+					<p class="mbr-text mbr-fonts-style form-text display-7">Receba nossas novidades em seu Email</p>
+					<div class="media-container-column" data-form-type="formoid">
+						<!---Formbuilder Form--->
+						<form action="https://mobirise.com/" method="POST" id="" class="mbr-form form-with-styler" data-form-title="Mobirise Form">
+							<input type="hidden" name="email" data-form-email="true" value="F/Xd2G9g0ucJ0D4xYj/YqxWQHwJ4aW38LM1YbJt7IU+XU0czA7xWGbm6BmhuXSXENGkb0KWqf29rfOvn9Zs67XgfqcxUqXSY2ivBd0dWsSUCQnSYAqQB46Iz7OaFoUV9">
+							<div class="row form-inline justify-content-center">
+								<div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
+								<div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12"></div>
+							</div>
+							<div class="dragArea row form-inline justify-content-center">
+								<div class="col-auto  form-group " data-for="email">
+									<input type="email" name="email" placeholder="Email" data-form-field="Email" required="required" class="form-control input-sm input-inverse my-2 display-7" id="email-footer4-17">
+								</div>
+								<div class="col-auto  input-group-btn  m-2">
+									<button type="submit" class="btn btn-primary m-0 display-4">Inscreva-se</button>
+								</div>
+							</div>
+						</form>
+						<!---Formbuilder Form--->
+					</div>
+					<p class="mb-4 mbr-fonts-style foot-title display-7">Conecte-se conosco</p>
+					<div class="social-list pl-0 mb-0">
+						<div class="soc-item">
+							<a href="https://twitter.com/virtualdealer" target="_blank">
+								<span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+							</a>
+						</div>
+						<div class="soc-item">
+							<a href="https://www.facebook.com/virtualdealer" target="_blank">
+								<span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+							</a>
+						</div>
+						<div class="soc-item">
+							<a href="https://www.youtube.com/c/virtualdealer" target="_blank">
+								<span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+							</a>
+						</div>
+						<div class="soc-item">
+							<a href="https://instagram.com/virtualdealer" target="_blank">
+								<span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+							</a>
+						</div>
+						<div class="soc-item">
+							<a href="https://www.behance.net/Mobirise" target="_blank">
+								<span class="mbr-iconfont mbr-iconfont-social socicon-whatsapp socicon"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-lower">
+				<div class="media-container-row">
+					<div class="col-sm-12">
+						<hr>
+					</div>
+				</div>
+				<div class="media-container-row mbr-white">
+					<div class="col-sm-12 copyright">
+						<p class="mbr-text mbr-fonts-style display-7">© Copyright 2020 VirtualDealer - Todos direitos reservados</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="assets/web/assets/jquery/jquery.min.js"></script>
+	<script src="assets/popper/popper.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/smoothscroll/smooth-scroll.js"></script>
+	<script src="assets/tether/tether.min.js"></script>
+	<script src="assets/dropdown/js/nav-dropdown.js"></script>
+	<script src="assets/dropdown/js/navbar-dropdown.js"></script>
+	<script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+	<script src="assets/theme/js/script.js"></script>
+	<script src="assets/formoid/formoid.min.js"></script>
+</body>
+</html>

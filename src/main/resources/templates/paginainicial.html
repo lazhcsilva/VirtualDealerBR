@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Site made with Mobirise Website Builder v4.11.3, https://mobirise.com -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Mobirise v4.11.3, mobirise.com">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<link rel="shortcut icon" href="assets/images/logo1-122x124.png" type="image/x-icon">
+<meta name="description" content="Website Builder Description">
+<title>Pagina Inicial</title>
+<link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+<link rel="stylesheet" href="assets/socicon/css/styles.css">
+<link rel="stylesheet" href="assets/dropdown/css/style.css">
+<link rel="stylesheet" href="assets/tether/tether.min.css">
+<link rel="stylesheet" href="assets/theme/css/style.css">
+<link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
+<link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+<link rel="stylesheet" href="assets/css/oferta.css">
+</head>
+<body>
+	<section class="menu cid-rGkts3fOzj" once="menu" id="menu1-0">
+		<nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
+			<div class="menu-logo">
+				<div class="navbar-brand">
+					<span class="navbar-logo"> <a href="/index"><img src="assets/images/logo1-122x124.png" alt="Virtual Dealer" title="Logo VirtualDealer" style="height: 4.5rem;"></a></span>
+					<span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="/index">Virtual Dealer</a></span>
+				</div>
+			</div>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/index"></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/paginaInicial"><span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>Pagina Inicial</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/login"><span class="mbri-key mbr-iconfont mbr-iconfont-btn"></span>Login</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/cadastro"><span class="mbri-users mbr-iconfont mbr-iconfont-btn"></span>Cadastro</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/pesquisa"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</section>
+	<section class="features3 cid-rHigNbtYt6" id="features3-j">
+		<section class="item-card" th:each="oferta : ${lista}">
+			<div class="item-summary">
+				<h2 class="title" th:text="${oferta.veiculo}"></h2>
+				<p class="venue"th:text="${oferta.combustivel}"></p>
+				<address class="address">
+					<p class="street-address">1233 Seventeenth St.</p>
+					<p class="locality">San Francisco, CA 94107</p>
+				</address>
+			</div>
+			<div class="image-wrapper">
+				<img class="featured-image" src="https://bit.ly/2PH10HN"
+					alt="The Paper Kites performing, overlooking a crowd" />
+			</div>
+			<div class="item-time-date">
+				<time class="date" datetime="2018-10-16">July 16, 2018</time>
+				<time class="time" datetime="19:00">7:00 PM</time>
+			</div>
+			<div class="item-buttons front-buttons">
+				<button class="btn-details grey"
+					aria-label="Learn more about the band and venue" th:text="${oferta.valor}"></button>
+				<a class="btn-tickets blue"
+					aria-label="Purchase tickets for this event" href="descricaoOferta">Acessar</a>
+				<button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Detalhes</button>
+			</div>
+			<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+				<div class="modal-dialog modal-xl">
+					<div class="modal-content">
+						<div class="individual-car-title">
+					<h3>Kia Soul, Brand New Model 2016</h3>
+					<h4>4.85 Lakh</h4>
+					<ul class="list-unstyled list-inline">
+						<li class="list-inline-item">Ahmedabad (reg)</li>
+						<li class="list-inline-item">|</li>
+						<li class="list-inline-item">Second Owner</li>
+						<li class="list-inline-item">|</li>
+						<li class="list-inline-item">36 Views</li>
+						<li class="list-inline-item">|</li>
+						<li class="list-inline-item">
+							<!-- AddToAny BEGIN --> <a class="a2a_dd"
+							href="https://www.addtoany.com/share"><i
+								class="fa fa-share-alt"></i> Share </a> <script async
+								src="https://static.addtoany.com/menu/page.js"></script> <!-- AddToAny END -->
+						</li>
+
+					</ul>
+				</div>
+				<div class="cars-gallery">
+					<div class="swiper-container gallery-top">
+						<div class="swiper-wrapper">
+							<div class="swiper-slide">
+								<div class="swiper-zoom-container">
+									<img src="https://gaadicdn.com/usedcar_image/gallery/VCC_851965_1_1522909196739_22_649825_8_1522909575.jpg">
+								</div>
+							</div>
+						</div>
+						<!-- Add Arrows -->
+						<div class="swiper-button-next swiper-button-white"></div>
+						<div class="swiper-button-prev swiper-button-white"></div>
+					</div>
+				</div>
+				<div class="cars-tabs">
+					<div class="card">
+						<div class="card-body">
+							<div class="row">
+								<div class="col-md-12">
+									<h4>Overview</h4>
+								</div>
+								<div class="col-md-6">
+									<ul>
+										<li><strong>Year :</strong> 2017</li>
+										<li><strong>Kilometer :</strong> 39,239 km</li>
+										<li><strong>Fuel Type :</strong> Petrol</li>
+										<li><strong>Transmission :</strong> Manual</li>
+										<li><strong>Color :</strong> Black</li>
+										<li><strong>No. of Owner(s) :</strong> First</li>
+									</ul>
+								</div>
+								<div class="col-md-6">
+									<ul>
+
+										<li><strong>Transmission :</strong> Manual</li>
+										<li><strong>Color :</strong> Black</li>
+										<li><strong>No. of Owner(s) :</strong> First</li>
+									</ul>
+								</div>
+								<div class="col-md-12">
+									<footer class="blockquote-footer">Please mention
+										whenever you call that you found the details on this
+										particular site.</footer>
+									<footer class="blockquote-footer">Always arrange a
+										meeting in a safe place.</footer>
+									<footer class="blockquote-footer">This site helps you
+										in searching for a vehicle. We do not verify the authenticity
+										of the product.</footer>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="menu sticky-top ">
+					<div class="card bg-light ">
+						<div class="card-body">
+							<small> Get in touch with Seller</small>
+							<h3>
+								<i class="fa fa-inr"></i>4.85 Lakh
+							</h3>
+							<div class="form-group">
+								<input type="text" class="form-control" id="name1" placeholder="Name">
+							</div>
+							<div class="form-group">
+								<input type="text" class="form-control" id="phone1" placeholder="Mobile">
+							</div>
+							<div class="form-check">
+								<input class="form-check-input" type="checkbox" value="" id="updatecheck1">
+								<label class="form-check-label" for="updatecheck1">
+									<small>By submitting this form you agree to our <a href="#">terms and conditions</a></small>
+								</label>
+							</div>
+							<div class="pb-3"></div>
+							<button type="button" class="btn btn-warning">Contact the Seller</button>
+						</div>
+					</div>
+				</div>
+					</div>
+				</div>
+			</div>
+		</section>
+	</section>
+	<section class="footer4 cid-rHKj5aTgnl" id="footer4-17">
+		<div class="container">
+			<div class="media-container-row content mbr-white">
+				<div class="col-md-3 col-sm-4">
+					<div class="mb-3 img-logo">
+						<a href="/index"> <img src="assets/images/logo1-122x124.png" alt="Mobirise" title=""></a>
+					</div>
+					<p class="mb-3 mbr-fonts-style foot-title display-7">VirtualDealer</p>
+					<p class="mbr-text mbr-fonts-style mbr-links-column display-7">
+						<a href="/sobreNos">Sobre nós</a><br>
+						<a href="" class="text-white">Services</a><br>Seja parceiro<a href="/cadastroEmpresa" class="text-white"><br></a><br>
+					</p>
+				</div>
+				<div class="col-md-4 col-sm-8">
+					<p class="mb-4 foot-title mbr-fonts-style display-7">
+						<br>
+						<br>Noticias recentes
+					</p>
+					<p class="mbr-text mbr-fonts-style foot-text display-7">
+						Atualização nos serviços de atendimento.<br>Venha confereir &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>
+					</p>
+				</div>
+				<div class="col-md-4 offset-md-1 col-sm-12">
+					<p class="mb-4 foot-title mbr-fonts-style display-7">SUBSCRIBE</p>
+					<p class="mbr-text mbr-fonts-style form-text display-7">Receba nossas novidades em seu Email</p>
+					<div class="media-container-column" data-form-type="formoid">
+						<!---Formbuilder Form--->
+						<form action="https://mobirise.com/" method="POST" id="" class="mbr-form form-with-styler" data-form-title="Mobirise Form">
+							<input type="hidden" name="email" data-form-email="true" value="F/Xd2G9g0ucJ0D4xYj/YqxWQHwJ4aW38LM1YbJt7IU+XU0czA7xWGbm6BmhuXSXENGkb0KWqf29rfOvn9Zs67XgfqcxUqXSY2ivBd0dWsSUCQnSYAqQB46Iz7OaFoUV9">
+							<div class="row form-inline justify-content-center">
+								<div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
+								<div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12"></div>
+							</div>
+							<div class="dragArea row form-inline justify-content-center">
+								<div class="col-auto  form-group " data-for="email">
+									<input type="email" name="email" placeholder="Email" data-form-field="Email" required="required" class="form-control input-sm input-inverse my-2 display-7" id="email-footer4-17">
+								</div>
+								<div class="col-auto  input-group-btn  m-2">
+									<button type="submit" class="btn btn-primary m-0 display-4">Inscreva-se</button>
+								</div>
+							</div>
+						</form>
+						<!---Formbuilder Form--->
+					</div>
+					<p class="mb-4 mbr-fonts-style foot-title display-7">Conecte-se conosco</p>
+					<div class="social-list pl-0 mb-0">
+						<div class="soc-item">
+							<a href="https://twitter.com/virtualdealer" target="_blank">
+								<span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+							</a>
+						</div>
+						<div class="soc-item">
+							<a href="https://www.facebook.com/virtualdealer" target="_blank">
+								<span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+							</a>
+						</div>
+						<div class="soc-item">
+							<a href="https://www.youtube.com/c/virtualdealer" target="_blank">
+								<span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+							</a>
+						</div>
+						<div class="soc-item">
+							<a href="https://instagram.com/virtualdealer" target="_blank">
+								<span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+							</a>
+						</div>
+						<div class="soc-item">
+							<a href="https://www.behance.net/Mobirise" target="_blank">
+								<span class="mbr-iconfont mbr-iconfont-social socicon-whatsapp socicon"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-lower">
+				<div class="media-container-row">
+					<div class="col-sm-12">
+						<hr>
+					</div>
+				</div>
+				<div class="media-container-row mbr-white">
+					<div class="col-sm-12 copyright">
+						<p class="mbr-text mbr-fonts-style display-7">© Copyright 2020 VirtualDealer - Todos direitos reservados</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="assets/web/assets/jquery/jquery.min.js"></script>
+	<script src="assets/popper/popper.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/smoothscroll/smooth-scroll.js"></script>
+	<script src="assets/dropdown/js/nav-dropdown.js"></script>
+	<script src="assets/dropdown/js/navbar-dropdown.js"></script>
+	<script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+	<script src="assets/tether/tether.min.js"></script>
+	<script src="assets/theme/js/script.js"></script>
+	<script src="assets/formoid/formoid.min.js"></script>
+	<script src="assets/js/oferta.js"></script>
+	<script src="assets/js/jquery-ui.min.js"></script>
+	<script src="assets/js/jquery.mask.min.js"></script>
+	<script src="assets/js/jquery.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+	
+</body>
+</html>

@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:th="http://www.thymeleaf.org">
+<head>
+<!-- Site made with Mobirise Website Builder v4.11.3, https://mobirise.com -->
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Mobirise v4.11.3, mobirise.com">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<link rel="shortcut icon" href="assets/images/logo1-122x124.png" type="image/x-icon">
+<meta name="description" content="">
+<title>Home</title>
+<link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+<link rel="stylesheet" href="assets/socicon/css/styles.css">
+<link rel="stylesheet" href="assets/dropdown/css/style.css">
+<link rel="stylesheet" href="assets/tether/tether.min.css">
+<link rel="stylesheet" href="assets/theme/css/style.css">
+<link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
+<link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
+<link rel="stylesheet" href="/assets/css/estilo.css">
+</head>
+<body>
+	<section class="menu cid-rGkts3fOzj" once="menu" id="menu1-0">
+		<nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+			<div class="menu-logo">
+				<div class="navbar-brand">
+					<span class="navbar-logo">
+						<a href="/index"><img src="assets/images/logo1-122x124.png" alt="Virtual Dealer" title="Logo VirtualDealer" style="height: 4.5rem;"></a>
+					</span>
+					<span class="navbar-caption-wrap">
+						<a class="navbar-caption text-white display-4" href="/index">Virtual Dealer</a>
+					</span>
+				</div>
+			</div>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav nav-dropdown nav-right"
+					data-app-modern-menu="true">
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/index"></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/paginaInicial">
+						<span class="mbri-home mbr-iconfont mbr-iconfont-btn">
+						</span>Pagina Inicial</a></li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/login">
+						<span class="mbri-key mbr-iconfont mbr-iconfont-btn"></span>Login</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/cadastro">
+						<span class="mbri-users mbr-iconfont mbr-iconfont-btn"></span>Cadastro</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/pesquisa">
+						<span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
+					</li>
+				</ul>
+
+			</div>
+		</nav>
+	</section>
+	<section class="mbr234" id="form3-g">
+		<div class="container">
+			<div class="container login-container">
+				<div class="row">
+					<div class="col-md-6 login-form-1">
+						<h3>Login para Empresas</h3>
+						<div th:if="${mensagem}" th:text="${mensagem}"></div>
+						<form action="/concessionariaLogin" method="post" th:object="${concessionaria}">
+							<div class="form-group">
+								<input name="login" type="text" class="form-control" placeholder="Seu Email" />
+							</div>
+							<div class="form-group">
+								<input type="password" name="password" class="form-control" placeholder="Sua senha" />
+							</div>
+							<div class="form-group">
+								<input type="submit" class="btn btn-primary" value="Login" />
+							</div>
+						</form>
+						<div class="form-group">
+							<a href="/trocaSenha" class="btnForgetPwd">Esqueceu a senha?</a>
+						</div>
+
+					</div>
+					<div class="col-md-6 login-form-2">
+						<div class="login-logo"></div>
+						<h3>Login para usuários</h3>
+						<div th:if="${mensagem}" th:text="${mensagem}"></div>
+						<form action="/clienteLogin" method="post" th:object="${cliente}">
+							<div class="form-group">
+								<input type="text" th:field="*{emailCliente}"
+									class="form-control" placeholder="Seu Email" />
+							</div>
+							<div class="form-group">
+								<input type="password" th:field="*{password}"
+									class="form-control" placeholder="Sua senha" />
+							</div>
+							<div class="form-group">
+								<input type="submit" class="btn btn-primary" value="Login" />
+							</div>
+						</form>
+						<div class="form-group">
+							<a href="/trocaSenha" class="btnForgetPwd-1" value="Login">Esqueceu a senha?</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+</body>
+</html>
