@@ -1,24 +1,27 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="httP://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Mobirise v4.11.4, mobirise.com">
+<meta name="generator" content="Mobirise v4.11.3, mobirise.com">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <link rel="shortcut icon" href="assets/images/logo1-122x124.png" type="image/x-icon">
-<meta name="description" content="Site Creator Description">
-<title>Cadastro</title>
+<meta name="description" content="Web Site Builder Description">
+<title>Planos</title>
 <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-<link rel="stylesheet" href="assets/tether/tether.min.css">
-<link rel="stylesheet" href="assets/dropdown/css/style.css">
 <link rel="stylesheet" href="assets/socicon/css/styles.css">
+<link rel="stylesheet" href="assets/dropdown/css/style.css">
+<link rel="stylesheet" href="assets/tether/tether.min.css">
 <link rel="stylesheet" href="assets/theme/css/style.css">
-<link rel="preload" href="assets/mobirise/css/mbr-additional.css">
+<link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
 <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 <link rel="stylesheet" href="assets/css/estilo.css">
+<link rel="stylesheet" href="assets/css/oferta.css">
+<link rel="stylesheet" href="assets/css/descricao.css">
 </head>
 <body>
 	<section class="menu cid-rGkts3fOzj" once="menu" id="menu1-0">
@@ -45,91 +48,82 @@
 						<a class="nav-link link text-white display-4" href="/cadastro"><span class="mbri-users mbr-iconfont mbr-iconfont-btn"></span>Cadastro</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link link text-white display-4" href="/pesquisa"><spanclass="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
+						<a class="nav-link link text-white display-4" href="/pesquisa"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
 					</li>
 				</ul>
 			</div>
 		</nav>
 	</section>
-	<section class="mbr-section form1 cid-rHieyN7Rpd" id="form1-9">
-		<div class="container bootstrap snippet">
-			<div class="row">
-				<div class="container pt-5 pb-5">
-					<div class="row">
-						<div class="col-md-12 text-center">
-							<h3 class="text-uppercase">
-								preencha os campos <br> <span class="blue">e faça
-									seu cadastro</span>
-							</h3>
-							<img src="assets/images/logo1-122x124.png" alt="cor de fundo">
-							<p>É muito importante que você preencha todos os campos para
-								realizar o seu cadastro</p>
-							<div class="row">
-								<div class="col-md-12">
-									<form th:action="@{/salvarCliente}" th:object="${cliente}"
-										id="form_cliente" method="POST" name="form_cliente">
-										<h5 class="text-left">Dados cadastrais</h5>
-										<div class="form-row">
-											<div class="form-group col-md-6">
-												<label class="form-check-label" for="nomeCliente">Nome
-													completo*</label> <input type="text" name="nomeCliente"
-													class="form-control" id="nomeCliente"
-													placeholder="Ex: Mario caldas" th:field="*{nome}">
-											</div>
-											<br>
-											<div class="form-group col-md-4">
-												<label class="form-check-label" for="emailCliente">E-mail*</label>
-												<input type="email" name="emailCliente" class="form-control"
-													id="emailCliente" placeholder="Ex: mariocaldas@xxxxxx.com"
-													th:field="*{emailCliente}">
-											</div>
-											<div class="form-group col-md-2">
-												<label class="form-check-label" for="telefone">Telefone*</label>
-												<input type="text" class="form-control" id="telefone"
-													placeholder="XX XXXXX-XXXX" th:field="*{telefone}">
-											</div>
-											<div class="form-group col-md-3">
-												<label class="form-check-label" for="cpf">CPF*</label> <input
-													type="text" class="form-control" id="cpf"
-													placeholder="XXX.XXX.XXX-XX" th:field="*{cpf}">
-											</div>
-											<div class="form-group col-md-3">
-												<label class="form-check-label" for="dataNascimento">Data
-													de Nascimento*</label> <input type="text" class="form-control"
-													id="dataNascimento" placeholder="Data de Nascimento"
-													th:field="*{dataNascimento}">
-											</div>
-											<div class="form-group col-md-3">
-												<label class="form-check-label" for="senha">Senha*</label> <input
-													type="password" class="form-control" id="senha"
-													placeholder="Senha" th:field="*{password}">
-											</div>
-											<div class="form-group col-md-3">
-												<label class="form-check-label" for="senha2">Confirmar
-													senha*</label> <input type="password" class="form-control"
-													id="senha2" placeholder="Confirme a senha">
-											</div>
-											<div class="com-md-6">
-												<h5>
-													<a href="#">Clique aqui para ler o termo de Uso</a>
-												</h5>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="form-check">
-												<input class="form-check-input" type="checkbox"
-													id="gridCheck"> <label class="form-check-label"
-													for="gridCheck">Li e concordo com os termos</label>
-											</div>
-										</div>
-										<button type="submit" class="btn btn-primary">Concluir
-											o cadastro</button>
-									</form>
-								</div>
-								<span id="msg"></span>
-							</div>
-						</div>
-					</div>
+	<section class="features3 cid-rHigNbtYt6" id="features3-j">
+		<div class="pricing-wrapper clearfix">
+			<!-- Titulo -->
+			<h1 class="pricing-table-title">Tabla de Planos</h1>
+			<div class="pricing-table">
+				<h3 class="pricing-title">Basico</h3>
+				<div class="price">
+					R$60
+				</div>
+				<!-- Lista de Caracteristicas / Propiedades -->
+				<ul class="table-list">
+					<li>Adicionar <span>Posteriormente</span></li>
+					<li>Adicionar<span>Posteriormente</span></li>
+					<li>Adicionar <span>Posteriormente</span></li>
+					<li>Adicionar <span class="unlimited">ilimitadas</span></li>
+					<li>Adicionar <span class="unlimited">ilimitadas</span></li>
+					<li>Adicionar <span>Posteriormente</span></li>
+				</ul>
+				<!-- Contratar / Comprar -->
+				<div class="table-buy">
+					<p>
+						R$60<sup>/1 mês</sup>
+					</p>
+					<a href="#" class="pricing-action">Comprar</a>
+				</div>
+			</div>
+
+			<div class="pricing-table recommended">
+				<h3 class="pricing-title">Premium</h3>
+				<div class="price">
+					R$100
+				</div>
+				<!-- Lista de Caracteristicas / Propiedades -->
+				<ul class="table-list">
+					<li>Adicionar<span>Posteriormente</span></li>
+					<li>Adicionar<span>Posteriormente</span></li>
+					<li>Adicionar<span>Posteriormente</span></li>
+					<li>Adicionar<span class="unlimited">ilimitadas</span></li>
+					<li>Adicionar<span class="unlimited">ilimitadas</span></li>
+					<li>Adicionar<span>Posteriormente</span></li>
+				</ul>
+				<!-- Contratar / Comprar -->
+				<div class="table-buy">
+					<p>
+						R$100<sup>/6 mêses</sup>
+					</p>
+					<a href="#" class="pricing-action">Comprar</a>
+				</div>
+			</div>
+
+			<div class="pricing-table">
+				<h3 class="pricing-title">Ultimate</h3>
+				<div class="price">
+					R$200
+				</div>
+				<!-- Lista de Caracteristicas / Propiedades -->
+				<ul class="table-list">
+					<li>Adicionar<span>Posteriormente</span></li>
+					<li>Adicionar<span>Adicionar</span></li>
+					<li>Adicionar<span>Adicionar</span></li>
+					<li>Adicionar<span class="unlimited">ilimitadas</span></li>
+					<li>Adicionar<span class="unlimited">ilimitadas</span></li>
+					<li>Adicionar<span>Adicionar</span></li>
+				</ul>
+				<!-- Contratar / Comprar -->
+				<div class="table-buy">
+					<p>
+						R$200<sup>/12 mêses</sup>
+					</p>
+					<a href="#" class="pricing-action">Comprar</a>
 				</div>
 			</div>
 		</div>

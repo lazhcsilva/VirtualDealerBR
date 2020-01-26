@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import br.ppii.model.Cliente;
 import br.ppii.model.Concessionaria;
 import br.ppii.model.Endereco;
+import br.ppii.model.Gestor;
 import br.ppii.model.Oferta;
 import br.ppii.service.OfertaService;
 
@@ -81,9 +82,9 @@ public class MenuController {
 		return "planos";
 	}
 	
-	@GetMapping("/perfil")
+	@GetMapping("/perfilCliente")
 	public String perfil() {
-		return "perfil";
+		return "perfil/perfilcliente";
 	}
 	
 	@GetMapping("/trocaSenha")
@@ -105,6 +106,21 @@ public class MenuController {
 	public String descricaoOferta(Model model, Oferta oferta) {
 		model.addAttribute("lista", this.ofertaService.listarTodos(Sort.by("veiculo")));
 		return "acesso/descricaooferta";
+	}
+	
+	@GetMapping("/gestor")
+	public String gestor(Gestor gestor, HttpSession session, Model model) {
+		return "perfil/gestor";
+	}
+	
+	@GetMapping("/gestorLogin")
+	public String loginGestor(Gestor gestor, HttpSession session){
+		return "acesso/gestorlogin";
+	}
+	
+	@GetMapping("/cadastrarPlano")
+	public String cadastrarPlano() {
+		return "cadastro/cadastrarplano";
 	}
 	
 }

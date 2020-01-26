@@ -1,0 +1,11 @@
+@charset "UTF-8";
+
+.accordion{
+	width: 100vw;
+	height: 100vh;
+	text-align: justify;
+	display: flex;
+	flex-direction:row;
+	justify-content:center;
+	align-items: center;
+}

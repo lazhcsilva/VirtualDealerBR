@@ -10,6 +10,7 @@ import javax.validation.Valid;
 
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.validation.Errors;
@@ -20,40 +21,47 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ppii.model.Cliente;
-import br.ppii.persistence.ClienteDAO;
 import br.ppii.service.ClienteService;
 
+@Controller
 public class ClienteController {
 
 	@Autowired
-	private ClienteDAO clienteDAO;
-	
-	@Autowired
 	private ClienteService clienteService;
+	
+	@PostMapping("/salvarCliente")
+	public String salvarCliente(@Valid Cliente cliente, BindingResult br, Model model, RedirectAttributes ra,Errors errors) {
+		
+		if(errors.hasErrors()) {
+			
+			ra.addFlashAttribute("mensagem", "erro");
+			return this.Cadastro(cliente);
+			
+		} else {
+			
+			try {
+				
+				this.clienteService.criarCliente(cliente);
+				
+			} catch(ServiceException | MessagingException e) {
+				
+				ra.addFlashAttribute("menssage", "Não foi possível criar usuário: " + e.getMessage());
+                ra.addFlashAttribute("cliente", cliente);
+				return "redirect:/exibirFormParticipante";
+				
+			}
+			
+			ra.addFlashAttribute("menssage", "Conta criada com sucesso!");
+			
+		}
+		
+		return "redirect:/perfil";
+		
+	}
 	
 	@GetMapping("/cadastro")
 	public String Cadastro(Cliente cliente) {
 		return "cadastro/cadastrocliente";
-	}
-	
-	@PostMapping("/salvarCliente")
-	public String salvarCliente(@Valid Cliente cliente, BindingResult br,Model model, RedirectAttributes ra,Errors errors) {
-		
-		if (errors.hasErrors()) {
-			ra.addFlashAttribute("menssage", "erro");
-			return this.Cadastro(cliente);
-		} else {
-			try {
-				this.clienteService.criarCliente(cliente);
-
-			} catch (ServiceException | MessagingException e) {
-				ra.addFlashAttribute("menssage", "Não foi possível criar usuário: " + e.getMessage());
-                ra.addFlashAttribute("cliente", cliente);
-				return "redirect:/cadastro/cadastrocliente";
-			}
-			    ra.addFlashAttribute("menssage", "Conta criada com sucesso!");
-		}
-		return "redirect:/perfil";
 	}
 	
 	@PostMapping("/clienteLogin")
@@ -71,25 +79,11 @@ public class ClienteController {
 		} catch (ServiceException e) {
 			ra.addFlashAttribute("mensagemErro", e.getMessage());
 
-			return "redirect:/perfil";
+			return "redirect:/perfilCliente";
 		}
 
 		ra.addFlashAttribute("loginEfetuado", true);
 		return redirect;
-	}
-	
-	
-	
-	@GetMapping("/editarCliente")
-	public String editarCliente(Integer idCliente, Model model) {
-		model.addAttribute("lista", this.clienteDAO.findById(idCliente));
-		return "perfil";
-	}
-	
-	@GetMapping("/apagarCliente")
-	public String apagarCliente(Integer idCliente) {
-		this.clienteDAO.deleteById(idCliente);
-		return "index";
 	}
 	
 }

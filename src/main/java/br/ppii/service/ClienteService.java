@@ -7,11 +7,13 @@ import javax.mail.MessagingException;
 
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import br.ppii.model.Cliente;
 import br.ppii.persistence.ClienteDAO;
 import br.ppii.util.Util;
 
+@Service
 public class ClienteService {
 
 	@Autowired

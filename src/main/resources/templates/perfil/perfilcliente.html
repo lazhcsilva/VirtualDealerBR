@@ -1,24 +1,26 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="httP://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
 <meta charset="UTF-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="generator" content="Mobirise v4.11.4, mobirise.com">
+<meta name="generator" content="Mobirise v4.11.3, mobirise.com">
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <link rel="shortcut icon" href="assets/images/logo1-122x124.png" type="image/x-icon">
-<meta name="description" content="Site Creator Description">
-<title>Cadastro</title>
+<meta name="description" content="Web Site Builder Description">
+<title>Perfil</title>
 <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
-<link rel="stylesheet" href="assets/tether/tether.min.css">
-<link rel="stylesheet" href="assets/dropdown/css/style.css">
 <link rel="stylesheet" href="assets/socicon/css/styles.css">
+<link rel="stylesheet" href="assets/dropdown/css/style.css">
+<link rel="stylesheet" href="assets/tether/tether.min.css">
 <link rel="stylesheet" href="assets/theme/css/style.css">
-<link rel="preload" href="assets/mobirise/css/mbr-additional.css">
+<link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
 <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 <link rel="stylesheet" href="assets/css/estilo.css">
+<link rel="stylesheet" href="assets/css/oferta.css">
 </head>
 <body>
 	<section class="menu cid-rGkts3fOzj" once="menu" id="menu1-0">
@@ -51,87 +53,155 @@
 			</div>
 		</nav>
 	</section>
-	<section class="mbr-section form1 cid-rHieyN7Rpd" id="form1-9">
-		<div class="container bootstrap snippet">
-			<div class="row">
-				<div class="container pt-5 pb-5">
-					<div class="row">
-						<div class="col-md-12 text-center">
-							<h3 class="text-uppercase">
-								preencha os campos <br> <span class="blue">e faça
-									seu cadastro</span>
-							</h3>
-							<img src="assets/images/logo1-122x124.png" alt="cor de fundo">
-							<p>É muito importante que você preencha todos os campos para
-								realizar o seu cadastro</p>
-							<div class="row">
-								<div class="col-md-12">
-									<form th:action="@{/salvarCliente}" th:object="${cliente}"
-										id="form_cliente" method="POST" name="form_cliente">
-										<h5 class="text-left">Dados cadastrais</h5>
-										<div class="form-row">
-											<div class="form-group col-md-6">
-												<label class="form-check-label" for="nomeCliente">Nome
-													completo*</label> <input type="text" name="nomeCliente"
-													class="form-control" id="nomeCliente"
-													placeholder="Ex: Mario caldas" th:field="*{nome}">
-											</div>
-											<br>
-											<div class="form-group col-md-4">
-												<label class="form-check-label" for="emailCliente">E-mail*</label>
-												<input type="email" name="emailCliente" class="form-control"
-													id="emailCliente" placeholder="Ex: mariocaldas@xxxxxx.com"
-													th:field="*{emailCliente}">
-											</div>
-											<div class="form-group col-md-2">
-												<label class="form-check-label" for="telefone">Telefone*</label>
-												<input type="text" class="form-control" id="telefone"
-													placeholder="XX XXXXX-XXXX" th:field="*{telefone}">
-											</div>
-											<div class="form-group col-md-3">
-												<label class="form-check-label" for="cpf">CPF*</label> <input
-													type="text" class="form-control" id="cpf"
-													placeholder="XXX.XXX.XXX-XX" th:field="*{cpf}">
-											</div>
-											<div class="form-group col-md-3">
-												<label class="form-check-label" for="dataNascimento">Data
-													de Nascimento*</label> <input type="text" class="form-control"
-													id="dataNascimento" placeholder="Data de Nascimento"
-													th:field="*{dataNascimento}">
-											</div>
-											<div class="form-group col-md-3">
-												<label class="form-check-label" for="senha">Senha*</label> <input
-													type="password" class="form-control" id="senha"
-													placeholder="Senha" th:field="*{password}">
-											</div>
-											<div class="form-group col-md-3">
-												<label class="form-check-label" for="senha2">Confirmar
-													senha*</label> <input type="password" class="form-control"
-													id="senha2" placeholder="Confirme a senha">
-											</div>
-											<div class="com-md-6">
-												<h5>
-													<a href="#">Clique aqui para ler o termo de Uso</a>
-												</h5>
-											</div>
-										</div>
-										<div class="form-group">
-											<div class="form-check">
-												<input class="form-check-input" type="checkbox"
-													id="gridCheck"> <label class="form-check-label"
-													for="gridCheck">Li e concordo com os termos</label>
-											</div>
-										</div>
-										<button type="submit" class="btn btn-primary">Concluir
-											o cadastro</button>
-									</form>
+	<section class="features3 cid-rHigNbtYt6" id="features3-j">
+		<form method="post" action="/logout">
+			<button type="submit">
+				<span class="glyphicon glyphicon-log-out">Sair</span>
+			</button>
+		</form>
+		<div class="container">
+			<form action="editarCliente" th:object="${cliente}" method="get">
+				<div class="row">
+					<div class="col-md-4">
+						<div class="profile-img">
+							<img
+								src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+								alt="" />
+							<div class="file btn btn-lg btn-primary">
+								Mudar foto <input type="file" name="file" />
+							</div>
+						</div>
+					</div>
+					<div class="col-md-6">
+						<div class="profile-head">
+							<h2>Seja bem-vindo</h2>
+							<h5></h5>
+							<p class="proile-rating">
+								PLANO : <span>Premium</span>
+							</p>
+							<ul class="nav nav-tabs" id="myTab" role="tablist">
+								<li class="nav-item"><a class="nav-link active"
+									id="home-tab" data-toggle="tab" href="#home" role="tab"
+									aria-controls="home" aria-selected="true">Perfil</a></li>
+								<li class="nav-item"><a class="nav-link" id="profile-tab"
+									data-toggle="tab" href="#profile" role="tab"
+									aria-controls="profile" aria-selected="false">Endereço</a></li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-md-2">
+						<input type="submit" class="profile-edit-btn" name="btnAddMore"
+							value="Editar Perfil" />
+					</div>
+				</div>
+				<div class="row">
+					<div class="col-md-4">
+						<div class="profile-work">
+							<p>ATALHOS</p>
+							<a href="/empresas">Parceiros</a><br /> <a href="/planos">Planos</a><br />
+							<a href="/paginaInicial">Carros</a>
+						</div>
+					</div>
+					<div class="col-md-8">
+						<div class="tab-content profile-tab" id="myTabContent">
+							<div class="tab-pane fade show active" id="home" role="tabpanel"
+								aria-labelledby="home-tab">
+								<div class="row">
+									<div class="col-md-6">
+										<label>Nome completo</label>
+									</div>
+									<div class="col-md-6">
+										<span th:text="${session.usuarioLogado.nome}"></span>
+									</div>
 								</div>
-								<span id="msg"></span>
+								<div class="row">
+									<div class="col-md-6">
+										<label>Email</label>
+									</div>
+									<div class="col-md-6">
+										<span th:text="${session.usuarioLogado.emailCliente}"></span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<label>Data Nascimento</label>
+									</div>
+									<div class="col-md-6">
+										<span th:text="${session.usuarioLogado.dataNascimento}"></span>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<label>Telefone</label>
+									</div>
+									<div class="col-md-6">
+										<span th:text="${session.usuarioLogado.telefone}"></span>
+									</div>
+								</div>
+							</div>
+							<div class="tab-pane fade" id="profile" role="tabpanel"
+								aria-labelledby="profile-tab">
+								<div class="row">
+									<div class="col-md-6">
+										<label>Logradouro</label>
+									</div>
+									<div class="col-md-6">
+										<p>Avenida Córrego da Batalha</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<label>Número</label>
+									</div>
+									<div class="col-md-6">
+										<p>424</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<label>Complemento</label>
+									</div>
+									<div class="col-md-6">
+										<p>0</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<label>Bairro</label>
+									</div>
+									<div class="col-md-6">
+										<p>Prazeres</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<label>Cidade</label>
+									</div>
+									<div class="col-md-6">
+										<p>Jaboatão dos Guararapes</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<label>Estado</label>
+									</div>
+									<div class="col-md-6">
+										<p>Pernambuco</p>
+									</div>
+								</div>
+								<div class="row">
+									<div class="col-md-6">
+										<label>CEP</label>
+									</div>
+									<div class="col-md-6">
+										<p>54315-400</p>
+									</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>
-			</div>
+			</form>
 		</div>
 	</section>
 	<section class="footer4 cid-rHKj5aTgnl" id="footer4-17">

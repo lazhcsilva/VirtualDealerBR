@@ -54,135 +54,90 @@
 		</nav>
 	</section>
 	<section class="features3 cid-rHigNbtYt6" id="features3-j">
-		<section class="item-card" th:each="oferta : ${lista}">
-			<div class="item-summary">
-				<h2 class="title" th:text="${oferta.veiculo}"></h2>
-				<p class="venue"th:text="${oferta.combustivel}"></p>
-				<address class="address">
-					<p class="street-address">1233 Seventeenth St.</p>
-					<p class="locality">San Francisco, CA 94107</p>
-				</address>
-			</div>
-			<div class="image-wrapper">
-				<img class="featured-image" src="https://bit.ly/2PH10HN"
-					alt="The Paper Kites performing, overlooking a crowd" />
-			</div>
-			<div class="item-time-date">
-				<time class="date" datetime="2018-10-16">July 16, 2018</time>
-				<time class="time" datetime="19:00">7:00 PM</time>
-			</div>
-			<div class="item-buttons front-buttons">
-				<button class="btn-details grey"
-					aria-label="Learn more about the band and venue" th:text="${oferta.valor}"></button>
-				<a class="btn-tickets blue"
-					aria-label="Purchase tickets for this event" href="descricaoOferta">Acessar</a>
-				<button class="btn btn-primary" data-toggle="modal" data-target=".bd-example-modal-xl">Detalhes</button>
-			</div>
-			<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-				<div class="modal-dialog modal-xl">
-					<div class="modal-content">
-						<div class="individual-car-title">
-					<h3>Kia Soul, Brand New Model 2016</h3>
-					<h4>4.85 Lakh</h4>
-					<ul class="list-unstyled list-inline">
-						<li class="list-inline-item">Ahmedabad (reg)</li>
-						<li class="list-inline-item">|</li>
-						<li class="list-inline-item">Second Owner</li>
-						<li class="list-inline-item">|</li>
-						<li class="list-inline-item">36 Views</li>
-						<li class="list-inline-item">|</li>
-						<li class="list-inline-item">
-							<!-- AddToAny BEGIN --> <a class="a2a_dd"
-							href="https://www.addtoany.com/share"><i
-								class="fa fa-share-alt"></i> Share </a> <script async
-								src="https://static.addtoany.com/menu/page.js"></script> <!-- AddToAny END -->
-						</li>
-
-					</ul>
-				</div>
-				<div class="cars-gallery">
-					<div class="swiper-container gallery-top">
-						<div class="swiper-wrapper">
-							<div class="swiper-slide">
-								<div class="swiper-zoom-container">
-									<img src="https://gaadicdn.com/usedcar_image/gallery/VCC_851965_1_1522909196739_22_649825_8_1522909575.jpg">
-								</div>
+		<div class="container">
+			<div class="row">
+				<div class="">
+					<div class="card col">
+						<div class="col" th:each="oferta : ${lista}">
+							<div class="card-img ">
+								<img class="img-responsive" src="https://images.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ZsPLFCxDQewrzKRkU-XuJwHaFj%26pid%3D15.1&f=1">
 							</div>
-						</div>
-						<!-- Add Arrows -->
-						<div class="swiper-button-next swiper-button-white"></div>
-						<div class="swiper-button-prev swiper-button-white"></div>
-					</div>
-				</div>
-				<div class="cars-tabs">
-					<div class="card">
-						<div class="card-body">
-							<div class="row">
-								<div class="col-md-12">
-									<h4>Overview</h4>
-								</div>
-								<div class="col-md-6">
-									<ul>
-										<li><strong>Year :</strong> 2017</li>
-										<li><strong>Kilometer :</strong> 39,239 km</li>
-										<li><strong>Fuel Type :</strong> Petrol</li>
-										<li><strong>Transmission :</strong> Manual</li>
-										<li><strong>Color :</strong> Black</li>
-										<li><strong>No. of Owner(s) :</strong> First</li>
+							<div class="card-body">
+								<div class="card-title">
+									<small><i class="fa fa-map-marker"></i> <a href="#" th:text="${oferta.concessionaria}"></a></small>
+									<h4 class="text-danger" th:text="${oferta.veiculo}"></h4>
+									<h5 th:text="${oferta.marca}"></h5>
+									<ul class="list-inline ">
+										<li class="list-inline-item" th:text="${oferta.ano}"></li>
+										<li class="list-inline-item" th:text="${oferta.estado}"></li>
+										<li class="list-inline-item" th:text="${oferta.combustivel}"></li>
+										<li class="list-inline-item" th:text="${oferta.cor}"></li>
 									</ul>
+									<h3 th:text="${oferta.valor}"></h3>
 								</div>
-								<div class="col-md-6">
-									<ul>
-
-										<li><strong>Transmission :</strong> Manual</li>
-										<li><strong>Color :</strong> Black</li>
-										<li><strong>No. of Owner(s) :</strong> First</li>
-									</ul>
-								</div>
-								<div class="col-md-12">
-									<footer class="blockquote-footer">Please mention
-										whenever you call that you found the details on this
-										particular site.</footer>
-									<footer class="blockquote-footer">Always arrange a
-										meeting in a safe place.</footer>
-									<footer class="blockquote-footer">This site helps you
-										in searching for a vehicle. We do not verify the authenticity
-										of the product.</footer>
+							</div>
+							<div class="card-footer">
+								<div class="row">
+									<div class="col-md-6">
+										<button class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target=".bd-example-modal-xl">Ver mais</button>
+										<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+											<div class="modal-dialog modal-xl">
+												<div class="modal-content">
+													<aside class="col-sm-5 border-right">
+														<article class="gallery-wrap">
+															<div class="img-big-wrap">
+																<div>
+																	<a href="#"><img src="https://s9.postimg.org/tupxkvfj3/image.jpg"></a>
+																</div>
+															</div>
+														</article>
+													</aside>
+													<aside class="col-sm-7">
+														<article class="card-body p-5">
+															<h3 class="title mb-3" th:text="${oferta.veiculo}"></h3>
+															<p class="price-detail-wrap">
+																<span class="price h3 text-warning"> <span
+																	class="currency">R$</span><span class="num" th:text="${oferta.valor}"></span>
+																</span>
+															</p>
+															<!-- price-detail-wrap .// -->
+															<dl class="item-property">
+																<dt>Descrição:</dt>
+																<dd>
+																	<p th:text="${oferta.descricao}"></p>
+																</dd>
+															</dl>
+															<dl class="param param-feature">
+																<dt th:text="${oferta.chassi}"></dt>
+															</dl>	
+															<!-- item-property-hor .// -->
+															<dl class="param param-feature">
+																<dt>Cor</dt>
+																<dd th:text="${oferta.cor}"></dd>
+															</dl>
+															<dl class="param param-feature">
+																<dt>Estado</dt>
+																<dd th:text="${oferta.estado}"></dd>
+															</dl>
+															<!-- item-property-hor .// -->
+															<a href="#" class="btn btn-lg btn-primary text-uppercase">Agendar visita</a>
+														</article>
+														<!-- card-body.// -->
+													</aside>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="col-md-6">
+										<button type="button" class="btn btn-outline-danger btn-sm">Agendar visita</button>
+									</div>
 								</div>
 							</div>
 						</div>
 					</div>
 				</div>
 			</div>
-			<div class="col-md-4">
-				<div class="menu sticky-top ">
-					<div class="card bg-light ">
-						<div class="card-body">
-							<small> Get in touch with Seller</small>
-							<h3>
-								<i class="fa fa-inr"></i>4.85 Lakh
-							</h3>
-							<div class="form-group">
-								<input type="text" class="form-control" id="name1" placeholder="Name">
-							</div>
-							<div class="form-group">
-								<input type="text" class="form-control" id="phone1" placeholder="Mobile">
-							</div>
-							<div class="form-check">
-								<input class="form-check-input" type="checkbox" value="" id="updatecheck1">
-								<label class="form-check-label" for="updatecheck1">
-									<small>By submitting this form you agree to our <a href="#">terms and conditions</a></small>
-								</label>
-							</div>
-							<div class="pb-3"></div>
-							<button type="button" class="btn btn-warning">Contact the Seller</button>
-						</div>
-					</div>
-				</div>
-					</div>
-				</div>
-			</div>
-		</section>
+		</div>
 	</section>
 	<section class="footer4 cid-rHKj5aTgnl" id="footer4-17">
 		<div class="container">
