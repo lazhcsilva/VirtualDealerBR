@@ -57,14 +57,9 @@ public class MenuController {
 		return "cadastro/cadastroconcessionaria";
 	}
 	
-	@GetMapping("/carrinho")
-	public String carrinho() {
-		return "carrinh";
-	}
-	
 	@GetMapping("/editarPerfil")
 	public String editarPerfil() {
-		return "editar_perfil";
+		return "editarperfil";
 	}
 	
 	@GetMapping("/empresas")
@@ -78,13 +73,8 @@ public class MenuController {
 	}
 	
 	@GetMapping("/planos")
-	public String planos() {
+	public String planos(Model model) {
 		return "planos";
-	}
-	
-	@GetMapping("/perfilCliente")
-	public String perfil() {
-		return "perfil/perfilcliente";
 	}
 	
 	@GetMapping("/trocaSenha")

@@ -21,6 +21,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ppii.model.Cliente;
+import br.ppii.persistence.ClienteDAO;
 import br.ppii.service.ClienteService;
 
 @Controller
@@ -28,6 +29,9 @@ public class ClienteController {
 
 	@Autowired
 	private ClienteService clienteService;
+	
+	@Autowired
+	private ClienteDAO clienteDAO;
 	
 	@PostMapping("/salvarCliente")
 	public String salvarCliente(@Valid Cliente cliente, BindingResult br, Model model, RedirectAttributes ra,Errors errors) {
@@ -55,7 +59,7 @@ public class ClienteController {
 			
 		}
 		
-		return "redirect:/perfil";
+		return "redirect:/perfilCliente";
 		
 	}
 	
@@ -64,13 +68,13 @@ public class ClienteController {
 		return "cadastro/cadastrocliente";
 	}
 	
+	@GetMapping("/perfilCliente")
+	public String perfil(Model model, Cliente cliente) {
+		return "perfil/perfilcliente";
+	}
+	
 	@PostMapping("/clienteLogin")
 	public String efetuarLogin(HttpServletRequest request, @ModelAttribute Cliente cliente, @RequestParam(name = "retorno", required = false) String retorno, RedirectAttributes ra, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-		
-		String redirect = "redirect:/index";
-		if (retorno != null) {
-			redirect = "redirect:" + retorno;
-		}
 
 		Cliente clienteLogado;
 		try {
@@ -78,12 +82,24 @@ public class ClienteController {
 			session.setAttribute("usuarioLogado", clienteLogado);
 		} catch (ServiceException e) {
 			ra.addFlashAttribute("mensagemErro", e.getMessage());
-
-			return "redirect:/perfilCliente";
 		}
-
-		ra.addFlashAttribute("loginEfetuado", true);
-		return redirect;
+		
+		return "perfil/perfilcliente";
+	}
+	
+	@GetMapping("/editarCliente")
+	public String editarPalestrante(Model model, Integer idCliente) {
+		 model.addAttribute("cliente", this.clienteDAO.findById(idCliente));
+		 return "editar/editarcliente";
+		 
+	}
+	
+	@GetMapping("/logout")
+	public String logout(HttpSession session) {
+		
+		session.invalidate();
+		return "index";
+		
 	}
 	
 }
