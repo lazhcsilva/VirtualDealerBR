@@ -32,9 +32,9 @@ public class MenuController {
 		return "paginainicial";
 	}
 
-	@GetMapping("/cadastroefetuado")
+	@GetMapping("/cadastroConcluido")
 	public String Cadastroefetuadocomsucesso(Cliente cliente, Endereco endereco) {
-		return "cadastroefetuadocomsucesso";
+		return "cad.concluidocomsucess";
 	}
 	@GetMapping("/pesquisa")
 	public String pesquisa() {
@@ -82,10 +82,10 @@ public class MenuController {
 		return "senha";
 	}
 	
-	@GetMapping("/cadastroConcluido")
-	public String cadastroConcluido() {
-		return "cadastroconcluido";
-	}
+	/*
+	 * @GetMapping("/cadastroConcluido") public String cadastroConcluido() { return
+	 * "cadastroconcluido"; }
+	 */
 	
 	@GetMapping("/termos")
 	public String termos() {

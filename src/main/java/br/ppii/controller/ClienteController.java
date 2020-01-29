@@ -59,7 +59,7 @@ public class ClienteController {
 			
 		}
 		
-		return "redirect:/login";
+		return "redirect:/cadastroConcluido";
 		
 	}
 	
@@ -84,7 +84,7 @@ public class ClienteController {
 			ra.addFlashAttribute("mensagemErro", e.getMessage());
 		}
 		
-		return "perfil/perfilcliente";
+		return "paginainicial";
 	}
 	
 	@GetMapping("/editarCliente")
