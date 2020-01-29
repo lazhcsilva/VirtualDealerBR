@@ -107,13 +107,13 @@
 }
 .login-logo{
     position: relative;
-    margin-left: -41.5%;
+    margin-left: -45.5%;
 }
 .login-logo img{
     position: absolute;
-    width: 20%;
+    width: 23%;
     margin-top: 19%;
-    background: #282726;
+   
     border-radius: 4.5rem;
     padding: 5%;
 }
