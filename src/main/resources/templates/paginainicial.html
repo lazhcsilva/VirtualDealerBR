@@ -21,6 +21,10 @@
 <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
 <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 <link rel="stylesheet" href="assets/css/oferta.css">
+
+<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body>
 	<section class="menu cid-rGkts3fOzj" once="menu" id="menu1-0">
@@ -49,23 +53,33 @@
 					<li class="nav-item">
 						<a class="nav-link link text-white display-4" href="/pesquisa"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
 					</li>
+					
+  
 				</ul>
+				
+				 <div class="btn-group btn-group-primary">
+	  <button  class="btn btn-primary" type="button"><span th:text="${session.usuarioLogado.nome}"></button>
+	  <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button"><span class="caret"></span>
+	  </button>
+	  <ul class="dropdown-menu">
+		  <li><a href="#">configuração</a></li><br>
+		  <li><a href="#">Logout</a></li>
+	  </ul>
+  </div>
+  
+  
+
 			</div>
 		</nav>
 	</section>
 	<section class="features3 cid-rHigNbtYt6" id="features3-j">
 		<div class="container">
 			<div class="row">
-				<div class="">
-					<div class="card col">
-						<div class="col" th:each="oferta : ${lista}">
-							<div class="card-img ">
-								<img class="img-responsive" src="https://images.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ZsPLFCxDQewrzKRkU-XuJwHaFj%26pid%3D15.1&f=1">
-							</div>
-							<div class="card-body">
-								<div class="card-title">
-									<small><i class="fa fa-map-marker"></i> <a href="#" th:text="${oferta.concessionaria}"></a></small>
-									<h4 class="text-danger" th:text="${oferta.veiculo}"></h4>
+
+					<div class="card col-4" th:each="oferta : ${lista}">
+						<figure class="snip1423">
+						  <img src="https://www.tgpoli.com.br/img/noticias/dd5859799af8f4e2ff4572a00ccece37.jpg" alt="sample57" />
+						  <h4 class="text-danger" th:text="${oferta.veiculo}"></h4>
 									<h5 th:text="${oferta.marca}"></h5>
 									<ul class="list-inline ">
 										<li class="list-inline-item" th:text="${oferta.ano}"></li>
@@ -74,12 +88,10 @@
 										<li class="list-inline-item" th:text="${oferta.cor}"></li>
 									</ul>
 									<h3 th:text="${oferta.valor}"></h3>
-								</div>
-							</div>
-							<div class="card-footer">
-								<div class="row">
-									<div class="col-md-6">
-										<button class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target=".bd-example-modal-xl">Ver mais</button>
+									
+										<button type="button" class="btn btn-outline-danger btn-sm">Agendar visita</button>
+								
+									<button class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target=".bd-example-modal-xl">Ver mais</button>
 										<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
 											<div class="modal-dialog modal-xl">
 												<div class="modal-content">
@@ -92,7 +104,7 @@
 															</div>
 														</article>
 													</aside>
-													<aside class="col-sm-7">
+													<aside class="col-sm-6">
 														<article class="card-body p-5">
 															<h3 class="title mb-3" th:text="${oferta.veiculo}"></h3>
 															<p class="price-detail-wrap">
@@ -128,14 +140,10 @@
 											</div>
 										</div>
 									</div>
-									<div class="col-md-6">
-										<button type="button" class="btn btn-outline-danger btn-sm">Agendar visita</button>
-									</div>
-								</div>
-							</div>
-						</div>
+						</figure>
+						
 					</div>
-				</div>
+				
 			</div>
 		</div>
 	</section>

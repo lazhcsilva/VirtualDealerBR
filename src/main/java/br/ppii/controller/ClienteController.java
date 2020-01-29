@@ -51,7 +51,7 @@ public class ClienteController {
 				
 				ra.addFlashAttribute("menssage", "Não foi possível criar usuário: " + e.getMessage());
                 ra.addFlashAttribute("cliente", cliente);
-				return "redirect:/exibirFormParticipante";
+				return "redirect:/cadastrocliente";
 				
 			}
 			
@@ -59,7 +59,7 @@ public class ClienteController {
 			
 		}
 		
-		return "redirect:/perfilCliente";
+		return "redirect:/login";
 		
 	}
 	
