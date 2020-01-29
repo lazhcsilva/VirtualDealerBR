@@ -20,4 +20,5 @@ public class AutorizadorInterceptador implements HandlerInterceptor{
 	
 	private final String[] PAGINAS_GESTOR_LOGADO = {"/perfil/gestor"};
 	
+	
 }
