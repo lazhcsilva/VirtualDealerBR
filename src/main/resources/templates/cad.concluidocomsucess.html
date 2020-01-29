@@ -20,7 +20,6 @@
 <link rel="stylesheet" href="assets/theme/css/style.css">
 <link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
 <link rel="stylesheet" href="/assets/mobirise/css/mbr-additional.css" type="text/css">
-<link rel="stylesheet" href="/assets/css/estilo.css">
 </head>
 <body>
 	<section class="menu cid-rGkts3fOzj" once="menu" id="menu1-0">
@@ -57,58 +56,34 @@
 						<a class="nav-link link text-white display-4" href="/pesquisa">
 						<span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
 					</li>
-				
-			</div>
 				</ul>
 
 			</div>
 		</nav>
 	</section>
 
-		
-<div class="container login-container">
-            <div class="row">
-                <div class="col-md-6 login-form-1">
-                    <h3>Login da Empresa</h3>
-                    
-                        <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Seu Email *" value="" />
-                        </div>
-                        <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Sua senha*" value="" />
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btnSubmit" value="Login" />
-                        </div>
-                        <div class="form-group">
-                            <a href="#" class="btnForgetPwd">Esqueceu sua senha?</a>
-                        </div>
-                    
-                </div>
-                <div class="col-md-6 login-form-2">
-                    <div class="login-logo">
-                        <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
-                    </div>
-                    <h3>Login do cliente</h3>
-                    
-                    <form action="/clienteLogin" method="post" th:object="${cliente}">
-                        <div class="form-group">
-                            <input type="text"  th:field="*{emailCliente}" class="form-control" placeholder="Seu Email *" value="" />
-                        </div>
-                        <div class="form-group">
-                            <input type="password" th:field="*{password}" class="form-control" placeholder="Sua senha*" value="" />
-                        </div>
-                        <div class="form-group">
-                            <input type="submit" class="btnSubmit" value="Login" />
-                           </form>
-                        </div>
-                        <div class="form-group">
+	<section class="engine">
+		<a href="https://mobirise.info/d">web maker</a>
+	</section>
+	<section class="cid-rGktIshCEU mbr-fullscreen mbr-parallax-background" id="header2-3">
+		<div class="mbr-overlay" style="opacity: 0.5; background-color: rgb(35, 35, 35);"></div>
+		<div class="container align-center">
+			<div class="row justify-content-md-center">
+				<div class="mbr-white col-md-10">
+					<h1 class="mbr-section-title mbr-bold pb-3 mbr-fonts-style display-2">Cadastro Efetuado com sucesso</h1>
 
-                            <a href="#" class="btnForgetPwd" value="Login">Esqueceu a senha?</a>
-                        </div>
-                </div>
-            </div>
-  
+					<p class="mbr-text pb-3 mbr-fonts-style display-5">
+						Obrigado por se cadastrar em nosso site.
+					</p>
+					<div class="mbr-section-btn">
+						<a class="btn btn-md btn-white display-4" href="/login">Fazer login</a>
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</section>
+
 	<section class="footer4 cid-rHKj5aTgnl" id="footer4-17">
 		<div class="container">
 			<div class="media-container-row content mbr-white">
@@ -210,6 +185,7 @@
 	<script src="assets/tether/tether.min.js"></script>
 	<script src="assets/theme/js/script.js"></script>
 	<script src="assets/formoid/formoid.min.js"></script>
-	
+
+
 </body>
 </html>
