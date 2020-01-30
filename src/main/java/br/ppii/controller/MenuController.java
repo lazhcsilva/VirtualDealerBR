@@ -113,4 +113,10 @@ public class MenuController {
 		return "cadastro/cadastrarplano";
 	}
 	
+	@GetMapping("/facaParte")
+	public String facaParte() {
+		
+		return "facaparte";
+	}
+	
 }

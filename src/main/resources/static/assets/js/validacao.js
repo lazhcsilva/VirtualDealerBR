@@ -9,6 +9,7 @@ $("#form_cliente").validate({
 		},
 		cpf:{
 			required:true
+			verificaCPF: true
 		},
 		dataNascimento:{
 			required:true
@@ -47,7 +48,8 @@ $("#form_cliente").validate({
 			required:"É necessário informar um email"
 		},
 		cpf:{
-			required:"A mensagem não pode ficar em branco"
+			required:"O CPF não pode ficar em branco"
+			verificaCPF: "CPF inválido"
 		},
 		dataNascimento:{
 			required:"Informe uma data de nascimento válida"
