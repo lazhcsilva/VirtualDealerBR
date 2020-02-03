@@ -109,4 +109,9 @@ public class MenuController {
 		return "facaparte";
 	}
 	
+	@GetMapping("/acessoNegado")
+	public String acessoNegado() {
+		return "acessonegado";
+	}
+	
 }

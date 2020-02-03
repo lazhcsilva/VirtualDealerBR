@@ -51,6 +51,22 @@
 					<li class="nav-item">
 						<a class="nav-link link text-white display-4" href="/pesquisa"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
 					</li>
+					<div class="dropdown" th:if="${session.gestorLogado != null}">
+						<a href="#" data-toggle="dropdown"></a>
+						<li class="dropdown">
+							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<span th:text="${session.gestorLogado.gestor}"></span><b class="caret"></b></a>
+							<ul class="dropdown-menu">
+								<li><a href="/user/preferences"><i class="icon-cog"></i>
+										Preferences</a></li>
+								<li><a href="/help/support"><i class="icon-envelope"></i>
+										Contact Support</a></li>
+								<li class="divider"></li>
+								<li><a href="/auth/logout"><i class="icon-off"></i>
+										Logout</a></li>
+							</ul>
+						</li>	
+					</div>
 				</ul>
 			</div>
 		</nav>
@@ -59,36 +75,38 @@
 		<div class="main-panel">
 			<div class="container">
 				<div class="row">
-					<form>
-						<div class="col-md-4 grid-margin stretch-card">
-							<div class="card">
-								<div class="profile-card">
-									<div class="profile-header">
-										<div class="user-image">
-											<img
-												src="https://scontent.fslv1-1.fna.fbcdn.net/v/t1.0-1/p240x240/71764978_543119796448430_5969446522109034496_n.jpg?_nc_cat=105&_nc_oc=AQnoaTQx8fxeyzbIbtQyvZXghFdEQl-ds6NQr_13xAXuGmWnigS1zJHTuH8sKv5e9-TSN3KRAuptCtwM-LlwxidP&_nc_ht=scontent.fslv1-1.fna&oh=52752a53e6b91980d3f9bf227064a95d&oe=5E5A25B9"
-												class="img ">
-										</div>
+					<div class="col-md-4 grid-margin stretch-card">
+						<div class="card">
+							<div class="profile-card">
+								<div class="profile-header">
+									<div class="user-image">
+										<img
+											src="https://scontent.fslv1-1.fna.fbcdn.net/v/t1.0-1/p240x240/71764978_543119796448430_5969446522109034496_n.jpg?_nc_cat=105&_nc_oc=AQnoaTQx8fxeyzbIbtQyvZXghFdEQl-ds6NQr_13xAXuGmWnigS1zJHTuH8sKv5e9-TSN3KRAuptCtwM-LlwxidP&_nc_ht=scontent.fslv1-1.fna&oh=52752a53e6b91980d3f9bf227064a95d&oe=5E5A25B9"
+											class="img ">
 									</div>
-									<div class="profile-content">
-										<div class="profile-name" th:text="${session.gestorLogado.gestor}"></div>
-										<div class="profile-designation">Gestor</div>
-										<p class="profile-description">Lorem ipsum dolor sit amet,
-											consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>
-										<ul class="profile-info-list">
-											<li><a href="/gestor" class="profile-info-list-item"><i
-													class="mdi mdi-eye"></i>Perfil</a></li>
-											<li><a href="" class="profile-info-list-item"><i
-													class="mdi mdi-bookmark-check"></i>Gerir planos</a></li>
-											<li><a href="" class="profile-info-list-item"><i
-													class="mdi mdi-bookmark-check"></i>Gerir usuarios</a></li>
-										</ul>
-									</div>
+								</div>
+								<div class="profile-content">
+									<div class="profile-name"
+										th:text="${session.gestorLogado.gestor}"></div>
+									<div class="profile-designation">Gestor</div>
+									<p class="profile-description">Lorem ipsum dolor sit amet,
+										consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>
+									<ul class="profile-info-list">
+										<li><a href="/gestor" class="profile-info-list-item"><i
+												class="mdi mdi-eye"></i>Perfil</a></li>
+										<li><a href="/cadastrarPlano" class="profile-info-list-item"><i
+												class="mdi mdi-bookmark-check"></i>Criar planos</a></li>
+										<li><a href="/editarPlano" class="profile-info-list-item"><i
+												class="mdi mdi-eye"></i>Editar Planos</a></li>
+										<li><a href="" class="profile-info-list-item"><i
+												class="mdi mdi-bookmark-check"></i>Gerir usuarios</a></li>
+									</ul>
 								</div>
 							</div>
 						</div>
-
-						<div class="col-md-8 grid-margin stretch-card">
+					</div>
+					<form action="/editarGestor" th:object="${gestor}" method="get">
+						<div class="col-md-12 grid-margin stretch-card">
 							<div class="card">
 								<div class="card-body">
 									<p class="card-description">Informações do administrador</p>
@@ -96,7 +114,8 @@
 										<li class="about-items"><i
 											class="mdi mdi-account icon-sm "></i><span
 											class="about-item-name">Nome:</span><span
-											class="about-item-detail" th:text="${session.gestorLogado.gestor}"></span><a href=""
+											class="about-item-detail"
+											th:text="${session.gestorLogado.gestor}"></span><a href=""
 											class="about-item-edit">Edit</a></li>
 										<li class="about-items"><i
 											class="mdi mdi-lock-outline icon-sm "></i><span
@@ -104,21 +123,25 @@
 											class="about-item-detail">**********</span></li>
 										<li class="about-items"><i class="mdi mdi-cake icon-sm "></i><span
 											class="about-item-name">Aniversario:</span><span
-											class="about-item-detail" th:text="${session.gestorLogado.dataNascimento}"></span>
+											class="about-item-detail"
+											th:text="${session.gestorLogado.dataNascimento}"></span>
 										<li class="about-items"><i
 											class="mdi mdi-account icon-sm "></i><span
 											class="about-item-name">CPF:</span><span
-											class="about-item-detail" th:text="${session.gestorLogado.CPF}"></span>
+											class="about-item-detail"
+											th:text="${session.gestorLogado.CPF}"></span>
 									</ul>
 									<p class="card-description">Informações de contato:</p>
 									<ul class="about">
 										<li class="about-items"><i class="mdi mdi-phone icon-sm "></i><span
 											class="about-item-name">Telefone:</span><span
-											class="about-item-detail" th:text="${session.gestorLogado.telefone}"></span>
+											class="about-item-detail"
+											th:text="${session.gestorLogado.telefone}"></span>
 										<li class="about-items"><i
 											class="mdi mdi-email-outline icon-sm "></i><span
 											class="about-item-name">Email:</span><span
-											class="about-item-detail" th:text="${session.gestorLogado.emailGestor}"></span>
+											class="about-item-detail"
+											th:text="${session.gestorLogado.emailGestor}"></span>
 									</ul>
 								</div>
 							</div>

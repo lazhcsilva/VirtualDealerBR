@@ -22,7 +22,7 @@
 <link rel="stylesheet" href="assets/css/estilo.css">
 <link rel="stylesheet" href="assets/css/oferta.css">
 <link rel="stylesheet" href="assets/css/descricao.css">
-<link rel="stylesheet" href="assets/css/sobre.css">
+<link rel="stylesheet" href="assets/css/gestor.css">
 </head>
 <body>
 	<section class="menu cid-rGkts3fOzj" once="menu" id="menu1-0">
@@ -56,11 +56,45 @@
 		</nav>
 	</section>
 	<section class="features3 cid-rHigNbtYt6" id="features3-j">
+		<div class="main-panel">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 grid-margin stretch-card">
+						<div class="card">
+							<div class="profile-card">
+								<div class="profile-header">
+									<div class="user-image">
+										<img
+											src="https://scontent.fslv1-1.fna.fbcdn.net/v/t1.0-1/p240x240/71764978_543119796448430_5969446522109034496_n.jpg?_nc_cat=105&_nc_oc=AQnoaTQx8fxeyzbIbtQyvZXghFdEQl-ds6NQr_13xAXuGmWnigS1zJHTuH8sKv5e9-TSN3KRAuptCtwM-LlwxidP&_nc_ht=scontent.fslv1-1.fna&oh=52752a53e6b91980d3f9bf227064a95d&oe=5E5A25B9"
+											class="img ">
+									</div>
+								</div>
+								<div class="profile-content">
+									<div class="profile-name"
+										th:text="${session.gestorLogado.gestor}"></div>
+									<div class="profile-designation">Gestor</div>
+									<p class="profile-description">Lorem ipsum dolor sit amet,
+										consetetur sadipscing elitr, sed diam nonumy eirmod tempor.</p>
+									<ul class="profile-info-list">
+										<li><a href="/gestor" class="profile-info-list-item"><i
+												class="mdi mdi-eye"></i>Perfil</a></li>
+										<li><a href="/cadastrarPlano" class="profile-info-list-item"><i
+												class="mdi mdi-bookmark-check"></i>Criar planos</a></li>
+										<li><a href="/editarPlano" class="profile-info-list-item"><i
+												class="mdi mdi-eye"></i>Editar Planos</a></li>
+										<li><a href="" class="profile-info-list-item"><i
+												class="mdi mdi-bookmark-check"></i>Gerir usuarios</a></li>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="col-md-8 grid-margin stretch-card card">
 		<form th:action="@{/salvarAssinatura}" th:object="${assinatura}" id="form_plano" method="POST" name="form_plano">
 			<h5 class="text-left">Cadastrar plano</h5>
 			<div class="form-row">
-				<div class="form-group col-md-2">
-					<label class="form-check-label" for="nomeAssinatura">Nome do Plano</label>
+				<div class="form-group col-md-3">
+					<label class="form-check-label" for="nomeAssinatura">Plano</label>
 					<input type="text" name="nomeAssinatura" class="form-control" id="nomeAssinatura" th:field="*{nomeAssinatura}">
 				</div>
 				<br>
@@ -68,7 +102,7 @@
 					<label class="form-check-label" for="validade">Validade</label>
 					<input type="date" name="validade" class="form-control" id="validade" th:field="*{validade}">
 				</div>
-				<div class="form-group col-md-3">
+				<div class="form-group col-md-2">
 					<label class="form-check-label" for="preco">Valor</label>
 					<input type="text" name="preco" class="form-control" id="preco" th:field="*{preco}">
 				</div>
@@ -79,6 +113,30 @@
 				<button type="submit" class="btn btn-primary">Concluir cadastro</button>
 			</div>
 		</form>
+		<br><br>
+		<div>
+			<table class="table table-striped table-bordered table-sm">
+			<thead class="table-success">
+				<tr>
+					<th>Plano</th>
+					<th>duração</th>
+					<th>Preço</th>
+					<th>Ação</th>					
+				</tr>
+			</thead>
+			<tr  th:each="assinatura : ${lista}">
+				<td th:text="${assinatura.assinaturaNome}"></td>
+				<td th:text="${assinatura.duracao}"></td>
+				<td th:text="${assinatura.preco}"></td>
+			   <td><a th:href="@{/removerAssinatura(idAssinatura=${assinatura.idAssinatura})}">Remover</a></td>
+				
+			</tr>
+		</table>
+		</div>
+		</div>
+		</div>
+		</div>
+		</div>
 	</section>
 	<section class="footer4 cid-rHKj5aTgnl" id="footer4-17">
 		<div class="container">
