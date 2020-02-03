@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-import br.ppii.model.Cliente;
 import br.ppii.model.Concessionaria;
 import br.ppii.persistence.ConcessionariaDAO;
 import br.ppii.service.ConcessionariaService;
@@ -35,23 +34,7 @@ public class ConcessionariaController {
 	private ConcessionariaService concessionariaService;
 
 	@PostMapping("/salvarConcessionaria")
-	/*
-	 * public String salvarConcessionaria(@Valid Concessionaria concessionaria,
-	 * BindingResult br, RedirectAttributes ra,Errors errors) { if
-	 * (errors.hasErrors()) { ra.addFlashAttribute("mensagemErro",
-	 * "Não foi possível criar usuário: " + errors.getFieldErrors());
-	 * 
-	 * return "redirect:/cadastroEmpresa"; } else { try {
-	 * this.concessionariaService.salvarConcessionaria(concessionaria);
-	 * ra.addFlashAttribute("mensagem", "Conta criada com sucesso!"); } catch
-	 * (ServiceException | MessagingException e) {
-	 * ra.addFlashAttribute("mensagemErro", "Não foi possível criar usuário: " +
-	 * e.getMessage());
-	 * 
-	 * return "redirect:/cadastroEmpresa"; } } ra.addFlashAttribute("contaCriada",
-	 * true); return "redirect:/index"; }
-	 */
-public String salvarConcessionaria(@Valid Concessionaria concessionaria, BindingResult br, Model model, RedirectAttributes ra,Errors errors) {
+	public String salvarConcessionaria(@Valid Concessionaria concessionaria, BindingResult br, Model model, RedirectAttributes ra,Errors errors) {
 		
 		if(errors.hasErrors()) {
 			

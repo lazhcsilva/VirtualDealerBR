@@ -17,12 +17,16 @@ public class Assinatura {
 	@Id @GeneratedValue(strategy=GenerationType.IDENTITY)
 	private Integer idAssinatura;
 	
+	private String nomeAssinatura;
+	
 	private Date validade;
 	
 	@Size(min = 5, max = 255)
 	private String operacao;
 	
 	private double preco;
+	
+	private String descricao;
 	
 	@OneToOne
 	private Cliente cliente;
@@ -78,10 +82,28 @@ public class Assinatura {
 		this.planoAssinatura = planoAssinatura;
 	}
 
+	public String getNomeAssinatura() {
+		return nomeAssinatura;
+	}
+
+	public void setNomeAssinatura(String nomeAssinatura) {
+		this.nomeAssinatura = nomeAssinatura;
+	}
+
+	public String getDescricao() {
+		return descricao;
+	}
+
+	public void setDescricao(String descricao) {
+		this.descricao = descricao;
+	}
+
 	@Override
 	public String toString() {
-		return "Assinatura [idAssinatura=" + idAssinatura + ", validade=" + validade + ", operacao=" + operacao
-				+ ", preco=" + preco + ", cliente=" + cliente + ", planoAssinatura=" + planoAssinatura + "]";
+		return "Assinatura [idAssinatura=" + idAssinatura + ", nomeAssinatura=" + nomeAssinatura + ", validade="
+				+ validade + ", operacao=" + operacao + ", preco=" + preco + ", descricao=" + descricao + ", cliente="
+				+ cliente + ", planoAssinatura=" + planoAssinatura + "]";
 	}
-		
+
+	
 }

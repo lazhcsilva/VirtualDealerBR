@@ -86,7 +86,7 @@
 										<label class="form-check-label" for="senha">Senha</label>
 										<input type="password" class="form-control" id="senha" placeholder="Senha" th:field="*{password}">
 									</div>
-									<div class="form-group col-md-1">
+									<div class="form-group col-md-3">
 										<label class="form-check-label" for="cnpj">CNPJ</label>
 										<input type="text" class="form-control" id="cnpj" placeholder="CNPJ" th:field="*{cnpj}">
 									</div>
@@ -103,11 +103,12 @@
 										<input type="text" name="empresa" class="form-control" id="empresa" placeholder="empresa" th:field="*{concessionaria}">
 									</div>
 									<div class="form-group col-md-6">
-										<input type="text" class="form-control" id="" placeholder="Complemento" th:field="*{endereco.complemento}">
-									</div>
-									<div class="form-group col-md-6">
 										<label class="form-check-label" for="logradouro">Logradouro</label>
 										<input type="text" name="logradouro" class="form-control" id="logradouro" placeholder="Logradouro" th:field="*{endereco.logadouro}">
+									</div>
+									<div class="form-group col-md-6">
+										<label class="form-check-label" for="complemento">Complemento</label>
+										<input type="text" class="form-control" id="complemento" name="complemento" placeholder="Complemento" th:field="*{endereco.complemento}">
 									</div>
 									<div class="form-group col-md-3">
 										<label class="form-check-label" for="numero">Número</label>

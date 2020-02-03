@@ -72,11 +72,6 @@ public class MenuController {
 		return "pagamento";
 	}
 	
-	@GetMapping("/planos")
-	public String planos(Model model) {
-		return "planos";
-	}
-	
 	@GetMapping("/trocaSenha")
 	public String trocaSenha() {
 		return "senha";
@@ -106,11 +101,6 @@ public class MenuController {
 	@GetMapping("/gestorLogin")
 	public String loginGestor(Gestor gestor, HttpSession session){
 		return "acesso/gestorlogin";
-	}
-	
-	@GetMapping("/cadastrarPlano")
-	public String cadastrarPlano() {
-		return "cadastro/cadastrarplano";
 	}
 	
 	@GetMapping("/facaParte")

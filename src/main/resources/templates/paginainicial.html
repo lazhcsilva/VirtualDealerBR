@@ -53,22 +53,21 @@
 					<li class="nav-item">
 						<a class="nav-link link text-white display-4" href="/pesquisa"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
 					</li>
-					
-  
 				</ul>
-				  
-				 <div class="btn-group btn-group-primary">
-	  <button  class="btn btn-primary" type="button"><span th:text="${session.usuarioLogado.nome}"></button>
-	  <button data-toggle="dropdown" class="btn btn-primary dropdown-toggle" type="button"><span class="caret"></span>
-	  </button>
-	  <ul class="dropdown-menu">
-		  <li><a href="#">configuração</a></li><br>
-		  <li><a href="/logout">Logout</a></li>
-	  </ul>
-  </div>
-  
-  
-
+				<div class="btn-group btn-group-primary">
+					<button class="btn btn-primary" type="button">
+						<span th:text="${session.usuarioLogado.nome}">
+					</button>
+					<button data-toggle="dropdown"
+						class="btn btn-primary dropdown-toggle" type="button">
+						<span class="caret"></span>
+					</button>
+					<ul class="dropdown-menu">
+						<li><a href="#">configuração</a></li>
+						<br>
+						<li><a href="/logout">Logout</a></li>
+					</ul>
+				</div>
 			</div>
 		</nav>
 	</section>

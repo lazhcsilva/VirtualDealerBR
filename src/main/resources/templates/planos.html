@@ -58,14 +58,14 @@
 		<div class="pricing-wrapper clearfix">
 			<!-- Titulo -->
 			<h1 class="pricing-table-title">Tabla de Planos</h1>
-			<div class="pricing-table">
-				<h3 class="pricing-title">Basico</h3>
+			<div class="pricing-table" th:each="assinatura : ${lista}">
+				<h3 class="pricing-title" th:text="${assinatura.nomeAssinatura}"></h3>
 				<div class="price">
-					R$60
+					<p class="" th:text="${assinatura.preco}"></p>
 				</div>
 				<!-- Lista de Caracteristicas / Propiedades -->
 				<ul class="table-list">
-					<li>Adicionar <span>Posteriormente</span></li>
+					<li th:text="${assinatura.descricao}"></li>
 					<li>Adicionar<span>Posteriormente</span></li>
 					<li>Adicionar <span>Posteriormente</span></li>
 					<li>Adicionar <span class="unlimited">ilimitadas</span></li>
@@ -74,56 +74,8 @@
 				</ul>
 				<!-- Contratar / Comprar -->
 				<div class="table-buy">
-					<p>
-						R$60<sup>/1 mês</sup>
-					</p>
-					<a href="#" class="pricing-action">Comprar</a>
-				</div>
-			</div>
-
-			<div class="pricing-table recommended">
-				<h3 class="pricing-title">Premium</h3>
-				<div class="price">
-					R$100
-				</div>
-				<!-- Lista de Caracteristicas / Propiedades -->
-				<ul class="table-list">
-					<li>Adicionar<span>Posteriormente</span></li>
-					<li>Adicionar<span>Posteriormente</span></li>
-					<li>Adicionar<span>Posteriormente</span></li>
-					<li>Adicionar<span class="unlimited">ilimitadas</span></li>
-					<li>Adicionar<span class="unlimited">ilimitadas</span></li>
-					<li>Adicionar<span>Posteriormente</span></li>
-				</ul>
-				<!-- Contratar / Comprar -->
-				<div class="table-buy">
-					<p>
-						R$100<sup>/6 mêses</sup>
-					</p>
-					<a href="#" class="pricing-action">Comprar</a>
-				</div>
-			</div>
-
-			<div class="pricing-table">
-				<h3 class="pricing-title">Ultimate</h3>
-				<div class="price">
-					R$200
-				</div>
-				<!-- Lista de Caracteristicas / Propiedades -->
-				<ul class="table-list">
-					<li>Adicionar<span>Posteriormente</span></li>
-					<li>Adicionar<span>Adicionar</span></li>
-					<li>Adicionar<span>Adicionar</span></li>
-					<li>Adicionar<span class="unlimited">ilimitadas</span></li>
-					<li>Adicionar<span class="unlimited">ilimitadas</span></li>
-					<li>Adicionar<span>Adicionar</span></li>
-				</ul>
-				<!-- Contratar / Comprar -->
-				<div class="table-buy">
-					<p>
-						R$200<sup>/12 mêses</sup>
-					</p>
-					<a href="#" class="pricing-action">Comprar</a>
+					<p th:text="${assinatura.preco}"></p><sub>/1 mês</sub>
+					<a href="#" class="pricing-action">Assinar</a>
 				</div>
 			</div>
 		</div>
