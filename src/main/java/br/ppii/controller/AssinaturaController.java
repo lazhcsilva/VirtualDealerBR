@@ -37,7 +37,8 @@ public class AssinaturaController {
 	}
 
 	@GetMapping("/cadastrarPlano")
-	public String exibirForm(Assinatura assinatura) {
+	public String exibirForm(Assinatura assinatura, Model model) {
+		model.addAttribute("lista", this.assinaturaService.listarTodos(Sort.by("idAssinatura")));
 		return "cadastro/cadastroplano";
 	}
 	

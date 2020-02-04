@@ -79,9 +79,7 @@
 										<li><a href="/gestor" class="profile-info-list-item"><i
 												class="mdi mdi-eye"></i>Perfil</a></li>
 										<li><a href="/cadastrarPlano" class="profile-info-list-item"><i
-												class="mdi mdi-bookmark-check"></i>Criar planos</a></li>
-										<li><a href="/editarPlano" class="profile-info-list-item"><i
-												class="mdi mdi-eye"></i>Editar Planos</a></li>
+												class="mdi mdi-bookmark-check"></i>Gerir planos</a></li>
 										<li><a href="" class="profile-info-list-item"><i
 												class="mdi mdi-bookmark-check"></i>Gerir usuarios</a></li>
 									</ul>
@@ -125,10 +123,13 @@
 				</tr>
 			</thead>
 			<tr  th:each="assinatura : ${lista}">
-				<td th:text="${assinatura.assinaturaNome}"></td>
-				<td th:text="${assinatura.duracao}"></td>
+				<td th:text="${assinatura.nomeAssinatura}"></td>
+				<td th:text="${assinatura.validade}"></td>
 				<td th:text="${assinatura.preco}"></td>
-			   <td><a th:href="@{/removerAssinatura(idAssinatura=${assinatura.idAssinatura})}">Remover</a></td>
+			   <td>
+			   	<a th:href="@{/removerAssinatura(idAssinatura=${assinatura.idAssinatura})}">Remover</a>
+			   	<a th:href="@{/editarAssinatura(idAssinatura=${assinatura.idAssinatura})}">Editar</a>
+			   	</td>
 				
 			</tr>
 		</table>

@@ -70,6 +70,7 @@ public class ClienteController {
 	
 	@GetMapping("/perfilCliente")
 	public String perfil(Model model, Cliente cliente) {
+		
 		return "perfil/perfilcliente";
 	}
 	
@@ -79,7 +80,7 @@ public class ClienteController {
 		Cliente clienteLogado;
 		try {
 			clienteLogado = this.clienteService.clienteLogin(cliente.getEmailCliente(), cliente.getPassword());
-			session.setAttribute("usuarioLogado", clienteLogado);
+			session.setAttribute("clienteLogado", clienteLogado);
 		} catch (ServiceException e) {
 			ra.addFlashAttribute("mensagemErro", e.getMessage());
 		}

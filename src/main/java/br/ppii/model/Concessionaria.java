@@ -54,6 +54,8 @@ public class Concessionaria {
 	@NotBlank(message="Deve ser preenchido")
 	private String telefone1;
 	
+	@OneToOne
+	private Foto foto;
 	
 	@OneToOne
 	private Endereco endereco;
@@ -150,12 +152,20 @@ public class Concessionaria {
 		this.oferta = oferta;
 	}
 
+	public Foto getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Foto foto) {
+		this.foto = foto;
+	}
+
 	@Override
 	public String toString() {
 		return "Concessionaria [idConcessionaria=" + idConcessionaria + ", concessionaria=" + concessionaria
 				+ ", razaoSocial=" + razaoSocial + ", emailConcessionaria=" + emailConcessionaria + ", nomeFantasia="
 				+ nomeFantasia + ", inscricaoEstadual=" + inscricaoEstadual + ", password=" + password + ", cnpj="
-				+ cnpj + ", telefone1=" + telefone1 +  ", endereco=" + endereco
-				+ ", oferta=" + oferta + "]";
+				+ cnpj + ", telefone1=" + telefone1 + ", foto=" + foto + ", endereco=" + endereco + ", oferta=" + oferta
+				+ "]";
 	}
 }

@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Gestor {
@@ -24,6 +25,9 @@ public class Gestor {
 	private String CPF;
 	
 	private String telefone;
+	
+	@OneToOne
+	public Foto foto;
 
 	public Integer getIdGestor() {
 		return idGestor;
@@ -79,6 +83,21 @@ public class Gestor {
 
 	public void setTelefone(String telefone) {
 		this.telefone = telefone;
+	}
+
+	public Foto getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Foto foto) {
+		this.foto = foto;
+	}
+
+	@Override
+	public String toString() {
+		return "Gestor [idGestor=" + idGestor + ", gestor=" + gestor + ", emailGestor=" + emailGestor + ", password="
+				+ password + ", dataNascimento=" + dataNascimento + ", CPF=" + CPF + ", telefone=" + telefone
+				+ ", foto=" + foto + "]";
 	}
 
 	

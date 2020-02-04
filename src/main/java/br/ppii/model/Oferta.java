@@ -5,6 +5,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -39,6 +40,9 @@ public class Oferta {
 	private String renavam;
 	
 	private String ano;
+	
+	@OneToOne
+	private Foto foto;
 	
 	@ManyToOne
 	private Concessionaria concessionaria;
@@ -164,13 +168,22 @@ public class Oferta {
 	public void setAno(String ano) {
 		this.ano = ano;
 	}
+	
+	public Foto getFoto() {
+		return foto;
+	}
+
+	public void setFoto(Foto foto) {
+		this.foto = foto;
+	}
 
 	@Override
 	public String toString() {
 		return "Oferta [idOferta=" + idOferta + ", veiculo=" + veiculo + ", tipoVeiculo=" + tipoVeiculo + ", marca="
 				+ marca + ", cor=" + cor + ", placa=" + placa + ", chassi=" + chassi + ", importado=" + importado
 				+ ", estado=" + estado + ", combustivel=" + combustivel + ", valor=" + valor + ", descricao="
-				+ descricao + ", renavam=" + renavam + ", concessionaria=" + concessionaria + "]";
+				+ descricao + ", renavam=" + renavam + ", ano=" + ano + ", foto=" + foto + ", concessionaria="
+				+ concessionaria + "]";
 	}
 
 }

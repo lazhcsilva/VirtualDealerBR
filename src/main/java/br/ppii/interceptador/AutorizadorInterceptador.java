@@ -10,7 +10,7 @@ import br.ppii.model.Concessionaria;
 import br.ppii.model.Gestor;
 
 public class AutorizadorInterceptador implements HandlerInterceptor {
-/*
+
 	private final boolean CONTROLAR_ACESSO = true;
 	
 	private final String ACESSO_NEGADO = "acessonegado";
@@ -184,5 +184,5 @@ public class AutorizadorInterceptador implements HandlerInterceptor {
 		return true;
 		
 	}
-	*/
+	
 }

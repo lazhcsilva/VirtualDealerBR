@@ -70,6 +70,12 @@
 										id="form_cliente" method="POST" name="form_cliente">
 										<h5 class="text-left">Dados cadastrais</h5>
 										<div class="form-row">
+											<div class="col-sm-12">
+												<div class="form-group">
+													<label for="foto" class="text-normal text-dark">Foto</label><br>
+													<input type="file" id="foto" name="fotoUser" th:disabled="${isProvedorLocal == false ? 'disabled' : 'false'}">
+												</div>
+											</div>
 											<div class="form-group col-md-6">
 												<label class="form-check-label" for="nomeCliente">Nome
 													completo*</label> <input type="text" name="nomeCliente"
