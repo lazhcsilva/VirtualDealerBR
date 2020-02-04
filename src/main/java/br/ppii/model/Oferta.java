@@ -5,7 +5,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -41,12 +40,35 @@ public class Oferta {
 	
 	private String ano;
 	
-	@OneToOne
-	private Foto foto;
+	private String fotoOferta;
 	
 	@ManyToOne
 	private Concessionaria concessionaria;
 	
+	
+	public Oferta() {};
+
+	public Oferta(Integer idOferta, String veiculo, String tipoVeiculo, String marca, String cor, String placa,
+			String chassi, boolean importado, String estado, String combustivel, double valor, String descricao,
+			String renavam, String ano, String fotoOferta, Concessionaria concessionaria) {
+		super();
+		this.idOferta = idOferta;
+		this.veiculo = veiculo;
+		this.tipoVeiculo = tipoVeiculo;
+		this.marca = marca;
+		this.cor = cor;
+		this.placa = placa;
+		this.chassi = chassi;
+		this.importado = importado;
+		this.estado = estado;
+		this.combustivel = combustivel;
+		this.valor = valor;
+		this.descricao = descricao;
+		this.renavam = renavam;
+		this.ano = ano;
+		this.fotoOferta = fotoOferta;
+		this.concessionaria = concessionaria;
+	}
 
 	public Integer getIdOferta() {
 		return idOferta;
@@ -168,13 +190,13 @@ public class Oferta {
 	public void setAno(String ano) {
 		this.ano = ano;
 	}
-	
-	public Foto getFoto() {
-		return foto;
+
+	public String getFotoOferta() {
+		return fotoOferta;
 	}
 
-	public void setFoto(Foto foto) {
-		this.foto = foto;
+	public void setFotoOferta(String fotoOferta) {
+		this.fotoOferta = fotoOferta;
 	}
 
 	@Override
@@ -182,8 +204,8 @@ public class Oferta {
 		return "Oferta [idOferta=" + idOferta + ", veiculo=" + veiculo + ", tipoVeiculo=" + tipoVeiculo + ", marca="
 				+ marca + ", cor=" + cor + ", placa=" + placa + ", chassi=" + chassi + ", importado=" + importado
 				+ ", estado=" + estado + ", combustivel=" + combustivel + ", valor=" + valor + ", descricao="
-				+ descricao + ", renavam=" + renavam + ", ano=" + ano + ", foto=" + foto + ", concessionaria="
-				+ concessionaria + "]";
+				+ descricao + ", renavam=" + renavam + ", ano=" + ano + ", fotoOferta=" + fotoOferta
+				+ ", concessionaria=" + concessionaria + "]";
 	}
 
 }

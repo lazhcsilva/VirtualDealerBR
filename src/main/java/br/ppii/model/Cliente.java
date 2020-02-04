@@ -8,7 +8,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -34,6 +33,8 @@ public class Cliente{
 	
 	private String telefone;
 	
+	private String fotoCliente;
+	
 	private boolean ativo;
 	
 	@ManyToOne
@@ -44,15 +45,12 @@ public class Cliente{
 	
 	@ManyToOne
 	private Reserva reserva;
-
-	@OneToOne
-	private Foto foto;
 	
 	public Cliente() {}
-	
+
 	public Cliente(Integer idCliente, String nome, String emailCliente, String password, String cpf,
-			Date dataNascimento, String telefone, Assinatura assinatura, Endereco endereco, Reserva reserva,
-			Foto foto, boolean ativo) {
+			Date dataNascimento, String telefone, String fotoCliente, boolean ativo, Assinatura assinatura,
+			Endereco endereco, Reserva reserva) {
 		super();
 		this.idCliente = idCliente;
 		this.nome = nome;
@@ -61,11 +59,11 @@ public class Cliente{
 		this.cpf = cpf;
 		this.dataNascimento = dataNascimento;
 		this.telefone = telefone;
+		this.fotoCliente = fotoCliente;
+		this.ativo = ativo;
 		this.assinatura = assinatura;
 		this.endereco = endereco;
 		this.reserva = reserva;
-		this.foto = foto;
-		this.ativo = ativo;
 	}
 
 
@@ -150,20 +148,21 @@ public class Cliente{
 		this.reserva = reserva;
 	}
 
-	public Foto getFoto() {
-		return foto;
-	}
-
-	public void setFoto(Foto foto) {
-		this.foto = foto;
-	}
-
 	public boolean isAtivo() {
 		return ativo;
 	}
 
 	public void setAtivo(boolean ativo) {
 		this.ativo = ativo;
+	}
+	
+	
+	public String getFotoCliente() {
+		return fotoCliente;
+	}
+
+	public void setFotoCliente(String fotoCliente) {
+		this.fotoCliente = fotoCliente;
 	}
 
 	@Override
@@ -187,8 +186,9 @@ public class Cliente{
 	public String toString() {
 		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", emailCliente=" + emailCliente + ", password="
 				+ password + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + ", telefone=" + telefone
-				+ ", ativo=" + ativo + ", assinatura=" + assinatura + ", endereco=" + endereco + ", reserva=" + reserva
-				+ ", foto=" + foto + "]";
+				+ ", fotoCliente=" + fotoCliente + ", ativo=" + ativo + ", assinatura=" + assinatura + ", endereco="
+				+ endereco + ", reserva=" + reserva + "]";
 	}
+
 	
 }

@@ -1,6 +1,9 @@
 package br.ppii.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
 
 import javax.mail.MessagingException;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ppii.model.Cliente;
@@ -26,6 +30,8 @@ import br.ppii.service.ClienteService;
 
 @Controller
 public class ClienteController {
+	
+	private static String caminhoImagens ="C:\\Users\\Alan\\Pictures\\VirtualDealer\\Foto";
 
 	@Autowired
 	private ClienteService clienteService;
@@ -34,7 +40,7 @@ public class ClienteController {
 	private ClienteDAO clienteDAO;
 	
 	@PostMapping("/salvarCliente")
-	public String salvarCliente(@Valid Cliente cliente, BindingResult br, Model model, RedirectAttributes ra,Errors errors) {
+	public String salvarCliente(@Valid Cliente cliente, BindingResult br, Model model, RedirectAttributes ra,Errors errors, @RequestParam("file") MultipartFile arquivo) throws Exception {
 		
 		if(errors.hasErrors()) {
 			
@@ -47,11 +53,21 @@ public class ClienteController {
 				
 				this.clienteService.criarCliente(cliente);
 				
+				if(!arquivo.isEmpty()) {
+					byte[] bytes = arquivo.getBytes();
+					Path caminho = Paths.get(caminhoImagens+String.valueOf(cliente.getIdCliente())+arquivo.getOriginalFilename());
+					Files.write(caminho, bytes);
+					
+					cliente.setFotoCliente(String.valueOf(cliente.getIdCliente())+arquivo.getOriginalFilename());
+				}
+				
+				
+				
 			} catch(ServiceException | MessagingException e) {
 				
 				ra.addFlashAttribute("menssage", "Não foi possível criar usuário: " + e.getMessage());
                 ra.addFlashAttribute("cliente", cliente);
-				return "redirect:/cadastrocliente";
+				return "redirect:/cadastroConcluido";
 				
 			}
 			

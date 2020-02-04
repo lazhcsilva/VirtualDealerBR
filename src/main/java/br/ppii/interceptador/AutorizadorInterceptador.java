@@ -9,7 +9,7 @@ import br.ppii.model.Cliente;
 import br.ppii.model.Concessionaria;
 import br.ppii.model.Gestor;
 
-public class AutorizadorInterceptador implements HandlerInterceptor {
+public class AutorizadorInterceptador implements HandlerInterceptor  {
 
 	private final boolean CONTROLAR_ACESSO = true;
 	
@@ -25,8 +25,9 @@ public class AutorizadorInterceptador implements HandlerInterceptor {
 	
 	private final String[] PAGINAS_GESTOR_LOGADO = {"/cadastro/cadastroplano", "/gestor/listarplanos", "/cadastro/cadastrarconcessionaria"};
 
-	@Override
-	public boolean preHandler(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+	public boolean preHandle(HttpServletRequest request,
+			HttpServletResponse response, Object controller) throws
+			Exception {
 		
 		String urlRequisitada = request.getServletPath();
 		
@@ -48,16 +49,16 @@ public class AutorizadorInterceptador implements HandlerInterceptor {
 			
 			if (estaLogado) {
 				
-				if (clienteLogado.getAtivo == true) {
-				
-					return true;
-				
-				} else {
-				
-					request.getRequestDispatcher(ACESSO_NEGADO).forward(request, response);
-					return false;
-				
-				}
+//				if (clienteLogado.getAtivo == true) {
+//				
+//					return true;
+//				
+//				} else {
+//				
+//					request.getRequestDispatcher(ACESSO_NEGADO).forward(request, response);
+//					return false;
+//				
+//				}
 				
 			} else {
 				

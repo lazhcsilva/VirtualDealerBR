@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.OneToOne;
 
 @Entity
 public class Gestor {
@@ -26,8 +25,24 @@ public class Gestor {
 	
 	private String telefone;
 	
-	@OneToOne
-	public Foto foto;
+	private String fotoGestor;
+
+	public Gestor() {};
+	
+	public Gestor(Integer idGestor, String gestor, String emailGestor, String password, LocalDate dataNascimento,
+			String cPF, String telefone, String fotoGestor) {
+		super();
+		this.idGestor = idGestor;
+		this.gestor = gestor;
+		this.emailGestor = emailGestor;
+		this.password = password;
+		this.dataNascimento = dataNascimento;
+		CPF = cPF;
+		this.telefone = telefone;
+		this.fotoGestor = fotoGestor;
+	}
+
+
 
 	public Integer getIdGestor() {
 		return idGestor;
@@ -85,21 +100,19 @@ public class Gestor {
 		this.telefone = telefone;
 	}
 
-	public Foto getFoto() {
-		return foto;
+	public String getFotoGestor() {
+		return fotoGestor;
 	}
 
-	public void setFoto(Foto foto) {
-		this.foto = foto;
+	public void setFotoGestor(String fotoGestor) {
+		this.fotoGestor = fotoGestor;
 	}
 
 	@Override
 	public String toString() {
 		return "Gestor [idGestor=" + idGestor + ", gestor=" + gestor + ", emailGestor=" + emailGestor + ", password="
 				+ password + ", dataNascimento=" + dataNascimento + ", CPF=" + CPF + ", telefone=" + telefone
-				+ ", foto=" + foto + "]";
+				+ ", fotoGestor=" + fotoGestor + "]";
 	}
 
-	
-	
 }

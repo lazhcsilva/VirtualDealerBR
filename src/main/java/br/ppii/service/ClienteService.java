@@ -43,7 +43,6 @@ public class ClienteService {
 				} catch (Exception e) {
 					// TODO: handle exception
 				}
-				this.save(cliente);
 				return true;
 	       
 		}	

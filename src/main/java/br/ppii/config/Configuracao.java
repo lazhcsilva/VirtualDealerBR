@@ -8,12 +8,12 @@ import br.ppii.interceptador.AutorizadorInterceptador;
 
 @Configuration
 public class Configuracao implements WebMvcConfigurer {
-
+/*	
 	@Override
 	public void addInterceptors(InterceptorRegistry registry) {
 	
 		registry.addInterceptor(new AutorizadorInterceptador());
 	
 	}
-	
+*/	
 }

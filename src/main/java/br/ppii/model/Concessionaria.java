@@ -54,14 +54,42 @@ public class Concessionaria {
 	@NotBlank(message="Deve ser preenchido")
 	private String telefone1;
 	
-	@OneToOne
-	private Foto foto;
+	private String fotoConcessionaria;
 	
 	@OneToOne
 	private Endereco endereco;
 	
 	@ManyToMany
 	private List<Oferta> oferta;
+	
+	public Concessionaria() {};
+
+	public Concessionaria(Integer idConcessionaria,
+			@Size(min = 5, max = 40) @NotBlank(message = "O nome deve ser preenchido corretamente com texto válido") String concessionaria,
+			@Size(min = 5, max = 40) @NotBlank(message = "O nome deve ser preenchido corretamente com texto válido") String razaoSocial,
+			@Email @NotBlank(message = "O email deve ser preenchido corretamente") String emailConcessionaria,
+			@Size(min = 5, max = 40) @NotBlank(message = "O nome fantasia deve ser preenchido corretamente com texto válido") String nomeFantasia,
+			String inscricaoEstadual,
+			@NotBlank(message = "Digite uma senha válida contendo uma letra maiuscula uma miniscula e um número") String password,
+			@CNPJ @NotBlank(message = "Digite CNPJ válido") String cnpj,
+			@NotBlank(message = "Deve ser preenchido") String telefone1, String fotoConcessionaria, Endereco endereco,
+			List<Oferta> oferta) {
+		super();
+		this.idConcessionaria = idConcessionaria;
+		this.concessionaria = concessionaria;
+		this.razaoSocial = razaoSocial;
+		this.emailConcessionaria = emailConcessionaria;
+		this.nomeFantasia = nomeFantasia;
+		this.inscricaoEstadual = inscricaoEstadual;
+		this.password = password;
+		this.cnpj = cnpj;
+		this.telefone1 = telefone1;
+		this.fotoConcessionaria = fotoConcessionaria;
+		this.endereco = endereco;
+		this.oferta = oferta;
+	}
+
+
 
 	public Integer getIdConcessionaria() {
 		return idConcessionaria;
@@ -152,12 +180,12 @@ public class Concessionaria {
 		this.oferta = oferta;
 	}
 
-	public Foto getFoto() {
-		return foto;
+	public String getFotoConcessionaria() {
+		return fotoConcessionaria;
 	}
 
-	public void setFoto(Foto foto) {
-		this.foto = foto;
+	public void setFotoConcessionaria(String fotoConcessionaria) {
+		this.fotoConcessionaria = fotoConcessionaria;
 	}
 
 	@Override
@@ -165,7 +193,10 @@ public class Concessionaria {
 		return "Concessionaria [idConcessionaria=" + idConcessionaria + ", concessionaria=" + concessionaria
 				+ ", razaoSocial=" + razaoSocial + ", emailConcessionaria=" + emailConcessionaria + ", nomeFantasia="
 				+ nomeFantasia + ", inscricaoEstadual=" + inscricaoEstadual + ", password=" + password + ", cnpj="
-				+ cnpj + ", telefone1=" + telefone1 + ", foto=" + foto + ", endereco=" + endereco + ", oferta=" + oferta
-				+ "]";
+				+ cnpj + ", telefone1=" + telefone1 + ", fotoConcessionaria=" + fotoConcessionaria + ", endereco="
+				+ endereco + ", oferta=" + oferta + "]";
 	}
+	
+	
+	
 }
