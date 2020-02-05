@@ -58,24 +58,22 @@
 		<div class="pricing-wrapper clearfix">
 			<!-- Titulo -->
 			<h1 class="pricing-table-title">Tabla de Planos</h1>
-			<div class="pricing-table" th:each="assinatura : ${lista}">
+			<div class="pricing-table" th:each=" assinatura : ${lista}">
 				<h3 class="pricing-title" th:text="${assinatura.nomeAssinatura}"></h3>
 				<div class="price">
-					<p class="" th:text="${assinatura.preco}"></p>
+					<!-- <p class="" th:text="${assinatura.preco}"></p> -->
 				</div>
 				<!-- Lista de Caracteristicas / Propiedades -->
 				<ul class="table-list">
 					<li th:text="${assinatura.descricao}"></li>
-					<li>Adicionar<span>Posteriormente</span></li>
-					<li>Adicionar <span>Posteriormente</span></li>
-					<li>Adicionar <span class="unlimited">ilimitadas</span></li>
-					<li>Adicionar <span class="unlimited">ilimitadas</span></li>
-					<li>Adicionar <span>Posteriormente</span></li>
+					<li th:text="${assinatura.descricao2}"><span class="unlimited">ilimitadas</span></li>
+					<li th:text="${assinatura.descricao3}"><span class="unlimited">ilimitadas</span></li>
+					
 				</ul>
 				<!-- Contratar / Comprar -->
 				<div class="table-buy">
-					<p th:text="${assinatura.preco}"></p><sub>/1 mês</sub>
-					<a href="#" class="pricing-action">Assinar</a>
+					<p th:text="${assinatura.preco}"></p>
+				<a href="https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=316728099-5e7c7e3d-2258-4149-961c-fb88ee9a3332" class="pricing-action">Assinar</a>
 				</div>
 			</div>
 		</div>
