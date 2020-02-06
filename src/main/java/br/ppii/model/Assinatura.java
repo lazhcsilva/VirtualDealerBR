@@ -27,6 +27,8 @@ public class Assinatura {
 	private double preco;
 	
 	private String descricao;
+	private String descricao2;
+	private String descricao3;
 	
 	@OneToOne
 	private Cliente cliente;
@@ -103,6 +105,22 @@ public class Assinatura {
 		return "Assinatura [idAssinatura=" + idAssinatura + ", nomeAssinatura=" + nomeAssinatura + ", validade="
 				+ validade + ", operacao=" + operacao + ", preco=" + preco + ", descricao=" + descricao + ", cliente="
 				+ cliente + ", planoAssinatura=" + planoAssinatura + "]";
+	}
+
+	public String getDescricao3() {
+		return descricao3;
+	}
+
+	public void setDescricao3(String descricao3) {
+		this.descricao3 = descricao3;
+	}
+
+	public String getDescricao2() {
+		return descricao2;
+	}
+
+	public void setDescricao2(String descricao2) {
+		this.descricao2 = descricao2;
 	}
 
 	

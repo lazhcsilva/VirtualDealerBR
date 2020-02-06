@@ -26,7 +26,7 @@ public class AssinaturaController {
 		
 		this.assinaturaService.novaAssinatura(assinatura);
 
-		return "redirect:/cadastro/cadastroplano";
+		return "redirect:/planos";
 		
 	}
 	
