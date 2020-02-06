@@ -35,7 +35,9 @@ public class Cliente{
 	
 	private String fotoCliente;
 	
-	private boolean ativo;
+	private boolean ativo = false;
+	
+	private String token;
 	
 	@ManyToOne
 	private Assinatura assinatura;
@@ -49,8 +51,8 @@ public class Cliente{
 	public Cliente() {}
 
 	public Cliente(Integer idCliente, String nome, String emailCliente, String password, String cpf,
-			Date dataNascimento, String telefone, String fotoCliente, boolean ativo, Assinatura assinatura,
-			Endereco endereco, Reserva reserva) {
+			Date dataNascimento, String telefone, String fotoCliente, boolean ativo, String token,
+			Assinatura assinatura, Endereco endereco, Reserva reserva) {
 		super();
 		this.idCliente = idCliente;
 		this.nome = nome;
@@ -61,6 +63,7 @@ public class Cliente{
 		this.telefone = telefone;
 		this.fotoCliente = fotoCliente;
 		this.ativo = ativo;
+		this.token = token;
 		this.assinatura = assinatura;
 		this.endereco = endereco;
 		this.reserva = reserva;
@@ -148,7 +151,7 @@ public class Cliente{
 		this.reserva = reserva;
 	}
 
-	public boolean isAtivo() {
+	public boolean getAtivo() {
 		return ativo;
 	}
 
@@ -182,13 +185,20 @@ public class Cliente{
 		return true;
 	}
 
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
 	@Override
 	public String toString() {
 		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", emailCliente=" + emailCliente + ", password="
 				+ password + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + ", telefone=" + telefone
-				+ ", fotoCliente=" + fotoCliente + ", ativo=" + ativo + ", assinatura=" + assinatura + ", endereco="
-				+ endereco + ", reserva=" + reserva + "]";
+				+ ", fotoCliente=" + fotoCliente + ", ativo=" + ativo + ", token=" + token + ", assinatura="
+				+ assinatura + ", endereco=" + endereco + ", reserva=" + reserva + "]";
 	}
-
 	
 }

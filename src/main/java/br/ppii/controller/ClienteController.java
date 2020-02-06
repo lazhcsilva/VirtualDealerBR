@@ -31,7 +31,7 @@ import br.ppii.service.ClienteService;
 @Controller
 public class ClienteController {
 	
-	private static String caminhoImagens ="C:\\Users\\Alan\\Pictures\\VirtualDealer\\Foto";
+	private static String caminhoImagens ="C:\\Users\\Alan\\git\\VirtualDealerBR\\src\\main\\resources\\static\\assets\\images\\Cliente\\";
 
 	@Autowired
 	private ClienteService clienteService;
@@ -51,8 +51,6 @@ public class ClienteController {
 			
 			try {
 				
-				this.clienteService.criarCliente(cliente);
-				
 				if(!arquivo.isEmpty()) {
 					byte[] bytes = arquivo.getBytes();
 					Path caminho = Paths.get(caminhoImagens+String.valueOf(cliente.getIdCliente())+arquivo.getOriginalFilename());
@@ -61,13 +59,14 @@ public class ClienteController {
 					cliente.setFotoCliente(String.valueOf(cliente.getIdCliente())+arquivo.getOriginalFilename());
 				}
 				
-				
+				this.clienteService.criarCliente(cliente);
+
 				
 			} catch(ServiceException | MessagingException e) {
 				
 				ra.addFlashAttribute("menssage", "Não foi possível criar usuário: " + e.getMessage());
                 ra.addFlashAttribute("cliente", cliente);
-				return "redirect:/cadastroConcluido";
+				return "redirect:/cadastro";
 				
 			}
 			
@@ -99,6 +98,7 @@ public class ClienteController {
 			session.setAttribute("clienteLogado", clienteLogado);
 		} catch (ServiceException e) {
 			ra.addFlashAttribute("mensagemErro", e.getMessage());
+			return "paginainicial";
 		}
 		
 		return "paginainicial";
@@ -117,6 +117,11 @@ public class ClienteController {
 		session.invalidate();
 		return "index";
 		
+	}
+	
+	@GetMapping("ativar")
+	public String ativeSuaConta() {
+		return "/ativarConta";
 	}
 	
 }

@@ -7,7 +7,7 @@ import br.ppii.model.Cliente;
 
 public interface ClienteDAO extends JpaRepository<Cliente, Integer> {
 
-	@Query("select c from Cliente c where c.emailCliente = :emailCliente and c.password = :password")
+	@Query("select c from Cliente c where c.emailCliente = :emailCliente and c.password = :password and c.ativo=true"  )
 	public Cliente clienteLogin(String emailCliente, String password);
 	
 	@Query("select c from Cliente c where c.emailCliente = :emailCliente")

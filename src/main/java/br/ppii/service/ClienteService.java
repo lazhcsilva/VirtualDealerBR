@@ -2,6 +2,7 @@ package br.ppii.service;
 
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
+import java.util.UUID;
 
 import javax.mail.MessagingException;
 
@@ -19,6 +20,9 @@ public class ClienteService {
 	@Autowired
 	private ClienteDAO clienteDAO;
 	
+	@Autowired
+	private EmailService emailService;
+	
 	public Cliente findClienteByEmail(String emailCliente) {
 		return clienteDAO.findByEmailIgnoreCase(emailCliente);
 	}
@@ -27,7 +31,11 @@ public class ClienteService {
 		return clienteDAO.findByCpfIgnoreCase(cpf);
 	}
 	
-	public boolean criarCliente(Cliente cliente)throws ServiceException, MessagingException {
+	public Cliente findByEmail(String email) {
+		return clienteDAO.findByEmailIgnoreCase(email);
+	}
+	
+	public void criarCliente(Cliente cliente)throws ServiceException, MessagingException {
 		
 		if (this.findClienteByEmail(cliente.getEmailCliente()) != null) {
 			throw new ServiceException("Já existe um usuário com este e-mail");
@@ -35,16 +43,20 @@ public class ClienteService {
 		else if (this.findClienteByCpf(cliente.getCpf()) != null) {
 			throw new ServiceException("Já existe um usuário com este cpf");
 		}  else {
-				String senhaCriptografada;
-				try {
-					senhaCriptografada = Util.criptografarSenha(cliente.getPassword());
-					cliente.setPassword(senhaCriptografada);
-					this.clienteDAO.save(cliente);	
-				} catch (Exception e) {
-					// TODO: handle exception
-				}
-				return true;
-	       
+			String senhaCriptografada;
+			
+			cliente.setToken(UUID.randomUUID().toString());
+			
+			try {
+				senhaCriptografada = Util.criptografarSenha(cliente.getPassword());
+				cliente.setPassword(senhaCriptografada);
+				this.clienteDAO.save(cliente);	
+			} catch (Exception e) {
+				// TODO: handle exception
+			}
+			
+			this.emailService.enviarConfirmacaoDeConta(cliente);
+			
 		}	
 		 
 	}
@@ -63,8 +75,19 @@ public class ClienteService {
 		if (cliente == null) {
 			throw new ServiceException("Login/senha não encontrados");
 		}
-
+		
 		return cliente;
+	}
+	
+	public void reEnviarEmailConfirmacao(String email) throws MessagingException {
+		
+		Cliente cliente = this.findByEmail(email);
+
+		if (cliente.getAtivo() == false) {
+		
+			this.emailService.enviarConfirmacaoDeConta(cliente);
+		
+		}
 	}
 	
 }

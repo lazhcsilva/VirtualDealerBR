@@ -58,7 +58,13 @@
 				<!-- Inicio do Veiculo -->
 				<h2>Dados do Veículo</h2>
 				<div class="linha">
-					<form action="salvarOferta" th:object="${oferta}" method="post">
+					<form action="salvarOferta" th:object="${oferta}" enctype="multipart/form-data" method="post">
+						<div class="cololuna-13">
+							<div class="form-group">
+								<label for="inputfoto">Forneça uma foto:</label> 
+								<input type="file" class="form-control" id="inputfoto" name="file" required>
+							</div>
+						</div>
 						<div class="coluna-2">
 							<label>Tipo do Veículo:</label> <select class="" id="tipoveiculo" name="tipoveiculo" required="required" th:field="*{tipoVeiculo}">
 								<option value="">Selecione</option>
@@ -116,7 +122,7 @@
 							</div>
 							<div class="coluna-13">
 								<label>Descricão:</label>
-								<textarea class="w-input" id="descricao" th:field="*{descricao}"></textarea>
+								<textarea class="w-input" id="descricao" rows="13" cols="80" th:field="*{descricao}"></textarea>
 							</div>
 						</div>
 						<div class="container">
