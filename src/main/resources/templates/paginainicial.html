@@ -54,9 +54,24 @@
 						<a class="nav-link link text-white display-4" href="/pesquisa"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
 					</li>
 				</ul>
-				<div class="btn-group btn-group-primary">
+				<li class="nav-item dropdown open"><a
+						th:if="${session.gestorLogado != null}"
+						class="nav-link link text-white dropdown-toggle display-4"
+						th:href="@{/paginaInicial}" data-toggle="dropdown-submenu"
+						aria-expanded="true"><span
+							class="mbri-user mbr-iconfont mbr-iconfont-btn"></span> <span
+							th:if="${session.gestorLogado != null}"
+							th:text="${session.clienteLogado.emailCliente}"></span></a>
+					<div class="dropdown-menu">
+							<a class="text-white dropdown-item display-4"
+								th:href="@{/editarPerfil}">Configurações</a><a
+								class="text-white dropdown-item display-4"
+								th:href="@{/logout}" aria-expanded="false">Sair</a>
+						</div></li>
+						
+				<!-- <div class="btn-group btn-group-primary">
 					<button class="btn btn-primary" type="button">
-						<span th:text="${session.clienteLogado.nome}">
+						<span th:text="${session.clienteLogado.nome}"></span>
 					</button>
 					<button data-toggle="dropdown"
 						class="btn btn-primary dropdown-toggle" type="button">
@@ -64,9 +79,9 @@
 					</button>
 					<ul class="dropdown-menu">
 						<li><a href="#">configuração</a></li>
-						<br>
+						
 						<li><a href="/logout">Logout</a></li>
-					</ul>
+					</ul> -->
 				</div>
 			</div>
 		</nav>

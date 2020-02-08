@@ -11,9 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import br.ppii.model.Gestor;
 import br.ppii.persistence.GestorDAO;
@@ -50,7 +53,7 @@ public class GestorController {
 	@GetMapping("/editarGestor")
 	public String editarGestor(Model model, Integer idGestor) {
 		
-		model.addAttribute("palestrante", this.gestorDAO.findById(idGestor));
+		model.addAttribute("gestor", this.gestorDAO.findById(idGestor));
 		return "";
 		
 	}
@@ -63,4 +66,40 @@ public class GestorController {
 	
 	}
 	
+	@GetMapping("/editarPerfilGestor")
+	public ModelAndView exibirEditarPerfil(HttpSession session,RedirectAttributes ra) {
+		
+		ModelAndView mv= new ModelAndView("editarperfil");
+		if (session.getAttribute("gestorLogado")==null) {
+			
+			ra.addFlashAttribute("acessoNegado", true);
+			ra.addFlashAttribute("retorno", "/editarPefilGestor");
+		mv.setViewName("/redirect:/index");
+		return mv;
+		
+		}
+		Gestor gestor=(Gestor) session.getAttribute("gestorLogado");
+		mv.addObject(gestor);
+		return mv;
+		
+	}
+	
+	public void save(Gestor gestor) {
+		
+		this.gestorDAO.save(gestor);
+	
+	}
+	
+	@PostMapping("editarperfilGestor")
+	public String editarPefil(@ModelAttribute Gestor gestor,RedirectAttributes ra,HttpSession session) {
+
+		Gestor gestorSessao = (Gestor) session.getAttribute("usuarioLogado");
+		gestor.setIdGestor(gestorSessao.getIdGestor());
+		gestor = this.gestorService.editarPerfil(gestor,session);
+		this.gestorService.save(gestor);
+		session.setAttribute("usuarioLogado", gestor);
+		ra.addFlashAttribute("sucesso", "Alteração realizada com sucesso");
+		
+		return"redirect:/editarPerfil";
+	}
 }

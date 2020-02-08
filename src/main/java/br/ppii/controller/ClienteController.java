@@ -22,7 +22,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+
 
 import br.ppii.model.Cliente;
 import br.ppii.persistence.ClienteDAO;
@@ -111,6 +113,67 @@ public class ClienteController {
 		 
 	}
 	
+	
+	@PostMapping("fotoCliente")
+	public String editarPefil(@ModelAttribute Cliente cliente,RedirectAttributes ra,HttpSession session) {
+
+		Cliente clienteSessao = (Cliente) session.getAttribute("usuarioLogado");
+		cliente.setIdCliente(clienteSessao.getIdCliente());
+		cliente = this.clienteService.editarPerfil(cliente,session);
+		this.clienteService.save(cliente);
+		session.setAttribute("usuarioLogado", cliente);
+		ra.addFlashAttribute("sucesso", "Alteração realizada com sucesso");
+		
+		return"redirect:/editarPerfil";
+	}
+	
+	
+	
+	
+	@GetMapping("/editarPerfil")
+	public ModelAndView exibirEditarPerfil(HttpSession session,RedirectAttributes ra) {
+		
+		ModelAndView mv= new ModelAndView("editar-perfil");
+		if (session.getAttribute("clienteLogado")==null) {
+			
+			ra.addFlashAttribute("acessoNegado", true);
+			ra.addFlashAttribute("retorno", "/editarPefil");
+		mv.setViewName("/redirect:/Login");
+		return mv;
+		
+		}
+		Cliente cliente=(Cliente) session.getAttribute("clienteLogado");
+		mv.addObject(cliente);
+		return mv;
+		
+		
+	}@PostMapping("cliente")
+	public String editarPefilCliente(@ModelAttribute Cliente cliente,RedirectAttributes ra,HttpSession session) {
+
+		Cliente usuarioSessao = (Cliente) session.getAttribute("clienteLogado");
+		cliente.setIdCliente(usuarioSessao.getIdCliente());
+		cliente = this.clienteService.editarPerfil(cliente,session);
+		this.clienteService.save(cliente);
+		session.setAttribute("clienteLogado", cliente);
+		ra.addFlashAttribute("sucesso", "Alteração realizada com sucesso");
+		
+		return"redirect:/editarPerfil";
+	}
+	
+	/*
+	 * @GetMapping("/editarPerfil") public ModelAndView
+	 * exibirEditarPerfil(HttpSession session,RedirectAttributes ra) {
+	 * 
+	 * ModelAndView mv= new ModelAndView("editar-perfil"); if
+	 * (session.getAttribute("usuarioLogado")==null) {
+	 * 
+	 * ra.addFlashAttribute("acessoNegado", true); ra.addFlashAttribute("retorno",
+	 * "/editarPefil"); mv.setViewName("/redirect:/participanteLogin"); return mv;
+	 * 
+	 * } Usuario usuario=(Usuario) session.getAttribute("usuarioLogado");
+	 * mv.addObject(usuario); return mv; }
+	 */
+	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		
@@ -119,7 +182,7 @@ public class ClienteController {
 		
 	}
 	
-	@GetMapping("/ativar")
+	@GetMapping("ativar")
 	public String ativeSuaConta() {
 		return "/ativarConta";
 	}
