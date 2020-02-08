@@ -119,7 +119,7 @@ public class ClienteController {
 		
 	}
 	
-	@GetMapping("ativar")
+	@GetMapping("/ativar")
 	public String ativeSuaConta() {
 		return "/ativarConta";
 	}

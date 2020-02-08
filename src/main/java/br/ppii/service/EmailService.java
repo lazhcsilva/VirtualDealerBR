@@ -5,6 +5,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.Properties;
 import java.util.UUID;
 
+import javax.mail.Authenticator;
 import javax.mail.Message;
 import javax.mail.MessagingException;
 import javax.mail.PasswordAuthentication;
@@ -65,7 +66,7 @@ public class EmailService {
 		mensagem.setTitulo("Olá, " + cliente.getNome() + ". Ative sua conta!");
 		mensagem.setMensagem("Para ter acesso total ao nosso site, ative sua conta, copiando esse endereço abaixo e colando na url. (este email vence em: " +  validade.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + ")");
 		
-		mensagem.setController("ativarConta");
+		mensagem.setController("/ativarConta");
 		
 		Email emailConfirmacao = new Email();
 		emailConfirmacao.setAssunto("VirtualDealer - confirme sua conta!");
@@ -94,7 +95,7 @@ public class EmailService {
 		props.put("mail.smtp.host", "smtp.gmail.com");
 		props.put("mail.smtp.port", "587");
 			
-		Session session = Session.getInstance(props, new javax.mail.Authenticador() {
+		Session session = Session.getInstance(props, new Authenticator() {
 			
 			protected PasswordAuthentication getPasswordAuthentication() {
 				

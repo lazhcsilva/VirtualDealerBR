@@ -2,6 +2,7 @@ package br.ppii.controller;
 
 import javax.validation.Valid;
 
+import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Controller;
@@ -23,6 +24,10 @@ public class OfertaController {
 	@Autowired
 	private OfertaDAO ofertaDAO;
 	
+	public Oferta findByPlaca(String placa) {
+		return ofertaDAO.findByPlacaIgnoreCase(placa);
+	}
+	
 	@GetMapping("/cadastroOferta")
 	public String cadastroOferta(Oferta oferta, Model model) {
 		return "cadastro/cadastrooferta";
@@ -36,6 +41,11 @@ public class OfertaController {
 	
 	@PostMapping("/salvarOferta")
 	public String salvarPalestrante(@Valid Oferta oferta, BindingResult br) {
+		
+		if (this.findByPlaca(oferta.getPlaca()) != null) {
+			throw new ServiceException("Já existe uma placa cadastrada");
+		}
+		
 		this.ofertaService.save(oferta);
 		return "redirect:/paginaInicial";
 	}

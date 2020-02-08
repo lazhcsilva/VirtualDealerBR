@@ -27,6 +27,7 @@ public class OfertaService {
 	}
 	
 	public boolean criarOferta(Oferta oferta) throws ServiceException, MessagingException {
+		
 		this.save(oferta);
 		return true;
 	}
