@@ -57,10 +57,10 @@ public class MenuController {
 		return "cadastro/cadastroconcessionaria";
 	}
 	
-	@GetMapping("/editarPerfil")
-	public String editarPerfil() {
-		return "editarperfil";
-	}
+	/*
+	 * @GetMapping("/editarPerfil") public String editarPerfil() { return
+	 * "editarperfil"; }
+	 */
 	
 	@GetMapping("/empresas")
 	public String empresas() {

@@ -5,10 +5,12 @@ import java.security.NoSuchAlgorithmException;
 import java.util.UUID;
 
 import javax.mail.MessagingException;
+import javax.servlet.http.HttpSession;
 
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
 
 import br.ppii.model.Cliente;
 import br.ppii.persistence.ClienteDAO;
@@ -89,5 +91,27 @@ public class ClienteService {
 		
 		}
 	}
+	public Cliente editarPerfil(Cliente cliente,HttpSession session) {
+		Cliente clienteLogado=(Cliente)session.getAttribute("clientelogin");
+		Cliente user = this.clienteDAO.findByid(clienteLogado.getIdCliente());
+			
+		user.setNome(cliente.getNome());
+		user.setEmailCliente(cliente.getEmailCliente());
+		user.setPassword(cliente.getPassword());
+		user.setCpf(cliente.getCpf());
+		user.setDataNascimento(cliente.getDataNascimento());
+		user.setTelefone(cliente.getTelefone());
+		user.setFotoCliente(cliente.getFotoCliente());
+		
+	
+		return user;
+	}
+
+	
+			
+	/*
+	 * public boolean salvarUsuario(Cliente cliente) throws ServiceException,
+	 * MessagingException;
+	 */
 	
 }

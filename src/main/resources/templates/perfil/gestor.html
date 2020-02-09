@@ -50,23 +50,27 @@
 					</li>
 					<li class="nav-item">
 						<a class="nav-link link text-white display-4" href="/pesquisa"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
-					</li>
-					<div class="dropdown" th:if="${session.gestorLogado != null}">
-						<a href="#" data-toggle="dropdown"></a>
-						<li class="dropdown">
-							<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-							<span th:text="${session.gestorLogado.gestor}"></span><b class="caret"></b></a>
-							<ul class="dropdown-menu">
-								<li><a href="/user/preferences"><i class="icon-cog"></i>
-										Preferences</a></li>
-								<li><a href="/help/support"><i class="icon-envelope"></i>
-										Contact Support</a></li>
-								<li class="divider"></li>
-								<li><a href="/auth/logout"><i class="icon-off"></i>
-										Logout</a></li>
-							</ul>
-						</li>	
-					</div>
+					 <ul class="navbar-nav nav-dropdown nav-right"></ul>
+					data-app-modern-menu="true">
+					
+					<li class="nav-item dropdown open"><a
+						th:if="${session.gestorLogado != null}"
+						class="nav-link link text-white dropdown-toggle display-4"
+						th:href="@{/paginaInicial}" data-toggle="dropdown-submenu"
+						aria-expanded="true"><span
+							class="mbri-user mbr-iconfont mbr-iconfont-btn"></span> <span
+							th:if="${session.gestorLogado != null}"
+							th:text="${session.gestorLogado.emailGestor}"></span></a>
+					<div class="dropdown-menu">
+							<a class="text-white dropdown-item display-4"
+							
+								th:href="@{/editarperfilGestor}">Configurações</a><a
+								class="text-white dropdown-item display-4"
+								th:href="@{/logout}" aria-expanded="false">Sair</a>
+						</div></li>
+						
+						
+					</ul>
 				</ul>
 			</div>
 		</nav>
