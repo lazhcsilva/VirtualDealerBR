@@ -27,7 +27,7 @@ public class MenuController {
 	}
 
 	@GetMapping("/paginaInicial")
-	public String paginaInicial(Model model, Oferta oferta) {
+	public String paginaInicial(Model model, Oferta oferta, HttpSession session) {
 		model.addAttribute("lista", this.ofertaService.listarTodos(Sort.by("veiculo")));
 		return "paginainicial";
 	}

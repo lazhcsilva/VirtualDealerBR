@@ -25,10 +25,11 @@ import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
-
 import br.ppii.model.Cliente;
+import br.ppii.model.Email;
 import br.ppii.persistence.ClienteDAO;
 import br.ppii.service.ClienteService;
+import br.ppii.service.EmailService;
 
 @Controller
 public class ClienteController {
@@ -40,6 +41,9 @@ public class ClienteController {
 	
 	@Autowired
 	private ClienteDAO clienteDAO;
+	
+	@Autowired 
+	EmailService emailService;
 	
 	@PostMapping("/salvarCliente")
 	public String salvarCliente(@Valid Cliente cliente, BindingResult br, Model model, RedirectAttributes ra,Errors errors, @RequestParam("file") MultipartFile arquivo) throws Exception {
@@ -76,7 +80,7 @@ public class ClienteController {
 			
 		}
 		
-		return "redirect:/cadastroConcluido";
+		return "redirect:/ativarConta";
 		
 	}
 	
@@ -93,21 +97,22 @@ public class ClienteController {
 	
 	@PostMapping("/clienteLogin")
 	public String efetuarLogin(HttpServletRequest request, @ModelAttribute Cliente cliente, @RequestParam(name = "retorno", required = false) String retorno, RedirectAttributes ra, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
-
+		
 		Cliente clienteLogado;
 		try {
-			clienteLogado = this.clienteService.clienteLogin(cliente.getEmailCliente(), cliente.getPassword());
+			clienteLogado = this.clienteService.logarCliente(cliente.getEmailCliente(), cliente.getPassword());
 			session.setAttribute("clienteLogado", clienteLogado);
+			
 		} catch (ServiceException e) {
 			ra.addFlashAttribute("mensagemErro", e.getMessage());
 			return "paginainicial";
 		}
 		
-		return "paginainicial";
+		return "redirect:/paginaInicial";
 	}
 	
 	@GetMapping("/editarCliente")
-	public String editarPalestrante(Model model, Integer idCliente) {
+	public String editarPalestrante(Model model, Integer idCliente, HttpSession session) {
 		 model.addAttribute("cliente", this.clienteDAO.findById(idCliente));
 		 return "editar/editarcliente";
 		 
@@ -147,7 +152,8 @@ public class ClienteController {
 		return mv;
 		
 		
-	}@PostMapping("cliente")
+	}
+	@PostMapping("cliente")
 	public String editarPefilCliente(@ModelAttribute Cliente cliente,RedirectAttributes ra,HttpSession session) {
 
 		Cliente usuarioSessao = (Cliente) session.getAttribute("clienteLogado");
@@ -160,20 +166,6 @@ public class ClienteController {
 		return"redirect:/editarPerfil";
 	}
 	
-	/*
-	 * @GetMapping("/editarPerfil") public ModelAndView
-	 * exibirEditarPerfil(HttpSession session,RedirectAttributes ra) {
-	 * 
-	 * ModelAndView mv= new ModelAndView("editar-perfil"); if
-	 * (session.getAttribute("usuarioLogado")==null) {
-	 * 
-	 * ra.addFlashAttribute("acessoNegado", true); ra.addFlashAttribute("retorno",
-	 * "/editarPefil"); mv.setViewName("/redirect:/participanteLogin"); return mv;
-	 * 
-	 * } Usuario usuario=(Usuario) session.getAttribute("usuarioLogado");
-	 * mv.addObject(usuario); return mv; }
-	 */
-	
 	@GetMapping("/logout")
 	public String logout(HttpSession session) {
 		
@@ -184,7 +176,57 @@ public class ClienteController {
 	
 	@GetMapping("ativar")
 	public String ativeSuaConta() {
-		return "/ativarConta";
+		return "/perfil/ativaconta";
+	}
+	
+	@GetMapping("/ativarConta")
+	public String ativarConta(@RequestParam(name = "token", required = false) String token, RedirectAttributes ra) {
+
+		if (token == "" || token == null) {
+			ra.addFlashAttribute("alertErro", "Token de ativação inválido");
+			return "redirect:ativar";
+		}
+
+		Email email = this.emailService.findByToken(token);
+
+		if (this.emailService.validarVencimento(email)) {
+			Cliente cliente = this.clienteService.findByEmail(email.getEmailDestinatario());
+			cliente.setAtivo(true);
+			this.clienteService.save(cliente);
+		} else {
+			ra.addFlashAttribute("alertErro", "Token de ativação vencido, por favor re-envie o email de ativação");
+			return "redirect:ativar";
+		}
+
+		ra.addFlashAttribute("alertSucesso", "Conta Ativada com sucesso!");
+		return "redirect:/contaConfirmada";
+	}
+	
+	@GetMapping("/contaConfirmada")
+	public String confirmouConta() {
+		return "/cad.concluidocomsucess";
+	}
+	
+	@PostMapping("/reenviarConfirmacao")
+	public String reenviarEmailConfirmarcaoConta(@RequestParam(name = "email", required = true) String email, RedirectAttributes ra) {
+		
+		String retorno = "redirect:ativar";
+
+		Cliente cliente = this.clienteService.findByEmail(email);
+
+		if (cliente == null) {
+			ra.addFlashAttribute("alertErro", "Email não cadastrado no sistema");
+		} else if (email.trim() != "") {
+			try {
+				this.clienteService.reEnviarEmailConfirmacao(cliente.getEmailCliente());
+			} catch (MessagingException e) {
+				e.printStackTrace();
+			}
+		} else {
+			ra.addFlashAttribute("alertErro", "Email inválido");
+		}
+
+		return retorno;
 	}
 	
 }

@@ -91,7 +91,7 @@ public class ConcessionariaController {
 	}
 	
 	@GetMapping("/editarConcessionaria")
-	public String editarConcessionaria(Integer idConcessionaria, Model model) {
+	public String editarConcessionaria(Integer idConcessionaria, Model model, HttpSession session) {
 		model.addAttribute("lista", this.concessionariaDAO.findById(idConcessionaria));
 		return "perfilconcessionaria";
 	}

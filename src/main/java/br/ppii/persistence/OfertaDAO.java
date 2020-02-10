@@ -12,4 +12,8 @@ public interface OfertaDAO extends JpaRepository<Oferta, Integer>  {
 	@Query("select c from Oferta c where c.placa = :placa")
 	Oferta findByPlacaIgnoreCase(String placa);
 
+	Oferta findByChassiIgnoreCase(String chassi);
+
+	Oferta findByRenavamIgnoreCase(String renavam);
+	
 }

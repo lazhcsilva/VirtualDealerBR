@@ -66,7 +66,7 @@ public class EmailMensagem {
 		
 		if ((comTolken == true)) {
 			
-			mensagem.append("<html><body><a href='http:/localhost:8080'" + this.getController() + "?token=" + this.getTokenEmail() + "/" + "<button>Confirmar!<button></a></body></html>");
+			mensagem.append("<html><body><a href='http:/localhost:8080" + this.getController() + "?token=" + this.getTokenEmail() + "/" + "<button>Confirmar!<button></a></body></html>");
 			
 		}
 		

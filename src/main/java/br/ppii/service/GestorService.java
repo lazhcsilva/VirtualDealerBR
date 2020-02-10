@@ -3,17 +3,14 @@ package br.ppii.service;
 import java.io.UnsupportedEncodingException;
 import java.security.NoSuchAlgorithmException;
 
-import javax.mail.MessagingException;
 import javax.servlet.http.HttpSession;
 
 import org.hibernate.service.spi.ServiceException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import br.ppii.model.Cliente;
 import br.ppii.model.Gestor;
 import br.ppii.persistence.GestorDAO;
-import br.ppii.util.Util;
 
 @Service
 public class GestorService {

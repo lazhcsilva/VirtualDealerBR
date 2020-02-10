@@ -66,7 +66,8 @@
 							</div>
 						</div>
 						<div class="coluna-2">
-							<label>Tipo do Veículo:</label> <select class="" id="tipoveiculo" name="tipoveiculo" required="required" th:field="*{tipoVeiculo}">
+							<label>Tipo do Veículo:</label> 
+							<select class="" id="tipoveiculo" name="tipoveiculo" required="required" th:field="*{tipoVeiculo}">
 								<option value="">Selecione</option>
 								<option value="novo">Novo</option>
 								<option value="seminovo">Seminovo</option>
@@ -95,8 +96,14 @@
 								<input type="hidden" id="idmodelo">
 							</div>
 							<div class="coluna-3">
-								<label>Combustivel:</label>
-								<input type="text" id="combustivel" placeholder="Combustivel" th:field="*{combustivel}">
+								<label>Combustivel:</label> 
+								<select class="" id="combustivel" name="tipoveiculo" required="required" th:field="*{combustivel}">
+									<option value="">Selecione</option>
+									<option value="Gasolina">Gasolina</option>
+									<option value="Alcool">Alcool</option>
+									<option value="Flex">Flex</option>
+									<option value="Eletrico">Eletrico</option>
+								</select>
 							</div>
 							<div class="coluna-3">
 								<label>Valor:</label>

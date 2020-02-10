@@ -18,71 +18,78 @@
 <link rel="stylesheet" href="assets/dropdown/css/style.css">
 <link rel="stylesheet" href="assets/tether/tether.min.css">
 <link rel="stylesheet" href="assets/theme/css/style.css">
-<link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
 <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 <link rel="stylesheet" href="assets/css/oferta.css">
-
-<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 </head>
 <body>
 	<section class="menu cid-rGkts3fOzj" once="menu" id="menu1-0">
-		<nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
-			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
+		<nav
+			class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+			<button class="navbar-toggler navbar-toggler-right" type="button"
+				data-toggle="collapse" data-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation"></button>
 			<div class="menu-logo">
 				<div class="navbar-brand">
-					<span class="navbar-logo"> <a href="/index"><img src="assets/images/logo1-122x124.png" alt="Virtual Dealer" title="Logo VirtualDealer" style="height: 4.5rem;"></a></span>
-					<span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="/index">Virtual Dealer</a></span>
+					<span class="navbar-logo"> <a href="/index"><img
+							src="assets/images/logo1-122x124.png" alt="Virtual Dealer"
+							title="Logo VirtualDealer" style="height: 4.5rem;"></a></span> <span
+						class="navbar-caption-wrap"><a
+						class="navbar-caption text-white display-4" href="/index">Virtual
+							Dealer</a></span>
 				</div>
 			</div>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
-				<ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
-					<li class="nav-item">
-						<a class="nav-link link text-white display-4" href="/index"></a>
+				<ul class="navbar-nav nav-dropdown nav-right"
+					data-app-modern-menu="true">
+					<li class="nav-item"><a
+						class="nav-link link text-white display-4" href="/index"></a></li>
+					<li class="nav-item"><a
+						class="nav-link link text-white display-4" href="/paginaInicial"><span
+							class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>Pagina
+							Inicial</a></li>
+					<li class="nav-item"><a
+						class="nav-link link text-white display-4" href="/login"><span
+							class="mbri-key mbr-iconfont mbr-iconfont-btn"></span>Login</a></li>
+					<li class="nav-item"><a
+						class="nav-link link text-white display-4" href="/cadastro"><span
+							class="mbri-users mbr-iconfont mbr-iconfont-btn"></span>Cadastro</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link link text-white display-4" href="/paginaInicial"><span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>Pagina Inicial</a>
+					<li class="nav-item"><a
+						class="nav-link link text-white display-4" href="/pesquisa"><span
+							class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
 					</li>
-					<li class="nav-item">
-						<a class="nav-link link text-white display-4" href="/login"><span class="mbri-key mbr-iconfont mbr-iconfont-btn"></span>Login</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link link text-white display-4" href="/cadastro"><span class="mbri-users mbr-iconfont mbr-iconfont-btn"></span>Cadastro</a>
-					</li>
-					<li class="nav-item">
-						<a class="nav-link link text-white display-4" href="/pesquisa"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
-					</li>
-				</ul>
-				<li class="nav-item dropdown open"><a
-						th:if="${session.gestorLogado != null}"
+					<li class="nav-item dropdown open"><a
+						th:if="${session.clienteLogado != null}"
 						class="nav-link link text-white dropdown-toggle display-4"
 						th:href="@{/paginaInicial}" data-toggle="dropdown-submenu"
 						aria-expanded="true"><span
 							class="mbri-user mbr-iconfont mbr-iconfont-btn"></span> <span
-							th:if="${session.gestorLogado != null}"
+							th:if="${session.clienteLogado != null}"
 							th:text="${session.clienteLogado.emailCliente}"></span></a>
-					<div class="dropdown-menu">
+						<div class="dropdown-menu">
 							<a class="text-white dropdown-item display-4"
-								th:href="@{/editarPerfil}">Configurações</a><a
-								class="text-white dropdown-item display-4"
-								th:href="@{/logout}" aria-expanded="false">Sair</a>
-						</div></li>
-						
-				<!-- <div class="btn-group btn-group-primary">
-					<button class="btn btn-primary" type="button">
-						<span th:text="${session.clienteLogado.nome}"></span>
-					</button>
-					<button data-toggle="dropdown"
-						class="btn btn-primary dropdown-toggle" type="button">
-						<span class="caret"></span>
-					</button>
-					<ul class="dropdown-menu">
-						<li><a href="#">configuração</a></li>
-						
-						<li><a href="/logout">Logout</a></li>
-					</ul> -->
-				</div>
+								th:href="@{/perfilCliente}">Configurações</a><a
+								class="text-white dropdown-item display-4" th:href="@{/logout}"
+								aria-expanded="false">Sair</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown open"><a
+						th:if="${session.concessionaraLogada != null}"
+						class="nav-link link text-white dropdown-toggle display-4"
+						th:href="@{/paginaInicial}" data-toggle="dropdown-submenu"
+						aria-expanded="true"><span
+							class="mbri-user mbr-iconfont mbr-iconfont-btn"></span> <span
+							th:if="${session.concessionariaLogada != null}"
+							th:text="${session.concessionaraLogada.emailConcessionaria}"></span></a>
+						<div class="dropdown-menu">
+							<a class="text-white dropdown-item display-4"
+								th:href="@{/perfilConcessionaria}">Configurações</a><a
+								class="text-white dropdown-item display-4" th:href="@{/logout}"
+								aria-expanded="false">Sair</a>
+						</div>
+					</li>
+				</ul>
 			</div>
 		</nav>
 	</section>
@@ -90,75 +97,83 @@
 		<div class="container">
 			<div class="row">
 
-					<div class="card col-4" th:each="oferta : ${lista}">
-						<figure class="snip1423">
-						  <img src="https://www.tgpoli.com.br/img/noticias/dd5859799af8f4e2ff4572a00ccece37.jpg" alt="sample57" />
-						  <h4 class="text-danger" th:text="${oferta.veiculo}"></h4>
-									<h5 th:text="${oferta.marca}"></h5>
-									<ul class="list-inline ">
-										<li class="list-inline-item" th:text="${oferta.ano}"></li>
-										<li class="list-inline-item" th:text="${oferta.estado}"></li>
-										<li class="list-inline-item" th:text="${oferta.combustivel}"></li>
-										<li class="list-inline-item" th:text="${oferta.cor}"></li>
-									</ul>
-									<h3 th:text="${oferta.valor}"></h3>
-									
-										<button type="button" class="btn btn-outline-danger btn-sm">Agendar visita</button>
-								
-									<button class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target=".bd-example-modal-xl">Ver mais</button>
-										<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-											<div class="modal-dialog modal-xl">
-												<div class="modal-content">
-													<aside class="col-sm-5 border-right">
-														<article class="gallery-wrap">
-															<div class="img-big-wrap">
-																<div>
-																	<a href="#"><img src="https://s9.postimg.org/tupxkvfj3/image.jpg"></a>
-																</div>
-															</div>
-														</article>
-													</aside>
-													<aside class="col-sm-6">
-														<article class="card-body p-5">
-															<h3 class="title mb-3" th:text="${oferta.veiculo}"></h3>
-															<p class="price-detail-wrap">
-																<span class="price h3 text-warning"> <span
-																	class="currency">R$</span><span class="num" th:text="${oferta.valor}"></span>
-																</span>
-															</p>
-															<!-- price-detail-wrap .// -->
-															<dl class="item-property">
-																<dt>Descrição:</dt>
-																<dd>
-																	<p th:text="${oferta.descricao}"></p>
-																</dd>
-															</dl>
-															<dl class="param param-feature">
-																<dt th:text="${oferta.chassi}"></dt>
-															</dl>	
-															<!-- item-property-hor .// -->
-															<dl class="param param-feature">
-																<dt>Cor</dt>
-																<dd th:text="${oferta.cor}"></dd>
-															</dl>
-															<dl class="param param-feature">
-																<dt>Estado</dt>
-																<dd th:text="${oferta.estado}"></dd>
-															</dl>
-															<!-- item-property-hor .// -->
-															<a href="#" class="btn btn-lg btn-primary text-uppercase">Agendar visita</a>
-														</article>
-														<!-- card-body.// -->
-													</aside>
+				<div class="card col-4" th:each="oferta : ${lista}">
+					<figure class="snip1423">
+						<img th:if="*{oferta.fotoOferta != null}" th:src="@{/mostrarImagemOferta/{imagem}(imagem=${oferta.fotoOferta})}">
+						<h4 class="text-danger" th:text="${oferta.veiculo}"></h4>
+						<h5 th:text="${oferta.marca}"></h5>
+						<ul class="list-inline ">
+							<li class="list-inline-item" th:text="${oferta.ano}"></li>
+							<li class="list-inline-item" th:text="${oferta.estado}"></li>
+							<li class="list-inline-item" th:text="${oferta.combustivel}"></li>
+							<li class="list-inline-item" th:text="${oferta.cor}"></li>
+						</ul>
+						<h3 th:text="${oferta.valor}"></h3>
+
+						<button type="button" class="btn btn-outline-danger btn-sm">Agendar
+							visita</button>
+
+						<button class="btn btn-outline-secondary btn-sm"
+							data-toggle="modal" data-target=".bd-example-modal-xl">Ver
+							mais</button>
+						<div class="modal fade bd-example-modal-xl" tabindex="-1"
+							role="dialog" aria-labelledby="myExtraLargeModalLabel"
+							aria-hidden="true">
+							<div class="modal-dialog modal-xl">
+								<div class="modal-content">
+									<aside class="col-sm-5 border-right">
+										<article class="gallery-wrap">
+											<div class="img-big-wrap">
+												<div>
+													<a href="#"><img
+														src="https://s9.postimg.org/tupxkvfj3/image.jpg"></a>
 												</div>
 											</div>
-										</div>
-									</div>
-						</figure>
-						
-					</div>
-				
+										</article>
+									</aside>
+									<aside class="col-sm-6">
+										<article class="card-body p-5">
+											<h3 class="title mb-3" th:text="${oferta.veiculo}"></h3>
+											<p class="price-detail-wrap">
+												<span class="price h3 text-warning"> <span
+													class="currency">R$</span><span class="num"
+													th:text="${oferta.valor}"></span>
+												</span>
+											</p>
+											<!-- price-detail-wrap .// -->
+											<dl class="item-property">
+												<dt>Descrição:</dt>
+												<dd>
+													<p th:text="${oferta.descricao}"></p>
+												</dd>
+											</dl>
+											<dl class="param param-feature">
+												<dt th:text="${oferta.chassi}"></dt>
+											</dl>
+											<!-- item-property-hor .// -->
+											<dl class="param param-feature">
+												<dt>Cor</dt>
+												<dd th:text="${oferta.cor}"></dd>
+											</dl>
+											<dl class="param param-feature">
+												<dt>Estado</dt>
+												<dd th:text="${oferta.estado}"></dd>
+											</dl>
+											<!-- item-property-hor .// -->
+											<a href="#" class="btn btn-lg btn-primary text-uppercase">Agendar
+												visita</a>
+										</article>
+										<!-- card-body.// -->
+									</aside>
+								</div>
+							</div>
+						</div>
+				</div>
+				</figure>
+
 			</div>
+
+		</div>
 		</div>
 	</section>
 	<section class="footer4 cid-rHKj5aTgnl" id="footer4-17">
@@ -166,37 +181,50 @@
 			<div class="media-container-row content mbr-white">
 				<div class="col-md-3 col-sm-4">
 					<div class="mb-3 img-logo">
-						<a href="/index"> <img src="assets/images/logo1-122x124.png" alt="Mobirise" title=""></a>
+						<a href="/index"> <img src="assets/images/logo1-122x124.png"
+							alt="Mobirise" title=""></a>
 					</div>
 					<p class="mb-3 mbr-fonts-style foot-title display-7">VirtualDealer</p>
 					<p class="mbr-text mbr-fonts-style mbr-links-column display-7">
-						<a href="/sobreNos">Sobre nós</a><br>
-						<a href="" class="text-white">Services</a><br>Seja parceiro<a href="/cadastroEmpresa" class="text-white"><br></a><br>
+						<a href="/sobreNos">Sobre nós</a><br> 
+						<a href="/paginaInicial" class="text-white">Serviços</a><br>
+						<a href="/facaParte" class="text-white">Seja parceiro</a><br>
+						<a href="/gestorLogin" class="text-white">Gestão</a><br>
 					</p>
 				</div>
 				<div class="col-md-4 col-sm-8">
-					<p class="mb-4 foot-title mbr-fonts-style display-7">
-						<br>
-						<br>Noticias recentes
+					<p class="tex-white">
+						<br> <br>Noticias recentes
 					</p>
 					<p class="mbr-text mbr-fonts-style foot-text display-7">
-						Atualização nos serviços de atendimento.<br>Venha confereir &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>
+						Atualização nos serviços de atendimento.<br>Venha confereir
+						&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+						&nbsp;&nbsp;<br>
 					</p>
 				</div>
 				<div class="col-md-4 offset-md-1 col-sm-12">
 					<p class="mb-4 foot-title mbr-fonts-style display-7">SUBSCRIBE</p>
-					<p class="mbr-text mbr-fonts-style form-text display-7">Receba nossas novidades em seu Email</p>
+					<p class="mbr-text mbr-fonts-style form-text display-7">Receba
+						nossas novidades em seu Email</p>
 					<div class="media-container-column" data-form-type="formoid">
 						<!---Formbuilder Form--->
-						<form action="https://mobirise.com/" method="POST" id="" class="mbr-form form-with-styler" data-form-title="Mobirise Form">
-							<input type="hidden" name="email" data-form-email="true" value="F/Xd2G9g0ucJ0D4xYj/YqxWQHwJ4aW38LM1YbJt7IU+XU0czA7xWGbm6BmhuXSXENGkb0KWqf29rfOvn9Zs67XgfqcxUqXSY2ivBd0dWsSUCQnSYAqQB46Iz7OaFoUV9">
+						<form action="https://mobirise.com/" method="POST" id=""
+							class="mbr-form form-with-styler" data-form-title="Mobirise Form">
+							<input type="hidden" name="email" data-form-email="true"
+								value="F/Xd2G9g0ucJ0D4xYj/YqxWQHwJ4aW38LM1YbJt7IU+XU0czA7xWGbm6BmhuXSXENGkb0KWqf29rfOvn9Zs67XgfqcxUqXSY2ivBd0dWsSUCQnSYAqQB46Iz7OaFoUV9">
 							<div class="row form-inline justify-content-center">
-								<div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
-								<div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12"></div>
+								<div hidden="hidden" data-form-alert=""
+									class="alert alert-success col-12">Thanks for filling out
+									the form!</div>
+								<div hidden="hidden" data-form-alert-danger=""
+									class="alert alert-danger col-12"></div>
 							</div>
 							<div class="dragArea row form-inline justify-content-center">
 								<div class="col-auto  form-group " data-for="email">
-									<input type="email" name="email" placeholder="Email" data-form-field="Email" required="required" class="form-control input-sm input-inverse my-2 display-7" id="email-footer4-17">
+									<input type="email" name="email" placeholder="Email"
+										data-form-field="Email" required="required"
+										class="form-control input-sm input-inverse my-2 display-7"
+										id="email-footer4-17">
 								</div>
 								<div class="col-auto  input-group-btn  m-2">
 									<button type="submit" class="btn btn-primary m-0 display-4">Inscreva-se</button>
@@ -205,31 +233,36 @@
 						</form>
 						<!---Formbuilder Form--->
 					</div>
-					<p class="mb-4 mbr-fonts-style foot-title display-7">Conecte-se conosco</p>
+					<p class="mb-4 mbr-fonts-style foot-title display-7">Conecte-se
+						conosco</p>
 					<div class="social-list pl-0 mb-0">
 						<div class="soc-item">
 							<a href="https://twitter.com/virtualdealer" target="_blank">
-								<span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+								<span
+								class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
 							</a>
 						</div>
 						<div class="soc-item">
 							<a href="https://www.facebook.com/virtualdealer" target="_blank">
-								<span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+								<span
+								class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
 							</a>
 						</div>
 						<div class="soc-item">
 							<a href="https://www.youtube.com/c/virtualdealer" target="_blank">
-								<span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+								<span
+								class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
 							</a>
 						</div>
 						<div class="soc-item">
-							<a href="https://instagram.com/virtualdealer" target="_blank">
-								<span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+							<a href="https://instagram.com/virtualdealerbrasil" target="_blank">
+								<span
+								class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
 							</a>
 						</div>
 						<div class="soc-item">
-							<a href="https://www.behance.net/Mobirise" target="_blank">
-								<span class="mbr-iconfont mbr-iconfont-social socicon-whatsapp socicon"></span>
+							<a href="https://www.behance.net/Mobirise" target="_blank"> <span
+								class="mbr-iconfont mbr-iconfont-social socicon-whatsapp socicon"></span>
 							</a>
 						</div>
 					</div>
@@ -243,7 +276,8 @@
 				</div>
 				<div class="media-container-row mbr-white">
 					<div class="col-sm-12 copyright">
-						<p class="mbr-text mbr-fonts-style display-7">© Copyright 2020 VirtualDealer - Todos direitos reservados</p>
+						<p class="mbr-text mbr-fonts-style display-7">© Copyright 2020
+							VirtualDealer - Todos direitos reservados</p>
 					</div>
 				</div>
 			</div>
@@ -263,9 +297,6 @@
 	<script src="assets/js/jquery-ui.min.js"></script>
 	<script src="assets/js/jquery.mask.min.js"></script>
 	<script src="assets/js/jquery.min.js"></script>
-	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
-	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-	
+
 </body>
 </html>

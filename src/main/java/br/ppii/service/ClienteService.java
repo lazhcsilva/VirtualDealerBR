@@ -69,13 +69,19 @@ public class ClienteService {
 	
 	}
 	
-	public Cliente clienteLogin(String emailCliente, String password) throws ServiceException, NoSuchAlgorithmException, UnsupportedEncodingException {	
+	public Cliente logarCliente(String emailCliente, String password) throws ServiceException, NoSuchAlgorithmException, UnsupportedEncodingException {	
 		
 		String senhaCriptografada = Util.criptografarSenha(password);
 		Cliente cliente = this.clienteDAO.clienteLogin(emailCliente, senhaCriptografada);
 
 		if (cliente == null) {
 			throw new ServiceException("Login/senha não encontrados");
+		}
+		
+		if (cliente.getAtivo() == false) {
+			
+			throw new ServiceException("Conta não ativa");
+			
 		}
 		
 		return cliente;

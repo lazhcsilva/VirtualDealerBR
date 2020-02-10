@@ -64,7 +64,7 @@ public class EmailService {
 		
 		EmailMensagem mensagem = new EmailMensagem();
 		mensagem.setTitulo("Olá, " + cliente.getNome() + ". Ative sua conta!");
-		mensagem.setMensagem("Para ter acesso total ao nosso site, ative sua conta, copiando esse endereço abaixo e colando na url. (este email vence em: " +  validade.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + ")");
+		mensagem.setMensagem("Para ter acesso total ao nosso site ative sua conta, clique no botão abaixo. (este email vence em: " +  validade.format(DateTimeFormatter.ofPattern("dd/MM/yyyy")) + ")");
 		
 		mensagem.setController("/ativarConta");
 		
