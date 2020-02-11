@@ -8,7 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <link rel="shortcut icon" href="assets/images/logo1-122x124.png" type="image/x-icon">
 <meta name="description" content="Web Site Builder Description">
-<title>Planos</title>
+<title>Pesquisa</title>
 <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
@@ -22,6 +22,7 @@
 <link rel="stylesheet" href="assets/css/estilo.css">
 <link rel="stylesheet" href="assets/css/oferta.css">
 <link rel="stylesheet" href="assets/css/descricao.css">
+<link rel="stylesheet" href="assets/css/gestor.css">
 </head>
 <body>
 	<section class="menu cid-rGkts3fOzj" once="menu" id="menu1-0">
@@ -51,7 +52,7 @@
 							class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>Pagina
 							Inicial</a></li>
 					<li class="nav-item"><a
-						class="nav-link link text-white display-4" href="/login"><span
+						class="nav-link link text-white display-4" th:if="${session.clienteLogado != null}" href="/login"><span
 							class="mbri-key mbr-iconfont mbr-iconfont-btn"></span>Login</a></li>
 					<li class="nav-item"><a
 						class="nav-link link text-white display-4" href="/cadastro"><span
@@ -108,28 +109,7 @@
 		</nav>
 	</section>
 	<section class="features3 cid-rHigNbtYt6" id="features3-j">
-		<div class="pricing-wrapper clearfix">
-			<!-- Titulo -->
-			<h1 class="pricing-table-title">Tabla de Planos</h1>
-			<div class="pricing-table" th:each=" assinatura : ${lista}">
-				<h3 class="pricing-title" th:text="${assinatura.nomeAssinatura}"></h3>
-				<div class="price">
-					<p class="tex-white">Validade:</p><span th:text="${assinatura.validade}"></span>
-				</div>
-				<!-- Lista de Caracteristicas / Propiedades -->
-				<ul class="table-list">
-					<li th:text="${assinatura.descricao}"></li>
-					<li th:text="${assinatura.descricao2}"><span class="unlimited">ilimitadas</span></li>
-					<li th:text="${assinatura.descricao3}"><span class="unlimited">ilimitadas</span></li>
-					
-				</ul>
-				<!-- Contratar / Comprar -->
-				<div class="table-buy">
-					<p th:text="${assinatura.preco}"></p>
-				<a href="https://www.mercadopago.com.br/checkout/v1/redirect?pref_id=316728099-5e7c7e3d-2258-4149-961c-fb88ee9a3332" class="pricing-action">Assinar</a>
-				</div>
-			</div>
-		</div>
+		
 	</section>
 	<section class="footer4 cid-rHKj5aTgnl" id="footer4-17">
 		<div class="container">
@@ -242,15 +222,16 @@
 	<script src="assets/popper/popper.min.js"></script>
 	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
 	<script src="assets/smoothscroll/smooth-scroll.js"></script>
-	<script src="assets/tether/tether.min.js"></script>
 	<script src="assets/dropdown/js/nav-dropdown.js"></script>
 	<script src="assets/dropdown/js/navbar-dropdown.js"></script>
 	<script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+	<script src="assets/tether/tether.min.js"></script>
 	<script src="assets/theme/js/script.js"></script>
 	<script src="assets/formoid/formoid.min.js"></script>
-	<script src="assets/jquery.validate.min.js"></script>
-	<script src="assets/js/jquery.js"></script>
-	<script src="assets/js/jquery.validate.js"></script>
-	<script src="assets/js/validacao.js"></script>
+	<script src="assets/js/oferta.js"></script>
+	<script src="assets/js/jquery-ui.min.js"></script>
+	<script src="assets/js/jquery.mask.min.js"></script>
+	<script src="assets/js/jquery.min.js"></script>
+
 </body>
 </html>

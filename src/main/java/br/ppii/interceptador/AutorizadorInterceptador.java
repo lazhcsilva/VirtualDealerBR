@@ -22,7 +22,7 @@ public class AutorizadorInterceptador implements HandlerInterceptor  {
 	
 	private final String[] RECURSOS_CONCESSIONARIA = {"/index", "/login", "/paginaInicial", "/editarConcessionaria", "/cadastrarOferta", "/editarOferta" , ACESSO_NEGADO};
 	
-	private final String[] RECURSOS_GESTOR = {"/index", "gestoLogin", "/paginaInicial", "/facaParte", "/sobreNos", "/cadastroConcessionaria", "/cadastrarPlano", "/gestor", ACESSO_NEGADO};
+	private final String[] RECURSOS_GESTOR = {"/index", "/gestoLogin", "/paginaInicial", "/facaParte", "/sobreNos", "/cadastroConcessionaria", "/cadastrarPlano", "/gestor", ACESSO_NEGADO};
 	
 	public boolean preHandler(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
 	

@@ -42,7 +42,6 @@ public class ConcessionariaController {
 	@GetMapping("/perfilConcessionaria")
 	public String perfilConcessionaria(Concessionaria concessionaria, Model model, HttpSession session) {
 		
-		session.setAttribute("concessionariaLogada", concessionaria);
 		return "/perfil/perfilconcessionaria";
 		
 	}

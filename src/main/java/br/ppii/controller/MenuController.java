@@ -77,6 +77,12 @@ public class MenuController {
 	
 	@GetMapping("/gestor")
 	public String gestor(Gestor gestor, HttpSession session, Model model) {
+		
+		if(gestor.getCPF() == null) {
+			
+			return "paginaInicial";
+			
+		}
 		return "perfil/gestor";
 	}
 	

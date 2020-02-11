@@ -19,7 +19,7 @@ public class Assinatura {
 	
 	private String nomeAssinatura;
 	
-	private Date validade;
+	private String validade;
 	
 	@Size(min = 5, max = 255)
 	private String operacao;
@@ -44,11 +44,11 @@ public class Assinatura {
 		this.idAssinatura = idAssinatura;
 	}
 
-	public Date getValidade() {
+	public String getValidade() {
 		return validade;
 	}
 
-	public void setValidade(Date validade) {
+	public void setValidade(String validade) {
 		this.validade = validade;
 	}
 
