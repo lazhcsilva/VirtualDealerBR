@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.web.servlet.HandlerInterceptor;
+import org.springframework.web.servlet.resource.ResourceHttpRequestHandler;
 
 import br.ppii.model.Cliente;
 import br.ppii.model.Concessionaria;
@@ -13,177 +14,95 @@ public class AutorizadorInterceptador implements HandlerInterceptor  {
 
 	private final boolean CONTROLAR_ACESSO = true;
 	
-	private final String ACESSO_NEGADO = "acessonegado";
+	private static final String ACESSO_NEGADO = "/acessoNegado";
 	
-	private final String[] PAGINAS_ESTATICAS = {"/assets/"};
+	private static final String[] RECURSOS_LIVRES = {"/index", "/paginaInicial", "/facaParte", "/sobreNos", "/ativarConta", "/cadastro", ACESSO_NEGADO};
 	
-	private final String[] PAGINAS_DESLOGADO = {"/", "/acesso/login", "/facaparte", "/index", "/paginainicial", "/sobrenos", "/cadastro/cadastrocliente"};
+	private final String[] RECURSOS_CLIENTE = {"/index", "/login", "/editarCliente", "/paginaInical", "/facaParte", "/planos", "/sobreNos", "/logout" , ACESSO_NEGADO};
 	
-	private final String[] PAGINAS_USUARIO_LOGADO = {"/editar/editarcliente", "/perfil/perfilcliente", ACESSO_NEGADO};
+	private final String[] RECURSOS_CONCESSIONARIA = {"/index", "/login", "/paginaInicial", "/editarConcessionaria", "/cadastrarOferta", "/editarOferta" , ACESSO_NEGADO};
 	
-	private final String[] PAGINAS_CONCESSIONARIA_LOGADA = {"/perfil/perfilconcessionaria", "/cadastro/cadastrooferta", "/editar/editarempresa", ACESSO_NEGADO};
+	private final String[] RECURSOS_GESTOR = {"/index", "gestoLogin", "/paginaInicial", "/facaParte", "/sobreNos", "/cadastroConcessionaria", "/cadastrarPlano", "/gestor", ACESSO_NEGADO};
 	
-	private final String[] PAGINAS_GESTOR_LOGADO = {"/cadastro/cadastroplano", "/gestor/listarplanos", "/cadastro/cadastrarconcessionaria"};
-
-	public boolean preHandle(HttpServletRequest request,
-			HttpServletResponse response, Object controller) throws
-			Exception {
+	public boolean preHandler(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
+	
+		if(handler instanceof ResourceHttpRequestHandler) {
 		
-		String urlRequisitada = request.getServletPath();
-		
-		Cliente clienteLogado = (Cliente) request.getSession().getAttribute("clienteLogado");
-		Concessionaria concessionariaLogada = (Concessionaria) request.getSession().getAttribute("concessionariaLogada");
-		Gestor gestorLogado = (Gestor) request.getSession().getAttribute("gestorLogado");
-		
-		boolean estaLogado = clienteLogado != null ? true : false;
-		boolean estaLogada = concessionariaLogada != null ? true : false;
-		boolean gestorEstaLogado = gestorLogado != null ? true : false;
-		
-		if(!CONTROLAR_ACESSO) {
-			
 			return true;
-			
-		}
 		
-		if (urlRequisitada.contains("/gestor")) {
-			
-			if (estaLogado) {
-				
-//				if (clienteLogado.getAtivo == true) {
-//				
-//					return true;
-//				
-//				} else {
-//				
-//					request.getRequestDispatcher(ACESSO_NEGADO).forward(request, response);
-//					return false;
-//				
-//				}
-				
-			} else {
-				
-				response.sendRedirect("/entrar?destino="+urlRequisitada);
-				return false;
-			
-			}
-			
 		}
+
+		if (!CONTROLAR_ACESSO) {
 		
-		for (String paginaLogado : PAGINAS_USUARIO_LOGADO) {
-			
-			if(urlRequisitada.contains(paginaLogado)) {
-				
-				if (estaLogado) {
-					
-					return true;
-					
-				} else {
-					
-					if (!urlRequisitada.equals("/") && !urlRequisitada.equals("/logout")) {
-						
-						response.sendRedirect("/login?destino=" + urlRequisitada);
-						return false;
-						
-					} else {
-						
-						response.sendRedirect("/login");
-						return false;
-						
-					}
-					
-				}
-				
-			}
-			
-		}
-		
-		for (String paginaLogado : PAGINAS_CONCESSIONARIA_LOGADA) {
-			
-			if(urlRequisitada.contains(paginaLogado)) {
-				
-				if (estaLogada) {
-					
-					return true;
-					
-				} else {
-					
-					if (!urlRequisitada.equals("/") && !urlRequisitada.equals("/logout")) {
-						
-						response.sendRedirect("/login?destino=" + urlRequisitada);
-						return false;
-						
-					} else {
-						
-						response.sendRedirect("/login");
-						return false;
-						
-					}
-					
-				}
-				
-			}
-			
-		}
-		
-		for (String paginaLogado : PAGINAS_GESTOR_LOGADO) {
-			
-			if(urlRequisitada.contains(paginaLogado)) {
-				
-				if (gestorEstaLogado) {
-					
-					return true;
-					
-				} else {
-					
-					if (!urlRequisitada.equals("/") && !urlRequisitada.equals("/logout")) {
-						
-						response.sendRedirect("/login?destino=" + urlRequisitada);
-						return false;
-						
-					} else {
-						
-						response.sendRedirect("/login");
-						return false;
-						
-					}
-					
-				}
-				
-			}
-			
-		}
-		
-		for (String paginaDeslogado : PAGINAS_DESLOGADO) {
-			
-			if (urlRequisitada.equals(paginaDeslogado)) {
-				
-				if (!estaLogado) {
-					
-					return true;
-				
-				} else {
-					
-					response.sendRedirect("/home");
-					return false;
-				
-				}
-			
-			}
+			return true;
 		
 		}
 		
-		for (String paginaEstatica : PAGINAS_ESTATICAS) {
+		for (String recurso : RECURSOS_LIVRES) {
 		
-			if (urlRequisitada.contains(paginaEstatica)) {
-			
+			if (request.getRequestURL().toString().endsWith(recurso)) {
+		
 				return true;
-			
+		
 			}
 		
 		}
 		
-		return true;
+		if (request.getSession().getAttribute("clienteLogado") == null) {
+		
+			request.getRequestDispatcher(ACESSO_NEGADO).forward(request, response);
+			return false;
+		
+		} else if (request.getSession().getAttribute("concessionariaLogada") == null) {
+		
+			request.getRequestDispatcher(ACESSO_NEGADO).forward(request, response);
+			return false;
+		
+		} else if (request.getSession().getAttribute("gestorLogado") == null) {
+			
+			request.getRequestDispatcher(ACESSO_NEGADO).forward(request, response);
+			return false;
+			
+		} else {
+			
+			Cliente cliente = (Cliente) request.getSession().getAttribute("clienteLogado");
+			Concessionaria concessionaria = (Concessionaria) request.getSession().getAttribute("concessionariaLogada");
+			Gestor gestor = (Gestor) request.getSession().getAttribute("gestorLogado");
+			
+			for (String recurso : RECURSOS_GESTOR) {
+			
+				if (request.getRequestURL().toString().contains(recurso) && gestor.getPermissao() == 2) {
+				
+					return true;
+				
+				}
+			
+			}
+			
+			for (String recurso : RECURSOS_CONCESSIONARIA) {
+				
+				if (request.getRequestURI().toString().contains(recurso) && concessionaria.getPermissao() == 1) {
+					
+					return true;
+					
+				}
+				
+			}
+			
+			for (String recurso : RECURSOS_CLIENTE) {
+				
+				if (request.getRequestURL().toString().contains(recurso) && cliente.getPermissao() == 0) {
+				
+					return true;
+				
+				}
+			
+			}
+		
+			request.getRequestDispatcher(ACESSO_NEGADO).forward(request, response);
+			return false;
+		}
 		
 	}
-	
+
 }

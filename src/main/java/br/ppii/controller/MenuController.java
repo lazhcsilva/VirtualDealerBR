@@ -44,6 +44,7 @@ public class MenuController {
 	@GetMapping("/login")
 	public String login(Cliente cliente, Model model, Concessionaria concessionaria, HttpSession session) {
 		model.addAttribute("cliente", new Cliente());
+		model.addAttribute("concessionaria", new Concessionaria());
 		return "acesso/login";
 	}
 	
@@ -52,10 +53,6 @@ public class MenuController {
 		return "sobrenos";
 	}
 	
-	@GetMapping("/empresas")
-	public String empresas() {
-		return "empresas";
-	}
 	
 	@GetMapping("/pagamento")
 	public String pagamento() {
@@ -66,11 +63,6 @@ public class MenuController {
 	public String trocaSenha() {
 		return "senha";
 	}
-	
-	/*
-	 * @GetMapping("/cadastroConcluido") public String cadastroConcluido() { return
-	 * "cadastroconcluido"; }
-	 */
 	
 	@GetMapping("/termos")
 	public String termos() {

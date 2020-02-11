@@ -26,11 +26,13 @@ public class Gestor {
 	private String telefone;
 	
 	private String fotoGestor;
-
-	public Gestor() {};
 	
+	private int permissao = 2;
+
+	public Gestor() {}
+
 	public Gestor(Integer idGestor, String gestor, String emailGestor, String password, LocalDate dataNascimento,
-			String cPF, String telefone, String fotoGestor) {
+			String cPF, String telefone, String fotoGestor, int permissao) {
 		super();
 		this.idGestor = idGestor;
 		this.gestor = gestor;
@@ -40,9 +42,8 @@ public class Gestor {
 		CPF = cPF;
 		this.telefone = telefone;
 		this.fotoGestor = fotoGestor;
+		this.permissao = permissao;
 	}
-
-
 
 	public Integer getIdGestor() {
 		return idGestor;
@@ -108,11 +109,20 @@ public class Gestor {
 		this.fotoGestor = fotoGestor;
 	}
 
+	public int getPermissao() {
+		return permissao;
+	}
+
+	public void setPermissao(int permissao) {
+		this.permissao = permissao;
+	}
+
 	@Override
 	public String toString() {
 		return "Gestor [idGestor=" + idGestor + ", gestor=" + gestor + ", emailGestor=" + emailGestor + ", password="
 				+ password + ", dataNascimento=" + dataNascimento + ", CPF=" + CPF + ", telefone=" + telefone
-				+ ", fotoGestor=" + fotoGestor + "]";
-	}
+				+ ", fotoGestor=" + fotoGestor + ", permissao=" + permissao + "]";
+	};
+	
 
 }

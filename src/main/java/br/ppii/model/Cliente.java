@@ -39,6 +39,8 @@ public class Cliente{
 	
 	private String token;
 	
+	private int permissao = 0;
+	
 	@ManyToOne
 	private Assinatura assinatura;
 	
@@ -50,8 +52,176 @@ public class Cliente{
 	
 	public Cliente() {}
 
+	public Integer getIdCliente() {
+		return idCliente;
+	}
+
+
+
+	public void setIdCliente(Integer idCliente) {
+		this.idCliente = idCliente;
+	}
+
+
+
+	public String getNome() {
+		return nome;
+	}
+
+
+
+	public void setNome(String nome) {
+		this.nome = nome;
+	}
+
+
+
+	public String getEmailCliente() {
+		return emailCliente;
+	}
+
+
+
+	public void setEmailCliente(String emailCliente) {
+		this.emailCliente = emailCliente;
+	}
+
+
+
+	public String getPassword() {
+		return password;
+	}
+
+
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+
+
+	public String getCpf() {
+		return cpf;
+	}
+
+
+
+	public void setCpf(String cpf) {
+		this.cpf = cpf;
+	}
+
+
+
+	public Date getDataNascimento() {
+		return dataNascimento;
+	}
+
+
+
+	public void setDataNascimento(Date dataNascimento) {
+		this.dataNascimento = dataNascimento;
+	}
+
+
+
+	public String getTelefone() {
+		return telefone;
+	}
+
+
+
+	public void setTelefone(String telefone) {
+		this.telefone = telefone;
+	}
+
+
+
+	public String getFotoCliente() {
+		return fotoCliente;
+	}
+
+
+
+	public void setFotoCliente(String fotoCliente) {
+		this.fotoCliente = fotoCliente;
+	}
+
+
+
+	public boolean isAtivo() {
+		return ativo;
+	}
+
+
+
+	public void setAtivo(boolean ativo) {
+		this.ativo = ativo;
+	}
+
+
+
+	public String getToken() {
+		return token;
+	}
+
+
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+
+
+	public int getPermissao() {
+		return permissao;
+	}
+
+
+
+	public void setPermissao(int permissao) {
+		this.permissao = permissao;
+	}
+
+
+
+	public Assinatura getAssinatura() {
+		return assinatura;
+	}
+
+
+
+	public void setAssinatura(Assinatura assinatura) {
+		this.assinatura = assinatura;
+	}
+
+
+
+	public Endereco getEndereco() {
+		return endereco;
+	}
+
+
+
+	public void setEndereco(Endereco endereco) {
+		this.endereco = endereco;
+	}
+
+
+
+	public Reserva getReserva() {
+		return reserva;
+	}
+
+
+
+	public void setReserva(Reserva reserva) {
+		this.reserva = reserva;
+	}
+
+
+
 	public Cliente(Integer idCliente, String nome, String emailCliente, String password, String cpf,
-			Date dataNascimento, String telefone, String fotoCliente, boolean ativo, String token,
+			Date dataNascimento, String telefone, String fotoCliente, boolean ativo, String token, int permissao,
 			Assinatura assinatura, Endereco endereco, Reserva reserva) {
 		super();
 		this.idCliente = idCliente;
@@ -64,108 +234,10 @@ public class Cliente{
 		this.fotoCliente = fotoCliente;
 		this.ativo = ativo;
 		this.token = token;
+		this.permissao = permissao;
 		this.assinatura = assinatura;
 		this.endereco = endereco;
 		this.reserva = reserva;
-	}
-
-
-
-	public Integer getIdCliente() {
-		return idCliente;
-	}
-
-	public void setIdCliente(Integer idCliente) {
-		this.idCliente = idCliente;
-	}
-
-	public String getNome() {
-		return nome;
-	}
-
-	public void setNome(String nome) {
-		this.nome = nome;
-	}
-
-	public String getEmailCliente() {
-		return emailCliente;
-	}
-
-	public void setEmailCliente(String emailCliente) {
-		this.emailCliente = emailCliente;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
-	}
-
-	public String getCpf() {
-		return cpf;
-	}
-
-	public void setCpf(String cpf) {
-		this.cpf = cpf;
-	}
-
-	public Date getDataNascimento() {
-		return dataNascimento;
-	}
-
-	public void setDataNascimento(Date dataNascimento) {
-		this.dataNascimento = dataNascimento;
-	}
-
-	public String getTelefone() {
-		return telefone;
-	}
-
-	public void setTelefone(String telefone) {
-		this.telefone = telefone;
-	}
-
-	public Assinatura getAssinatura() {
-		return assinatura;
-	}
-
-	public void setAssinatura(Assinatura assinatura) {
-		this.assinatura = assinatura;
-	}
-
-	public Endereco getEndereco() {
-		return endereco;
-	}
-
-	public void setEndereco(Endereco endereco) {
-		this.endereco = endereco;
-	}
-
-	public Reserva getReserva() {
-		return reserva;
-	}
-
-	public void setReserva(Reserva reserva) {
-		this.reserva = reserva;
-	}
-
-	public boolean getAtivo() {
-		return ativo;
-	}
-
-	public void setAtivo(boolean ativo) {
-		this.ativo = ativo;
-	}
-	
-	
-	public String getFotoCliente() {
-		return fotoCliente;
-	}
-
-	public void setFotoCliente(String fotoCliente) {
-		this.fotoCliente = fotoCliente;
 	}
 
 	@Override
@@ -185,20 +257,12 @@ public class Cliente{
 		return true;
 	}
 
-	public String getToken() {
-		return token;
-	}
-
-	public void setToken(String token) {
-		this.token = token;
-	}
-
 	@Override
 	public String toString() {
 		return "Cliente [idCliente=" + idCliente + ", nome=" + nome + ", emailCliente=" + emailCliente + ", password="
 				+ password + ", cpf=" + cpf + ", dataNascimento=" + dataNascimento + ", telefone=" + telefone
-				+ ", fotoCliente=" + fotoCliente + ", ativo=" + ativo + ", token=" + token + ", assinatura="
-				+ assinatura + ", endereco=" + endereco + ", reserva=" + reserva + "]";
+				+ ", fotoCliente=" + fotoCliente + ", ativo=" + ativo + ", token=" + token + ", permissao=" + permissao
+				+ ", assinatura=" + assinatura + ", endereco=" + endereco + ", reserva=" + reserva + "]";
 	}
-	
+
 }

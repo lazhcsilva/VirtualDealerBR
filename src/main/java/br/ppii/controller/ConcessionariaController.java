@@ -104,7 +104,7 @@ public class ConcessionariaController {
 		} catch (ServiceException e) {
 			
 			ra.addFlashAttribute("mensagemErro", e.getMessage());
-			return "login";
+			return "paginaInicial";
 		
 		}
 		

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 @Controller
 public class ImagemController {
 
-	private static String caminhoImagens ="C:\\Users\\Alan\\git\\VirtualDealerBR\\src\\main\\resources\\static\\assets\\images\\Cliente\\";
+	private static String caminhoImagem ="C:\\Users\\Alan\\git\\VirtualDealerBR\\src\\main\\resources\\static\\assets\\images\\Cliente\\";
 	private static String caminhoImagemOferta ="C:\\Users\\Alan\\git\\VirtualDealerBR\\src\\main\\resources\\static\\assets\\images\\Oferta\\";
 	private static String caminhoImagemConcessionaria ="C:\\Users\\Alan\\git\\VirtualDealerBR\\src\\main\\resources\\static\\assets\\images\\Concessionaria\\";
 	
@@ -20,7 +20,7 @@ public class ImagemController {
 	@ResponseBody
 	public byte[] retornarImagem(@PathVariable("imagem")String imagem) throws IOException {
 		
-		File imagemArquivoFile = new File(caminhoImagens+imagem);
+		File imagemArquivoFile = new File(caminhoImagem+imagem);
 		
 		if(imagem!=null || imagem.trim().length()>0) {
 		

@@ -31,12 +31,12 @@
 				aria-label="Toggle navigation"></button>
 			<div class="menu-logo">
 				<div class="navbar-brand">
-					<span class="navbar-logo"> <a href="/index"><img
-							src="assets/images/logo1-122x124.png" alt="Virtual Dealer"
-							title="Logo VirtualDealer" style="height: 4.5rem;"></a></span> <span
-						class="navbar-caption-wrap"><a
-						class="navbar-caption text-white display-4" href="/index">Virtual
-							Dealer</a></span>
+					<span class="navbar-logo"> 
+						<a href="/index"><img src="assets/images/logo1-122x124.png" alt="Virtual Dealer" title="Logo VirtualDealer" style="height: 4.5rem;"></a>
+					</span>
+					<span class="navbar-caption-wrap">
+						<a class="navbar-caption text-white display-4" href="/index">Virtual Dealer</a>
+					</span>
 				</div>
 			</div>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -59,17 +59,44 @@
 						class="nav-link link text-white display-4" href="/pesquisa"><span
 							class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
 					</li>
-					<li class="nav-item dropdown open"><a
-						th:if="${session.clienteLogado != null}"
+					<li class="nav-item dropdown open" th:if="${session.clienteLogado != null}"><a
 						class="nav-link link text-white dropdown-toggle display-4"
 						th:href="@{/paginaInicial}" data-toggle="dropdown-submenu"
 						aria-expanded="true"><span
 							class="mbri-user mbr-iconfont mbr-iconfont-btn"></span> <span
 							th:if="${session.clienteLogado != null}"
-							th:text="${session.gestorLogado.emailGestor}"></span></a>
+							th:text="${session.clienteLogado.emailCliente}"></span></a>
 						<div class="dropdown-menu">
 							<a class="text-white dropdown-item display-4"
 								th:href="@{/perfilCliente}">Configurações</a><a
+								class="text-white dropdown-item display-4" th:href="@{/logout}"
+								aria-expanded="false">Sair</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown open" th:if="${session.concessionariaLogada != null}"><a
+						class="nav-link link text-white dropdown-toggle display-4"
+						th:href="@{/paginaInicial}" data-toggle="dropdown-submenu"
+						aria-expanded="true"><span
+							class="mbri-user mbr-iconfont mbr-iconfont-btn"></span> <span
+							th:if="${session.concessionariaLogada != null}"
+							th:text="${session.concessionariaLogada.emailConcessionaria}"></span></a>
+						<div class="dropdown-menu">
+							<a class="text-white dropdown-item display-4"
+								th:href="@{/perfilConcessionaria}">Configurações</a><a
+								class="text-white dropdown-item display-4" th:href="@{/logout}"
+								aria-expanded="false">Sair</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown open" th:if="${session.gestorLogado != null}"><a
+						class="nav-link link text-white dropdown-toggle display-4"
+						th:href="@{/paginaInicial}" data-toggle="dropdown-submenu"
+						aria-expanded="true"><span
+							class="mbri-user mbr-iconfont mbr-iconfont-btn"></span> <span
+							th:if="${session.gestorLogado != null}"
+							th:text="${session.gestorLogado.emailGestor}"></span></a>
+						<div class="dropdown-menu">
+							<a class="text-white dropdown-item display-4"
+								th:href="@{/gestor}">Configurações</a><a
 								class="text-white dropdown-item display-4" th:href="@{/logout}"
 								aria-expanded="false">Sair</a>
 						</div>

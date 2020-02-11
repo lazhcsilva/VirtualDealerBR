@@ -80,7 +80,7 @@ public class ClienteService {
 		
 		}
 		
-		if (cliente.getAtivo() == false) {
+		if (cliente.isAtivo() == false) {
 			
 			throw new ServiceException("Conta não ativa");
 			
@@ -94,7 +94,7 @@ public class ClienteService {
 		
 		Cliente cliente = this.findByEmail(email);
 
-		if (cliente.getAtivo() == false) {
+		if (cliente.isAtivo() == false) {
 		
 			this.emailService.enviarConfirmacaoDeConta(cliente);
 		

@@ -35,6 +35,8 @@ public class Concessionaria {
 	
 	private String fotoConcessionaria;
 	
+	private int permissao = 1;
+	
 	@OneToOne
 	private Endereco endereco;
 	
@@ -42,24 +44,6 @@ public class Concessionaria {
 	private List<Oferta> oferta;
 
 	public Concessionaria() {}
-	
-	public Concessionaria(Integer idConcessionaria, String nomeConcessionaria, String razaoSocial,
-			String emailConcessionaria, String nomeFantasia, String inscricaoEstadual, String password, String cnpj,
-			String telefone1, String fotoConcessionaria, Endereco endereco, List<Oferta> oferta) {
-		super();
-		this.idConcessionaria = idConcessionaria;
-		this.nomeConcessionaria = nomeConcessionaria;
-		this.razaoSocial = razaoSocial;
-		this.emailConcessionaria = emailConcessionaria;
-		this.nomeFantasia = nomeFantasia;
-		this.inscricaoEstadual = inscricaoEstadual;
-		this.password = password;
-		this.cnpj = cnpj;
-		this.telefone1 = telefone1;
-		this.fotoConcessionaria = fotoConcessionaria;
-		this.endereco = endereco;
-		this.oferta = oferta;
-	}
 
 	public Integer getIdConcessionaria() {
 		return idConcessionaria;
@@ -141,6 +125,14 @@ public class Concessionaria {
 		this.fotoConcessionaria = fotoConcessionaria;
 	}
 
+	public int getPermissao() {
+		return permissao;
+	}
+
+	public void setPermissao(int permissao) {
+		this.permissao = permissao;
+	}
+
 	public Endereco getEndereco() {
 		return endereco;
 	}
@@ -157,13 +149,33 @@ public class Concessionaria {
 		this.oferta = oferta;
 	}
 
+	public Concessionaria(Integer idConcessionaria, String nomeConcessionaria, String razaoSocial,
+			String emailConcessionaria, String nomeFantasia, String inscricaoEstadual, String password, String cnpj,
+			String telefone1, String fotoConcessionaria, int permissao, Endereco endereco, List<Oferta> oferta) {
+		super();
+		this.idConcessionaria = idConcessionaria;
+		this.nomeConcessionaria = nomeConcessionaria;
+		this.razaoSocial = razaoSocial;
+		this.emailConcessionaria = emailConcessionaria;
+		this.nomeFantasia = nomeFantasia;
+		this.inscricaoEstadual = inscricaoEstadual;
+		this.password = password;
+		this.cnpj = cnpj;
+		this.telefone1 = telefone1;
+		this.fotoConcessionaria = fotoConcessionaria;
+		this.permissao = permissao;
+		this.endereco = endereco;
+		this.oferta = oferta;
+	}
+
 	@Override
 	public String toString() {
 		return "Concessionaria [idConcessionaria=" + idConcessionaria + ", nomeConcessionaria=" + nomeConcessionaria
 				+ ", razaoSocial=" + razaoSocial + ", emailConcessionaria=" + emailConcessionaria + ", nomeFantasia="
 				+ nomeFantasia + ", inscricaoEstadual=" + inscricaoEstadual + ", password=" + password + ", cnpj="
-				+ cnpj + ", telefone1=" + telefone1 + ", fotoConcessionaria=" + fotoConcessionaria + ", endereco="
-				+ endereco + ", oferta=" + oferta + "]";
+				+ cnpj + ", telefone1=" + telefone1 + ", fotoConcessionaria=" + fotoConcessionaria + ", permissao="
+				+ permissao + ", endereco=" + endereco + ", oferta=" + oferta + "]";
 	}
+	
 	
 }
