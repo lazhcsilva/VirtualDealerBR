@@ -14,6 +14,7 @@ public class ImagemController {
 
 	private static String caminhoImagens ="C:\\Users\\Alan\\git\\VirtualDealerBR\\src\\main\\resources\\static\\assets\\images\\Cliente\\";
 	private static String caminhoImagemOferta ="C:\\Users\\Alan\\git\\VirtualDealerBR\\src\\main\\resources\\static\\assets\\images\\Oferta\\";
+	private static String caminhoImagemConcessionaria ="C:\\Users\\Alan\\git\\VirtualDealerBR\\src\\main\\resources\\static\\assets\\images\\Concessionaria\\";
 	
 	@GetMapping("/mostrarImagemCliente/{imagem}")
 	@ResponseBody
@@ -36,6 +37,22 @@ public class ImagemController {
 	public byte[] retornarImagem2(@PathVariable("imagem")String imagem) throws IOException {
 		
 		File imagemArquivoFile = new File(caminhoImagemOferta+imagem);
+		
+		if(imagem!=null || imagem.trim().length()>0) {
+	
+			return Files.readAllBytes(imagemArquivoFile.toPath());
+		
+		}
+		
+		return Files.readAllBytes(imagemArquivoFile.toPath());
+	
+	}
+	
+	@GetMapping("/mostrarImagemConcessionaria/{imagem}")
+	@ResponseBody
+	public byte[] retornarImagem3(@PathVariable("imagem")String imagem) throws IOException {
+		
+		File imagemArquivoFile = new File(caminhoImagemConcessionaria+imagem);
 		
 		if(imagem!=null || imagem.trim().length()>0) {
 	

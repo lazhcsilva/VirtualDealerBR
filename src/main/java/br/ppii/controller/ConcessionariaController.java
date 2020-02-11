@@ -1,6 +1,9 @@
 package br.ppii.controller;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.security.NoSuchAlgorithmException;
 
 import javax.mail.MessagingException;
@@ -18,6 +21,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import br.ppii.model.Concessionaria;
@@ -27,31 +31,50 @@ import br.ppii.service.ConcessionariaService;
 @Controller
 public class ConcessionariaController {
 	
+	private static String caminhoImagens ="C:\\Users\\Alan\\git\\VirtualDealerBR\\src\\main\\resources\\static\\assets\\images\\Concessionaria\\";
+	
 	@Autowired
 	private ConcessionariaDAO concessionariaDAO;
 	
 	@Autowired
 	private ConcessionariaService concessionariaService;
+	
+	@GetMapping("/perfilConcessionaria")
+	public String perfilConcessionaria(Concessionaria concessionaria, Model model, HttpSession session) {
+		
+		session.setAttribute("concessionariaLogada", concessionaria);
+		return "/perfil/perfilconcessionaria";
+		
+	}
 
 	@PostMapping("/salvarConcessionaria")
-	public String salvarConcessionaria(@Valid Concessionaria concessionaria, BindingResult br, Model model, RedirectAttributes ra,Errors errors) {
+	public String salvarConcessionaria(@Valid Concessionaria concessionaria, BindingResult br, Model model, RedirectAttributes ra,Errors errors, @RequestParam("file") MultipartFile arquivo) throws Exception{
 		
 		if(errors.hasErrors()) {
 			
 			ra.addFlashAttribute("mensagem", "erro");
-			return this.Cadastro(concessionaria);
+			return this.cadastroEmpresa(concessionaria);
 			
 		} else {
 			
 			try {
 				
+				if(!arquivo.isEmpty()) {
+					byte[] bytes = arquivo.getBytes();
+					Path caminho = Paths.get(caminhoImagens+String.valueOf(concessionaria.getIdConcessionaria())+arquivo.getOriginalFilename());
+					Files.write(caminho, bytes);
+					
+					concessionaria.setFotoConcessionaria(String.valueOf(concessionaria.getIdConcessionaria())+arquivo.getOriginalFilename());
+				}
+				
 				this.concessionariaService.salvarConcessionaria(concessionaria);
+
 				
 			} catch(ServiceException | MessagingException e) {
 				
-				ra.addFlashAttribute("menssage", "Não foi possível criar usuário: " + e.getMessage());
-                ra.addFlashAttribute("cliente", concessionaria);
-				return "redirect:/cadastrocliente";
+				ra.addFlashAttribute("menssage", "Não foi possível criar conta concessionaria: " + e.getMessage());
+                ra.addFlashAttribute("concessionaria", concessionaria);
+				return "redirect:/cadastroEmpresa";
 				
 			}
 			
@@ -59,35 +82,34 @@ public class ConcessionariaController {
 			
 		}
 		
-		return "redirect:/cadastroConcluido";
+		return "redirect:/perfilConcessionaria";
 		
 	}
 	
-	private String Cadastro(@Valid Concessionaria concessionaria) {
-		// TODO Auto-generated method stub
-		return null;
+	@GetMapping("/cadastroEmpresa")
+	public String cadastroEmpresa(Concessionaria concessionaria) {
+		return "cadastro/cadastroconcessionaria";
 	}
 
 	@PostMapping("/concessionariaLogin")
-	public String efetuarLogin(HttpServletRequest request, @ModelAttribute Concessionaria concessionaria, @RequestParam(name = "retorno", required = false) String retorno, RedirectAttributes ra, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	public String concessionariaLogin(HttpServletRequest request, @ModelAttribute Concessionaria concessionaria, @RequestParam(name = "retorno", required = false) String retorno, RedirectAttributes ra, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		
-		String redirect = "redirect:/index";
-		if (retorno != null) {
-			redirect = "redirect:" + retorno;
-		}
-
 		Concessionaria concessionariaLogada;
+		
 		try {
-			concessionariaLogada = this.concessionariaService.concessionariaLogin(concessionaria.getEmailConcessionaria(), concessionaria.getPassword());
+			
+			concessionariaLogada = this.concessionariaService.logarConcessionaria(concessionaria.getEmailConcessionaria(), concessionaria.getPassword());
 			session.setAttribute("concessionariaLogada", concessionariaLogada);
+			
 		} catch (ServiceException e) {
+			
 			ra.addFlashAttribute("mensagemErro", e.getMessage());
-
-			return "redirect:/login";
+			return "login";
+		
 		}
-
-		ra.addFlashAttribute("loginEfetuado", true);
-		return redirect;
+		
+		return "redirect:/paginaInicial";
+		
 	}
 	
 	@GetMapping("/editarConcessionaria")
@@ -101,4 +123,5 @@ public class ConcessionariaController {
 		this.concessionariaDAO.deleteById(idConcessionaria);
 		return "index";
 	}
+
 }

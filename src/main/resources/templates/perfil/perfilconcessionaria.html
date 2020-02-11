@@ -1,10 +1,266 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org"
+	xmlns:sec="httP://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
 <head>
-<meta charset="ISO-8859-1">
-<title>Insert title here</title>
+<meta charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="generator" content="Mobirise v4.11.3, mobirise.com">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
+<link rel="shortcut icon" href="assets/images/logo1-122x124.png" type="image/x-icon">
+<meta name="description" content="Web Site Builder Description">
+<title>Perfil concessionaria</title>
+<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
+<link rel="stylesheet" href="assets/bootstrap/css/bootstrap-reboot.min.css">
+<link rel="stylesheet" href="assets/socicon/css/styles.css">
+<link rel="stylesheet" href="assets/dropdown/css/style.css">
+<link rel="stylesheet" href="assets/tether/tether.min.css">
+<link rel="stylesheet" href="assets/theme/css/style.css">
+<link rel="preload" as="style" href="assets/mobirise/css/mbr-additional.css">
+<link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
+<link rel="stylesheet" href="assets/css/estilo.css">
+<link rel="stylesheet" href="assets/css/oferta.css">
+<link rel="stylesheet" href="assets/css/gestor.css">
 </head>
 <body>
-
+	<section class="menu cid-rGkts3fOzj" once="menu" id="menu1-0">
+		<nav class="navbar navbar-expand beta-menu navbar-dropdown align-items-center navbar-fixed-top navbar-toggleable-sm">
+			<button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"></button>
+			<div class="menu-logo">
+				<div class="navbar-brand">
+					<span class="navbar-logo"> <a href="/index"><img src="assets/images/logo1-122x124.png" alt="Virtual Dealer" title="Logo VirtualDealer" style="height: 4.5rem;"></a></span>
+					<span class="navbar-caption-wrap"><a class="navbar-caption text-white display-4" href="/index">Virtual Dealer</a></span>
+				</div>
+			</div>
+			<div class="collapse navbar-collapse" id="navbarSupportedContent">
+				<ul class="navbar-nav nav-dropdown nav-right" data-app-modern-menu="true">
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/index"></a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/paginaInicial"><span class="mbri-home mbr-iconfont mbr-iconfont-btn"></span>Pagina Inicial</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/login"><span class="mbri-key mbr-iconfont mbr-iconfont-btn"></span>Login</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/cadastro"><span class="mbri-users mbr-iconfont mbr-iconfont-btn"></span>Cadastro</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link link text-white display-4" href="/pesquisa"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
+					</li>
+					<li class="nav-item dropdown open"><a
+						th:if="${session.concessionariaLogada != null}"
+						class="nav-link link text-white dropdown-toggle display-4"
+						th:href="@{/paginaInicial}" data-toggle="dropdown-submenu"
+						aria-expanded="true"><span
+							class="mbri-user mbr-iconfont mbr-iconfont-btn"></span> <span
+							th:if="${session.concessionariaLogada != null}"
+							th:text="${session.concessionariaLogada.nomeConcessionaria}"></span></a>
+						<div class="dropdown-menu">
+							<a class="text-white dropdown-item display-4" th:href="@{/editarPerfilConcessionaria}">Configurações</a>
+							<a class="text-white dropdown-item display-4" th:href="@{/logout}" aria-expanded="false">Sair</a>
+						</div>
+					</li>
+				</ul>
+			</div>
+		</nav>
+	</section>
+	<section class="features3 cid-rHigNbtYt6" id="features3-j">
+		<div class="main-panel">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 grid-margin stretch-card">
+						<div class="card">
+							<div class="profile-card">
+								<div class="profile-header">
+									<div class="user-image">
+										<img class="card-img-top img-responsive" th:src="@{/mostrarImagemConcessionaria/{imagem}(imagem=${fotoConcessionaria})}">
+									</div>
+								</div>
+								<div class="profile-content">
+									<div class="profile-name"
+										th:text="${session.concessionariaLogada.nomeConcessionaria}"></div>
+									<div class="profile-designation">Concessionaria</div>
+									<p class="profile-description">Ativo</p>
+									<ul class="profile-info-list">
+										<li><a href="/perfilConcessionaria" class="profile-info-list-item"><i
+												class="mdi mdi-eye"></i>Perfil</a></li>
+										<li><a href="/paginaInicial" class="profile-info-list-item"><i
+												class="mdi mdi-bookmark-check"></i>Ofertas</a></li>
+										<li><a href="/cadastrarOferta" class="profile-info-list-item"><i
+												class="mdi mdi-bookmark-check"></i>Cadastrar Ofertas</a></li>											
+									</ul>
+								</div>
+							</div>
+						</div>
+					</div>
+					<form action="/editarConcessionaria" th:object="${concessionaria}" class="vix" method="get">
+						<div class="col-md-12 grid-margin stretch-card callp">
+							<div class="card">
+								<div class="card-body">
+									<p class="card-description">Informações do administrador</p>
+									<ul class="about">
+										<li class="about-items"><i
+											class="mdi mdi-account icon-sm "></i><span
+											class="about-item-name">Nome:</span><span
+											class="about-item-detail"
+											th:text="${session.concessionariaLogada.nomeConcessionaria}"></span><a href=""
+											class="about-item-edit">Edit</a></li>
+										<li class="about-items"><i
+											class="mdi mdi-lock-outline icon-sm "></i><span
+											class="about-item-name">Senha:</span><span
+											class="about-item-detail">**********</span></li>
+										<li class="about-items"><i
+											class="mdi mdi-account icon-sm "></i><span
+											class="about-item-name">CNPJ:</span><span
+											class="about-item-detail"
+											th:text="${session.concessionariaLogada.cnpj}"></span></li>
+										<li class="about-items"><i
+											class="mdi mdi-account icon-sm "></i><span
+											class="about-item-name">Nome Fantasia:</span><span
+											class="about-item-detail"
+											th:text="${session.concessionariaLogada.nomeFantasia}"></span></li>
+										<li class="about-items"><i
+											class="mdi mdi-account icon-sm "></i><span
+											class="about-item-name">Razão social:</span><span
+											class="about-item-detail"
+											th:text="${session.concessionariaLogada.razaoSocial}"></span></li>
+										<li class="about-items"><i
+											class="mdi mdi-account icon-sm "></i><span
+											class="about-item-name">CNPJ:</span><span
+											class="about-item-detail"
+											th:text="${session.concessionariaLogada.cnpj}"></span></li>
+										<li class="about-items"><i
+											class="mdi mdi-account icon-sm "></i><span
+											class="about-item-name">Inscricao estadual:</span><span
+											class="about-item-detail"
+											th:text="${session.concessionariaLogada.inscricaoSocial}"></span></li>
+									</ul>
+									<p class="card-description">Informações de contato:</p>
+									<ul class="about">
+										<li class="about-items"><i class="mdi mdi-phone icon-sm "></i><span
+											class="about-item-name">Telefone:</span><span
+											class="about-item-detail"
+											th:text="${session.concessionariaLogada.telefone1}"></span>
+										<li class="about-items"><i
+											class="mdi mdi-email-outline icon-sm "></i><span
+											class="about-item-name">Email:</span><span
+											class="about-item-detail"
+											th:text="${session.concessionariaLogada.emailConcessionaria}"></span>
+									</ul>
+								</div>
+							</div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</div>
+	</section>
+	<section class="footer4 cid-rHKj5aTgnl" id="footer4-17">
+		<div class="container">
+			<div class="media-container-row content mbr-white">
+				<div class="col-md-3 col-sm-4">
+					<div class="mb-3 img-logo">
+						<a href="/index"> <img src="assets/images/logo1-122x124.png" alt="Mobirise" title=""></a>
+					</div>
+					<p class="mb-3 mbr-fonts-style foot-title display-7">VirtualDealer</p>
+					<p class="mbr-text mbr-fonts-style mbr-links-column display-7">
+						<a href="/sobreNos">Sobre nós</a><br>
+						<a href="" class="text-white">Services</a><br>Seja parceiro<a href="/cadastroEmpresa" class="text-white"><br></a><br>
+					</p>
+				</div>
+				<div class="col-md-4 col-sm-8">
+					<p class="mb-4 foot-title mbr-fonts-style display-7">
+						<br>
+						<br>Noticias recentes
+					</p>
+					<p class="mbr-text mbr-fonts-style foot-text display-7">
+						Atualização nos serviços de atendimento.<br>Venha confereir &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;<br>
+					</p>
+				</div>
+				<div class="col-md-4 offset-md-1 col-sm-12">
+					<p class="mb-4 foot-title mbr-fonts-style display-7">SUBSCRIBE</p>
+					<p class="mbr-text mbr-fonts-style form-text display-7">Receba nossas novidades em seu Email</p>
+					<div class="media-container-column" data-form-type="formoid">
+						<!---Formbuilder Form--->
+						<form action="https://mobirise.com/" method="POST" id="" class="mbr-form form-with-styler" data-form-title="Mobirise Form">
+							<input type="hidden" name="email" data-form-email="true" value="F/Xd2G9g0ucJ0D4xYj/YqxWQHwJ4aW38LM1YbJt7IU+XU0czA7xWGbm6BmhuXSXENGkb0KWqf29rfOvn9Zs67XgfqcxUqXSY2ivBd0dWsSUCQnSYAqQB46Iz7OaFoUV9">
+							<div class="row form-inline justify-content-center">
+								<div hidden="hidden" data-form-alert="" class="alert alert-success col-12">Thanks for filling out the form!</div>
+								<div hidden="hidden" data-form-alert-danger="" class="alert alert-danger col-12"></div>
+							</div>
+							<div class="dragArea row form-inline justify-content-center">
+								<div class="col-auto  form-group " data-for="email">
+									<input type="email" name="email" placeholder="Email" data-form-field="Email" required="required" class="form-control input-sm input-inverse my-2 display-7" id="email-footer4-17">
+								</div>
+								<div class="col-auto  input-group-btn  m-2">
+									<button type="submit" class="btn btn-primary m-0 display-4">Inscreva-se</button>
+								</div>
+							</div>
+						</form>
+						<!---Formbuilder Form--->
+					</div>
+					<p class="mb-4 mbr-fonts-style foot-title display-7">Conecte-se conosco</p>
+					<div class="social-list pl-0 mb-0">
+						<div class="soc-item">
+							<a href="https://twitter.com/virtualdealer" target="_blank">
+								<span class="socicon-twitter socicon mbr-iconfont mbr-iconfont-social"></span>
+							</a>
+						</div>
+						<div class="soc-item">
+							<a href="https://www.facebook.com/virtualdealer" target="_blank">
+								<span class="socicon-facebook socicon mbr-iconfont mbr-iconfont-social"></span>
+							</a>
+						</div>
+						<div class="soc-item">
+							<a href="https://www.youtube.com/c/virtualdealer" target="_blank">
+								<span class="socicon-youtube socicon mbr-iconfont mbr-iconfont-social"></span>
+							</a>
+						</div>
+						<div class="soc-item">
+							<a href="https://instagram.com/virtualdealer" target="_blank">
+								<span class="socicon-instagram socicon mbr-iconfont mbr-iconfont-social"></span>
+							</a>
+						</div>
+						<div class="soc-item">
+							<a href="https://www.behance.net/Mobirise" target="_blank">
+								<span class="mbr-iconfont mbr-iconfont-social socicon-whatsapp socicon"></span>
+							</a>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="footer-lower">
+				<div class="media-container-row">
+					<div class="col-sm-12">
+						<hr>
+					</div>
+				</div>
+				<div class="media-container-row mbr-white">
+					<div class="col-sm-12 copyright">
+						<p class="mbr-text mbr-fonts-style display-7">© Copyright 2020 VirtualDealer - Todos direitos reservados</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<script src="assets/web/assets/jquery/jquery.min.js"></script>
+	<script src="assets/popper/popper.min.js"></script>
+	<script src="assets/bootstrap/js/bootstrap.min.js"></script>
+	<script src="assets/smoothscroll/smooth-scroll.js"></script>
+	<script src="assets/tether/tether.min.js"></script>
+	<script src="assets/dropdown/js/nav-dropdown.js"></script>
+	<script src="assets/dropdown/js/navbar-dropdown.js"></script>
+	<script src="assets/touchswipe/jquery.touch-swipe.min.js"></script>
+	<script src="assets/theme/js/script.js"></script>
+	<script src="assets/formoid/formoid.min.js"></script>
+	<script src="assets/jquery.validate.min.js"></script>
+	<script src="assets/js/jquery.js"></script>
+	<script src="assets/js/jquery.validate.js"></script>
+	<script src="assets/js/validacao.js"></script>
 </body>
 </html>

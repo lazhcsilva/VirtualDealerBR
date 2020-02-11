@@ -42,7 +42,7 @@ public class MenuController {
 	}
 	
 	@GetMapping("/login")
-	public String login(Cliente cliente, Model model, HttpSession session) {
+	public String login(Cliente cliente, Model model, Concessionaria concessionaria, HttpSession session) {
 		model.addAttribute("cliente", new Cliente());
 		return "acesso/login";
 	}
@@ -51,16 +51,6 @@ public class MenuController {
 	public String sobreNos() {
 		return "sobrenos";
 	}
-	
-	@GetMapping("/cadastroEmpresa")
-	public String cadastroEmpresa(Concessionaria concessionaria, Endereco endereco, Model model, HttpSession session) {
-		return "cadastro/cadastroconcessionaria";
-	}
-	
-	/*
-	 * @GetMapping("/editarPerfil") public String editarPerfil() { return
-	 * "editarperfil"; }
-	 */
 	
 	@GetMapping("/empresas")
 	public String empresas() {

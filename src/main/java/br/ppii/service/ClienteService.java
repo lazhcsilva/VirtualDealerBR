@@ -72,10 +72,12 @@ public class ClienteService {
 	public Cliente logarCliente(String emailCliente, String password) throws ServiceException, NoSuchAlgorithmException, UnsupportedEncodingException {	
 		
 		String senhaCriptografada = Util.criptografarSenha(password);
-		Cliente cliente = this.clienteDAO.clienteLogin(emailCliente, senhaCriptografada);
+		Cliente cliente = this.clienteDAO.efetuarLogin(emailCliente, senhaCriptografada);
 
 		if (cliente == null) {
+			
 			throw new ServiceException("Login/senha não encontrados");
+		
 		}
 		
 		if (cliente.getAtivo() == false) {
@@ -85,6 +87,7 @@ public class ClienteService {
 		}
 		
 		return cliente;
+	
 	}
 	
 	public void reEnviarEmailConfirmacao(String email) throws MessagingException {
@@ -97,7 +100,9 @@ public class ClienteService {
 		
 		}
 	}
+	
 	public Cliente editarPerfil(Cliente cliente,HttpSession session) {
+	
 		Cliente clienteLogado=(Cliente)session.getAttribute("clientelogin");
 		Cliente user = this.clienteDAO.findByid(clienteLogado.getIdCliente());
 			
@@ -108,16 +113,8 @@ public class ClienteService {
 		user.setDataNascimento(cliente.getDataNascimento());
 		user.setTelefone(cliente.getTelefone());
 		user.setFotoCliente(cliente.getFotoCliente());
-		
 	
 		return user;
 	}
 
-	
-			
-	/*
-	 * public boolean salvarUsuario(Cliente cliente) throws ServiceException,
-	 * MessagingException;
-	 */
-	
 }

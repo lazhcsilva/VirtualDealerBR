@@ -45,7 +45,7 @@
 						<a class="nav-link link text-white display-4" href="/cadastro"><span class="mbri-users mbr-iconfont mbr-iconfont-btn"></span>Cadastro</a>
 					</li>
 					<li class="nav-item">
-						<a class="nav-link link text-white display-4" href="/pesquisa"><spanclass="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
+						<a class="nav-link link text-white display-4" href="/pesquisa"><span class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
 					</li>
 				</ul>
 			</div>
@@ -62,8 +62,14 @@
 					<p>É muito importante que você preencha todos os campos para realizar o seu cadastro</p>
 					<div class="row">
 						<div class="col-md-12">
-							<form action="salvarConcessionaria" th:object="${concessionaria}" id="form_concessionaria" method="POST" name="form_concessionaria">
+							<form action="salvarConcessionaria" th:object="${concessionaria}" enctype="multipart/form-data" id="form_concessionaria" method="POST" name="form_concessionaria">
 								<div class="form-row">
+									<div class="col-sm-12">
+										<div class="form-group">
+											<label for="inputfoto">Forneça uma foto:</label> 
+											<input type="file" class="form-control" id="inputfoto" name="file" required>
+										</div>
+									</div>
 									<div class="form-group col-md-6">
 										<h5 class="text-left">Dados cadastrais</h5>
 										<label class="form-check-label" for="complemento">Razão social</label>
@@ -99,10 +105,10 @@
 										<input type="password" class="form-control" id="senha2" placeholder="Confirmação da senha">
 									</div>
 									<div class="form-group col-md-6">
-										<label class="form-check-label" for="empresa">Empresa</label>
-										<input type="text" name="empresa" class="form-control" id="empresa" placeholder="empresa" th:field="*{concessionaria}">
+										<label class="form-check-label" for="nomeConcessionaria">Concessionaria</label>
+										<input type="text" name="nomeConcessionaria" class="form-control" id="nomeConcessionaria" placeholder="Concessionaria" th:field="*{nomeConcessionaria}">
 									</div>
-									<div class="form-group col-md-6">
+									<!-- <div class="form-group col-md-6">
 										<label class="form-check-label" for="logradouro">Logradouro</label>
 										<input type="text" name="logradouro" class="form-control" id="logradouro" placeholder="Logradouro" th:field="*{endereco.logadouro}">
 									</div>
@@ -158,16 +164,7 @@
 									<div class="form-group col-md-5">
 										<label class="form-check-label" for="cep">CEP</label>
 										<input type="text" class="form-control" id="cep" placeholder="XXXXX-XXX" th:field="*{endereco.cep}">
-									</div>
-									<div class="com-md-6">
-										<h5>Clique aqui para ler o termo de Uso</h5>
-									</div>
-								</div>
-								<div class="form-group">
-									<div class="form-check">
-										<input class="form-check-input" type="checkbox" id="gridCheck">
-										<label class="form-check-label" for="gridCheck"> Li e concordo com os termos </label>
-									</div>
+									</div> -->
 								</div>
 								<button type="submit" class="btn btn-primary">Concluir o cadastro</button>
 							</form>

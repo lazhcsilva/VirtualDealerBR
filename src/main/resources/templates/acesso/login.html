@@ -63,39 +63,33 @@
 						</a>	
 					</li>
 				</ul>
-
 			</div>
-			
-				
 		</nav>
 	</section>
-
-		
-<div class="container login-container">
+		<div class="container login-container">
             <div class="row">
                 <div class="col-md-6 login-form-1">
                     <h3>Login da Empresa</h3>
-                    
+                    <form action="/concessionariaLogin" method="post" th:object="${concessionaria}">
                         <div class="form-group">
-                            <input type="text" class="form-control" placeholder="Seu Email *" value="" />
+                            <input type="text" th:field="*{emailConcessionaria}" class="form-control" placeholder="Seu Email *" value="" />
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control" placeholder="Sua senha*" value="" />
+                            <input type="password" th:field="*{password}" class="form-control" placeholder="Sua senha*" value="" />
                         </div>
                         <div class="form-group">
-                            <input type="submit" class="btnSubmit" value="Login" />
+                            <input type="submit" class="btnSubmit" value="Login"/>
                         </div>
                         <div class="form-group">
                             <a href="#" class="btnForgetPwd">Esqueceu sua senha?</a>
                         </div>
-                    
+                    </form>
                 </div>
                 <div class="col-md-6 login-form-2">
                     <div class="login-logo">
                         <img src="assets/images/logo1-122x124.png" alt=""/>
                     </div>
                     <h3>Login do cliente</h3>
-                    
                     <form action="/clienteLogin" method="post" th:object="${cliente}">
                         <div class="form-group">
                             <input type="text"  th:field="*{emailCliente}" class="form-control" placeholder="Seu Email *" value="" />

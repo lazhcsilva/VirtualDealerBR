@@ -31,12 +31,12 @@
 				aria-label="Toggle navigation"></button>
 			<div class="menu-logo">
 				<div class="navbar-brand">
-					<span class="navbar-logo"> <a href="/index"><img
-							src="assets/images/logo1-122x124.png" alt="Virtual Dealer"
-							title="Logo VirtualDealer" style="height: 4.5rem;"></a></span> <span
-						class="navbar-caption-wrap"><a
-						class="navbar-caption text-white display-4" href="/index">Virtual
-							Dealer</a></span>
+					<span class="navbar-logo"> 
+						<a href="/index"><img src="assets/images/logo1-122x124.png" alt="Virtual Dealer" title="Logo VirtualDealer" style="height: 4.5rem;"></a>
+					</span>
+					<span class="navbar-caption-wrap">
+						<a class="navbar-caption text-white display-4" href="/index">Virtual Dealer</a>
+					</span>
 				</div>
 			</div>
 			<div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -59,8 +59,7 @@
 						class="nav-link link text-white display-4" href="/pesquisa"><span
 							class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
 					</li>
-					<li class="nav-item dropdown open"><a
-						th:if="${session.clienteLogado != null}"
+					<li class="nav-item dropdown open" th:if="${session.clienteLogado != null}"><a
 						class="nav-link link text-white dropdown-toggle display-4"
 						th:href="@{/paginaInicial}" data-toggle="dropdown-submenu"
 						aria-expanded="true"><span
@@ -74,17 +73,30 @@
 								aria-expanded="false">Sair</a>
 						</div>
 					</li>
-					<li class="nav-item dropdown open"><a
-						th:if="${session.concessionaraLogada != null}"
+					<li class="nav-item dropdown open" th:if="${session.concessionariaLogada != null}"><a
 						class="nav-link link text-white dropdown-toggle display-4"
 						th:href="@{/paginaInicial}" data-toggle="dropdown-submenu"
 						aria-expanded="true"><span
 							class="mbri-user mbr-iconfont mbr-iconfont-btn"></span> <span
 							th:if="${session.concessionariaLogada != null}"
-							th:text="${session.concessionaraLogada.emailConcessionaria}"></span></a>
+							th:text="${session.concessionariaLogada.emailConcessionaria}"></span></a>
 						<div class="dropdown-menu">
 							<a class="text-white dropdown-item display-4"
 								th:href="@{/perfilConcessionaria}">Configurações</a><a
+								class="text-white dropdown-item display-4" th:href="@{/logout}"
+								aria-expanded="false">Sair</a>
+						</div>
+					</li>
+					<li class="nav-item dropdown open" th:if="${session.gestorLogado != null}"><a
+						class="nav-link link text-white dropdown-toggle display-4"
+						th:href="@{/paginaInicial}" data-toggle="dropdown-submenu"
+						aria-expanded="true"><span
+							class="mbri-user mbr-iconfont mbr-iconfont-btn"></span> <span
+							th:if="${session.gestorLogado != null}"
+							th:text="${session.gestorLogado.emailGestor}"></span></a>
+						<div class="dropdown-menu">
+							<a class="text-white dropdown-item display-4"
+								th:href="@{/gestor}">Configurações</a><a
 								class="text-white dropdown-item display-4" th:href="@{/logout}"
 								aria-expanded="false">Sair</a>
 						</div>
@@ -96,7 +108,6 @@
 	<section class="features3 cid-rHigNbtYt6" id="features3-j">
 		<div class="container">
 			<div class="row">
-
 				<div class="card col-4" th:each="oferta : ${lista}">
 					<figure class="snip1423">
 						<img th:if="*{oferta.fotoOferta != null}" th:src="@{/mostrarImagemOferta/{imagem}(imagem=${oferta.fotoOferta})}">
@@ -104,43 +115,25 @@
 						<h5 th:text="${oferta.marca}"></h5>
 						<ul class="list-inline ">
 							<li class="list-inline-item" th:text="${oferta.ano}"></li>
-							<li class="list-inline-item" th:text="${oferta.estado}"></li>
 							<li class="list-inline-item" th:text="${oferta.combustivel}"></li>
 							<li class="list-inline-item" th:text="${oferta.cor}"></li>
 						</ul>
 						<h3 th:text="${oferta.valor}"></h3>
-
-						<button type="button" class="btn btn-outline-danger btn-sm">Agendar
-							visita</button>
-
-						<button class="btn btn-outline-secondary btn-sm"
-							data-toggle="modal" data-target=".bd-example-modal-xl">Ver
-							mais</button>
-						<div class="modal fade bd-example-modal-xl" tabindex="-1"
-							role="dialog" aria-labelledby="myExtraLargeModalLabel"
-							aria-hidden="true">
+						<button type="button" class="btn btn-outline-danger btn-sm">Agendar visita</button>
+						<button class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target=".bd-example-modal-xl">Ver mais</button>
+						<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
 							<div class="modal-dialog modal-xl">
 								<div class="modal-content">
-									<aside class="col-sm-5 border-right">
-										<article class="gallery-wrap">
-											<div class="img-big-wrap">
-												<div>
-													<a href="#"><img
-														src="https://s9.postimg.org/tupxkvfj3/image.jpg"></a>
-												</div>
-											</div>
-										</article>
-									</aside>
-									<aside class="col-sm-6">
+									<aside class="col-sm-7">
 										<article class="card-body p-5">
 											<h3 class="title mb-3" th:text="${oferta.veiculo}"></h3>
+											<img th:if="*{oferta.fotoOferta != null}" th:src="@{/mostrarImagemOferta/{imagem}(imagem=${oferta.fotoOferta})}">
 											<p class="price-detail-wrap">
-												<span class="price h3 text-warning"> <span
-													class="currency">R$</span><span class="num"
-													th:text="${oferta.valor}"></span>
+												<span class="price h3 text-warning">
+													<span class="currency">R$</span>
+													<span class="num" th:text="${oferta.valor}"></span>
 												</span>
 											</p>
-											<!-- price-detail-wrap .// -->
 											<dl class="item-property">
 												<dt>Descrição:</dt>
 												<dd>
@@ -148,32 +141,21 @@
 												</dd>
 											</dl>
 											<dl class="param param-feature">
-												<dt th:text="${oferta.chassi}"></dt>
+												<dt>Chassi:</dt>
+												<dd th:text="${oferta.chassi}"></dd>
 											</dl>
-											<!-- item-property-hor .// -->
 											<dl class="param param-feature">
 												<dt>Cor</dt>
 												<dd th:text="${oferta.cor}"></dd>
 											</dl>
-											<dl class="param param-feature">
-												<dt>Estado</dt>
-												<dd th:text="${oferta.estado}"></dd>
-											</dl>
-											<!-- item-property-hor .// -->
-											<a href="#" class="btn btn-lg btn-primary text-uppercase">Agendar
-												visita</a>
 										</article>
-										<!-- card-body.// -->
 									</aside>
 								</div>
 							</div>
 						</div>
+					</figure>
 				</div>
-				</figure>
-
 			</div>
-
-		</div>
 		</div>
 	</section>
 	<section class="footer4 cid-rHKj5aTgnl" id="footer4-17">

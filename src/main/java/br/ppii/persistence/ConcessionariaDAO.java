@@ -8,7 +8,7 @@ import br.ppii.model.Concessionaria;
 public interface ConcessionariaDAO extends JpaRepository<Concessionaria, Integer> {
 
 	@Query("select c from Concessionaria c where c.emailConcessionaria = :emailConcessionaria and c.password = :password")
-	public Concessionaria concessionariaLogin(String emailConcessionaria, String password);
+	public Concessionaria logarConcessionaria(String emailConcessionaria, String password);
 	
 	@Query("select c from Concessionaria c where c.emailConcessionaria = :emailConcessionaria")
 	public Concessionaria findByEmailIgnoreCase(String emailConcessionaria);

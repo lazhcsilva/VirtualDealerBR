@@ -43,7 +43,7 @@ public class ClienteController {
 	private ClienteDAO clienteDAO;
 	
 	@Autowired 
-	EmailService emailService;
+	private EmailService emailService;
 	
 	@PostMapping("/salvarCliente")
 	public String salvarCliente(@Valid Cliente cliente, BindingResult br, Model model, RedirectAttributes ra,Errors errors, @RequestParam("file") MultipartFile arquivo) throws Exception {
@@ -96,19 +96,24 @@ public class ClienteController {
 	}
 	
 	@PostMapping("/clienteLogin")
-	public String efetuarLogin(HttpServletRequest request, @ModelAttribute Cliente cliente, @RequestParam(name = "retorno", required = false) String retorno, RedirectAttributes ra, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
+	public String clienteLogin(HttpServletRequest request, @ModelAttribute Cliente cliente, @RequestParam(name = "retorno", required = false) String retorno, RedirectAttributes ra, HttpSession session) throws NoSuchAlgorithmException, UnsupportedEncodingException {
 		
 		Cliente clienteLogado;
+		
 		try {
+	
 			clienteLogado = this.clienteService.logarCliente(cliente.getEmailCliente(), cliente.getPassword());
 			session.setAttribute("clienteLogado", clienteLogado);
 			
 		} catch (ServiceException e) {
+		
 			ra.addFlashAttribute("mensagemErro", e.getMessage());
-			return "paginainicial";
+			return "paginaInicial";
+		
 		}
 		
 		return "redirect:/paginaInicial";
+	
 	}
 	
 	@GetMapping("/editarCliente")
@@ -183,23 +188,30 @@ public class ClienteController {
 	public String ativarConta(@RequestParam(name = "token", required = false) String token, RedirectAttributes ra) {
 
 		if (token == "" || token == null) {
+		
 			ra.addFlashAttribute("alertErro", "Token de ativação inválido");
 			return "redirect:ativar";
+
 		}
 
 		Email email = this.emailService.findByToken(token);
 
 		if (this.emailService.validarVencimento(email)) {
+		
 			Cliente cliente = this.clienteService.findByEmail(email.getEmailDestinatario());
 			cliente.setAtivo(true);
 			this.clienteService.save(cliente);
+		
 		} else {
+			
 			ra.addFlashAttribute("alertErro", "Token de ativação vencido, por favor re-envie o email de ativação");
 			return "redirect:ativar";
+		
 		}
 
 		ra.addFlashAttribute("alertSucesso", "Conta Ativada com sucesso!");
 		return "redirect:/contaConfirmada";
+	
 	}
 	
 	@GetMapping("/contaConfirmada")
@@ -215,18 +227,29 @@ public class ClienteController {
 		Cliente cliente = this.clienteService.findByEmail(email);
 
 		if (cliente == null) {
+			
 			ra.addFlashAttribute("alertErro", "Email não cadastrado no sistema");
+		
 		} else if (email.trim() != "") {
+		
 			try {
+			
 				this.clienteService.reEnviarEmailConfirmacao(cliente.getEmailCliente());
+			
 			} catch (MessagingException e) {
+			
 				e.printStackTrace();
+			
 			}
+		
 		} else {
+		
 			ra.addFlashAttribute("alertErro", "Email inválido");
+		
 		}
 
 		return retorno;
+	
 	}
 	
 }

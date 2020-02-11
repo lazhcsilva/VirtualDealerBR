@@ -4,7 +4,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
-import br.ppii.model.Cliente;
 import br.ppii.model.Gestor;
 
 public interface GestorDAO extends JpaRepository<Gestor, Integer> {

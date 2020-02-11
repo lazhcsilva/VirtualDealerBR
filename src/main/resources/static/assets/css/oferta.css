@@ -804,11 +804,7 @@ s*/
   right: 0;
   z-index: 1;
 }
-.snip1423:hover,
-.snip1423.hover {
-  -webkit-transform: translateY(-5px);
-  transform: translateY(-5px);
-}
+
 .snip1423:hover i,
 .snip1423.hover i {
   background-color: #2980b9;
