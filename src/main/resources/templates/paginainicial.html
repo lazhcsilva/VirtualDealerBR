@@ -117,16 +117,20 @@
 							<li class="list-inline-item" th:text="${oferta.ano}"></li>
 							<li class="list-inline-item" th:text="${oferta.combustivel}"></li>
 							<li class="list-inline-item" th:text="${oferta.cor}"></li>
-						</ul>
-						<h3 th:text="${oferta.valor}"></h3>
-						<button type="button" class="btn btn-outline-danger btn-sm">Agendar visita</button>
+						</ul> 
+						<h3 th:text="${oferta.valor}"></h3><form th:action="@{/agendar}">
+											<button type="submit" class="btn btn-outline-danger btn-sm">Agendar visita</button>
+											</form>
 						<button class="btn btn-outline-secondary btn-sm" data-toggle="modal" data-target=".bd-example-modal-xl">Ver mais</button>
 						<div class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
 							<div class="modal-dialog modal-xl">
+							
+							
 								<div class="modal-content">
-									<aside class="col-sm-7">
-										<article class="card-body p-5">
-											<h3 class="title mb-3" th:text="${oferta.veiculo}"></h3>
+									<aside class="col-sm-8"> 
+						
+										<article class="card-body p-6">
+											<h3 class="title mb-4" th:text="${oferta.veiculo}"></h3>
 											<img th:if="*{oferta.fotoOferta != null}" th:src="@{/mostrarImagemOferta/{imagem}(imagem=${oferta.fotoOferta})}">
 											<p class="price-detail-wrap">
 												<span class="price h3 text-warning">
@@ -145,9 +149,11 @@
 												<dd th:text="${oferta.chassi}"></dd>
 											</dl>
 											<dl class="param param-feature">
-												<dt>Cor</dt>
+												<dt>Cor</dt> 
 												<dd th:text="${oferta.cor}"></dd>
-											</dl>
+											</dl><form th:action="@{/agendar}">
+											<button type="submit" class="btn btn-outline-danger btn-sm"> Agendar visita</button>
+											</form>
 										</article>
 									</aside>
 								</div>

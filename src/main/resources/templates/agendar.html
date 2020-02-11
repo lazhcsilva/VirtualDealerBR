@@ -8,9 +8,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1">
 <link rel="shortcut icon" href="assets/images/logo1-122x124.png" type="image/x-icon">
 <meta name="description" content="Web Site Builder Description">
-<title>Perfil concessionaria</title>
-<script src="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+<title>Faça parte</title>
 <link rel="stylesheet" href="assets/web/assets/mobirise-icons/mobirise-icons.css">
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
 <link rel="stylesheet" href="assets/bootstrap/css/bootstrap-grid.min.css">
@@ -23,6 +21,7 @@
 <link rel="stylesheet" href="assets/mobirise/css/mbr-additional.css" type="text/css">
 <link rel="stylesheet" href="assets/css/estilo.css">
 <link rel="stylesheet" href="assets/css/oferta.css">
+<link rel="stylesheet" href="assets/css/descricao.css">
 <link rel="stylesheet" href="assets/css/gestor.css">
 </head>
 <body>
@@ -63,7 +62,7 @@
 						class="nav-link link text-white display-4" href="/pesquisa"><span
 							class="mbri-search mbr-iconfont mbr-iconfont-btn"></span>Pesquisar</a>
 					</li>
-					<!-- <li class="nav-item dropdown open" th:if="${session.clienteLogado != null}"><a
+					<li class="nav-item dropdown open" th:if="${session.clienteLogado != null}"><a
 						class="nav-link link text-white dropdown-toggle display-4"
 						th:href="@{/paginaInicial}" data-toggle="dropdown-submenu"
 						aria-expanded="true"><span
@@ -76,7 +75,7 @@
 								class="text-white dropdown-item display-4" th:href="@{/logout}"
 								aria-expanded="false">Sair</a>
 						</div>
-					</li> -->
+					</li>
 					<li class="nav-item dropdown open" th:if="${session.concessionariaLogada != null}"><a
 						class="nav-link link text-white dropdown-toggle display-4"
 						th:href="@{/paginaInicial}" data-toggle="dropdown-submenu"
@@ -91,7 +90,7 @@
 								aria-expanded="false">Sair</a>
 						</div>
 					</li>
-				<!-- 	<li class="nav-item dropdown open" th:if="${session.gestorLogado != null}"><a
+					<li class="nav-item dropdown open" th:if="${session.gestorLogado != null}"><a
 						class="nav-link link text-white dropdown-toggle display-4"
 						th:href="@{/paginaInicial}" data-toggle="dropdown-submenu"
 						aria-expanded="true"><span
@@ -104,98 +103,86 @@
 								class="text-white dropdown-item display-4" th:href="@{/logout}"
 								aria-expanded="false">Sair</a>
 						</div>
-					</li> -->
+					</li>
 				</ul>
 			</div>
 		</nav>
 	</section>
 	<section class="features3 cid-rHigNbtYt6" id="features3-j">
-		<div class="main-panel">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 grid-margin stretch-card">
-						<div class="card">
-							<div class="profile-card">
-								<div class="profile-header">
-									<div class="user-image">
-										<img class="card-img-top img-responsive" th:src="@{/mostrarImagemConcessionaria/{imagem}(imagem=${fotoConcessionaria})}">
+		<div class="bg-light p-1 border-bottom shadow">
+			<h4 class="w-100 text-center">
+				<a href="/index" class="text-decoration-none text-black-50"> <img
+					src="assets/images/logo1-122x124.png"
+					alr="VirtualDealer"
+					title="VirtualDealer">
+				</a>
+			</h4>
+		</div>
+		<div class="container-fluid">
+			<div class="row">
+				<div class="container mt-5 login-block">
+					<div class="row">
+						<div class="col-md-4 login-sec p-4">
+							<form class="login-form needs-validation" novalidate>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1"><i
+											class="fas fa-at"></i></span>
 									</div>
+									<input type="email" class="form-control" placeholder="E-mail"
+										aria-label="E-mail" aria-describedby="basic-addon1" required>
+									<div class="invalid-tooltip">e-mail.</div>
 								</div>
-								<div class="profile-content">
-									<div class="profile-name"
-										th:text="${session.concessionariaLogada.nomeConcessionaria}"></div>
-									<div class="profile-designation">Concessionaria</div>
-									<p class="profile-description">Ativo</p>
-									<ul class="profile-info-list">
-										<li><a href="/perfilConcessionaria" class="profile-info-list-item"><i
-												class="mdi mdi-eye"></i>Perfil</a></li>
-										<li><a href="/paginaInicial" class="profile-info-list-item"><i
-												class="mdi mdi-bookmark-check"></i>Ofertas</a></li>
-										<li><a href="/cadastrarOferta" class="profile-info-list-item"><i
-												class="mdi mdi-bookmark-check"></i>Cadastrar Ofertas</a></li>											
-									</ul>
+								<hr>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1"><i
+											class="fas fa-key"></i></span>
+									</div>
+									<input type="text" class="form-control"
+										placeholder="Telefone de contato" aria-label="Пароль"
+										aria-describedby="basic-addon2" required>
+									<div class="invalid-tooltip">Telefone de contato.</div>
 								</div>
+								<hr>
+								<div class="input-group mb-3">
+									<div class="input-group-prepend">
+										<span class="input-group-text" id="basic-addon1"><i
+											class="fas fa-key"></i></span>
+									</div>
+									<textarea class="form-control"
+										placeholder="texto" aria-label="Descreva seu desejo de participar"
+										aria-describedby="basic-addon2" required></textarea>
+									<div class="invalid-tooltip">Escrevanos</div>
+								</div>
+								<hr>
+								<div class="align-middle">
+									<button type="submit"
+										class="btn btn-outline-success float-right">Enviar Email</button>
+								</div>
+							</form>
+						</div>
+						<div class="col-md-8 banner-sec rounded">
+							<div class="px-2 py-3 position-absolute rounded-left"
+								style="background-color: rgba(255, 255, 255, 0.5); bottom: 40px;">
+								<h2>
+									Para agendar envie um email para nós, assim que pudermos entraremos em contato e o conduziremos para a concessionária desejada. 
+									<span style="font-size: .5em;"></span>
+								</h2>
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item bg-transparent border-0 p-1"><i
+										class="far fa-check-square text-primary"></i> Grandes vantagens para visualizar as
+										melhores ofertas em sua concessionaria, bem na tela do celular ou desktop</li>
+									<li class="list-group-item bg-transparent border-0 p-1"><i
+										class="far fa-check-square text-primary"></i> Praticidade em conhecer os veiculos e 
+										saber onde ir para conseguir o melhor com os melhores.</li>
+									<li class="list-group-item bg-transparent border-0 p-1"><i
+										class="far fa-check-square text-primary"></i> Confiabilidade em um serviço exclusivo.</li>
+								</ul>
+								<p>Entre em contato conosco e agende já sua visita.</p>
 							</div>
 						</div>
 					</div>
-					<form action="/editarConcessionaria" th:object="${concessionaria}" class="vix" method="get">
-						<div class="col-md-12 grid-margin stretch-card callp">
-							<div class="card">
-								<div class="card-body">
-									<p class="card-description">Informações do administrador</p>
-									<ul class="about">
-										<li class="about-items"><i
-											class="mdi mdi-account icon-sm "></i><span
-											class="about-item-name">Nome:</span><span
-											class="about-item-detail"
-											th:text="${session.concessionariaLogada.nomeConcessionaria}"></span><a href=""
-											class="about-item-edit">Edit</a></li>
-										<li class="about-items"><i
-											class="mdi mdi-lock-outline icon-sm "></i><span
-											class="about-item-name">Senha:</span><span
-											class="about-item-detail">**********</span></li>
-										<li class="about-items"><i
-											class="mdi mdi-account icon-sm "></i><span
-											class="about-item-name">CNPJ:</span><span
-											class="about-item-detail"
-											th:text="${session.concessionariaLogada.cnpj}"></span></li>
-										<li class="about-items"><i
-											class="mdi mdi-account icon-sm "></i><span
-											class="about-item-name">Nome Fantasia:</span><span
-											class="about-item-detail"
-											th:text="${session.concessionariaLogada.nomeFantasia}"></span></li>
-										<li class="about-items"><i
-											class="mdi mdi-account icon-sm "></i><span
-											class="about-item-name">Razão social:</span><span
-											class="about-item-detail"
-											th:text="${session.concessionariaLogada.razaoSocial}"></span></li>
-										<li class="about-items"><i
-											class="mdi mdi-account icon-sm "></i><span
-											class="about-item-name">CNPJ:</span><span
-											class="about-item-detail"
-											th:text="${session.concessionariaLogada.cnpj}"></span></li>
-										<li class="about-items"><i
-											class="mdi mdi-account icon-sm "></i><span
-											class="about-item-name">Inscricao estadual:</span><span
-											class="about-item-detail"
-											th:text="${session.concessionariaLogada.inscricaoEstadual}"></span></li>
-									</ul>
-									<p class="card-description">Informações de contato:</p>
-									<ul class="about">
-										<li class="about-items"><i class="mdi mdi-phone icon-sm "></i><span
-											class="about-item-name">Telefone:</span><span
-											class="about-item-detail"
-											th:text="${session.concessionariaLogada.telefone1}"></span>
-										<li class="about-items"><i
-											class="mdi mdi-email-outline icon-sm "></i><span
-											class="about-item-name">Email:</span><span
-											class="about-item-detail"
-											th:text="${session.concessionariaLogada.emailConcessionaria}"></span>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</form>
 				</div>
 			</div>
 		</div>
@@ -321,5 +308,8 @@
 	<script src="assets/js/jquery.js"></script>
 	<script src="assets/js/jquery.validate.js"></script>
 	<script src="assets/js/validacao.js"></script>
+</body>
+</html>
+
 </body>
 </html>

@@ -25,6 +25,10 @@ public class MenuController {
 	public String index() {
 		return "index";
 	}
+	@GetMapping("/agendar")
+	public String agendar() {
+		return "agendar";
+	}
 
 	@GetMapping("/paginaInicial")
 	public String paginaInicial(Model model, Oferta oferta, HttpSession session) {
